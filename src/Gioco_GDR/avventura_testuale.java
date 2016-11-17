@@ -20,10 +20,61 @@ public class avventura_testuale {
     public static void main(String[] args) {
         // TODO code application logic here
         JOptionPane.showMessageDialog(null, "Benvenuto in questa entusiasmate\n             avventura testuale");
-        String Nome = "Chris";//JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il nome):\n");//inserimento nome pg
-        String Cognome = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
-        int Razza = 0;//definisco la razza
+        String NomeCognome[] = new String[3];
+        boolean controllo = false;
+        int i = 0, j = 0;
+        int Razza = 0;
+        String RazzaPersonaggio[] = new String[5] ;
+        RazzaPersonaggio[] = "Umano", "Nano", "Elfo", "Dracolide", "Vergheuden" ;
+        while (i < 3) {
+            NomeCognome[i] = inserisciNome_Cognome(i);
+            i++;
+        }//fine while inserimento nome e cognome
 
+        System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
+
+        Razza = scegliRazza();
+        
+        System.out.println("razza personaggio: " + Razza + "\n");
+        
+    }
+
+    
+    static String inserisciNome_Cognome(int i) {
+
+        String NomeCognome = "";
+        NomeCognome = "Chris";
+
+        switch (i) {
+            case 0:
+                //NomeCognome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
+                return NomeCognome;
+
+            case 1:
+                String selezione = "no";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
+                if (selezione.toLowerCase() == "si") {
+                    NomeCognome = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg
+                    return NomeCognome;
+
+                } else {
+                    NomeCognome = "";
+                    return NomeCognome;
+
+                }
+
+            case 2:
+                NomeCognome = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
+                return NomeCognome;
+
+        }//fine switch
+        return NomeCognome;
+
+    }//fine inserisciNome_Cognome
+        
+    static int scegliRazza() {
+        String razza = "";
+        int Razza = 0;//definisco la razza
+        
         do {//ciclo per visualizzare le informazioni sulle razze
 
             if (Razza == 0) {
@@ -32,13 +83,16 @@ public class avventura_testuale {
                         + "Se desideri invece informazioni sulle razze, digita 6.\n");
 
                 Razza = Integer.parseInt(Razza1);
-                if(Razza == 6){
-                Razza = spiega_razza(Razza);}
+                if (Razza == 6) {
+                    Razza = spiega_razza(Razza);
+                }
             }//if razza
         } while (Razza == 0);//while per visualizzare info sulle razze
-    }
+        
+        return razza;
+    }//fine metodo scegliRazza()
 
-    public static Integer spiega_razza(int Razza) {
+    static Integer spiega_razza(int Razza) {
         if (Razza == 6) {
             String choice1 = JOptionPane.showInputDialog("Digitare:\n .1 per avere informazioni su 'Umano' \n .2 per avere infomazioni su 'Elfo'\n"
                     + " .3 per avere informazioni su 'Nano'\n .4 per avere informazioni su 'Dracolo'\n .5 per avere infomazioni su 'Vergheuden'\n"
@@ -81,7 +135,9 @@ public class avventura_testuale {
         return Razza;
 
     }
+    
 }
+
 /*public scegli_classe_con_cui_giocare (){
         
     }
