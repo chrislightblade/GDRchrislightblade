@@ -25,7 +25,7 @@ public class avventura_testuale {
         int i = 0, j = 0;
         int Razza = 0;
         String RazzaPersonaggio[] = new String[5] ;
-        RazzaPersonaggio[] = "Umano", "Nano", "Elfo", "Dracolide", "Vergheuden" ;
+        RazzaPersonaggio[] = {"Umano"; "Nano"; "Elfo"; "Dracolide"; "Vergheuden" };
         while (i < 3) {
             NomeCognome[i] = inserisciNome_Cognome(i);
             i++;
