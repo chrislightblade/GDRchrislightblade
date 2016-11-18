@@ -24,8 +24,8 @@ public class avventura_testuale {
         boolean controllo = false;
         int i = 0, j = 0;
         int Razza = 0;
-        String RazzaPersonaggio[] = new String[5] ;
-        RazzaPersonaggio[] = {"Umano"; "Nano"; "Elfo"; "Dracolide"; "Vergheuden" };
+        String RazzaPersonaggio[] = new String[] {"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden" };
+        
         while (i < 3) {
             NomeCognome[i] = inserisciNome_Cognome(i);
             i++;
@@ -35,7 +35,7 @@ public class avventura_testuale {
 
         Razza = scegliRazza();
         
-        System.out.println("razza personaggio: " + Razza + "\n");
+        System.out.println("razza personaggio: " + RazzaPersonaggio[Razza - 1] + "\n");
         
     }
 
@@ -89,7 +89,7 @@ public class avventura_testuale {
             }//if razza
         } while (Razza == 0);//while per visualizzare info sulle razze
         
-        return razza;
+        return Razza;
     }//fine metodo scegliRazza()
 
     static Integer spiega_razza(int Razza) {
