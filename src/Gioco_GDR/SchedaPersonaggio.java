@@ -14,12 +14,12 @@ public class SchedaPersonaggio {
 
     String NomeCognome[] = new String[3];//stringa nome e cognome
 
-    int forza = 3;    
-    int difesa = 3;
-    int intelligenza = 3;
-    int agilità = 3;
-    int costituzione = 3;    
-    int exp = 1;
+    int forza = 0;    
+    int difesa = 0;
+    int intelligenza = 0;
+    int agilità = 0;
+    int costituzione = 0;    
+    int exp = 0;
     int punti_vita;
     int cariche_magiche = 0;
     int cariche_tecniche = 0;

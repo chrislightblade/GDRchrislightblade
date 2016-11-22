@@ -10,6 +10,9 @@ import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
+ * cose da fare: implementare nella scelta stat la possibilità di ridistribuire i parametri (gli stessi, salvare gli array in altri array)
+ * usare intelligenza nel colpire se si ha competenza nell'arma ( il bonus agilità è solo "modificatore"
+ * 
  * @author tss
  */
 public class avventura_testuale {
@@ -38,7 +41,7 @@ public class avventura_testuale {
 
             CreaPersonaggio.inserisciNome_Cognome(scheda);
             CreaPersonaggio.scegliRazza(scheda);
-            CreaPersonaggio.scegliClasse(scheda);
+            //CreaPersonaggio.scegliClasse(scheda);
             CreaPersonaggio.impostaStatistiche(scheda);
             
 
