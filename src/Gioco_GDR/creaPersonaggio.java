@@ -12,79 +12,78 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public class creaPersonaggio {
-    
+
     static void inserisciNome_Cognome(SchedaPersonaggio scheda) {
 
-        //String NomeCognome = "";
-        
-        
-        for(int i = 0; i < 3; i++){
-        //scheda.NomeCognome[i] = creaPersonaggio.inserisciNome_Cognome(i);
-        if(scheda.NomeCognome[i] == "")
-            continue;
-        
-        switch (i) {
-            case 0:
-                //NomeCognome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
-                scheda.NomeCognome[i] = "Chris";
-                break;
+        for (int i = 0; i < 3; i++) {
+            //scheda.NomeCognome[i] = creaPersonaggio.inserisciNome_Cognome(i);
 
-            case 1:
-                String selezione = "no";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
-                if (selezione.toLowerCase() == "si") //{
-                    scheda.NomeCognome[i] = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg
-                    
-                    else
+            scheda.NomeCognome[i] = "";
+            switch (i) {
+                case 0:
+                    //NomeCognome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
+                    scheda.NomeCognome[i] = "Chris";
+                    break;
+
+                case 1:
+                    String selezione = "no";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
+                    if (selezione.toLowerCase() == "si") {
+                        scheda.NomeCognome[i] = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
+
+                    } else {
                         scheda.NomeCognome[i] = "";
-                        
+                    }
+
                     break;
 
                 /*} else {
                     scheda.NomeCognome = "";
                     return NomeCognome;
                 }*/
-
-            case 2:
-                scheda.NomeCognome[i] = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
-                break;
+                case 2:
+                    scheda.NomeCognome[i] = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
+                    break;
                 //return NomeCognome;
 
-            /*default:
+                /*default:
                 
                 return NomeCognome;*/
+            }//fine switch
 
-        }//fine switch
-        
-        //System.out.println(scheda.NomeCognome[i] + " ");
+            if (scheda.NomeCognome[i] == "") {
+                continue;
+            } else {
+                System.out.println(scheda.NomeCognome[i] + "\n");
+
+            }
+
         }
-        
-        return;
+
     }//fine inserisciNome_Cognome
-    
-    static int scegliRazza() {
-        String razza = "";
-        int Razza = 0;//definisco la razza
+
+    static void scegliRazza(SchedaPersonaggio scheda) {
+        String Razza1 = "";
+        scheda.Razza = 0;//definisco la razza
 
         do {//ciclo per visualizzare le informazioni sulle razze
 
-            if (Razza == 0) {
-                String Razza1 = JOptionPane.showInputDialog(" Prego inserisci la razza del tuo personaggio:\n puoi scegliere:\nDigita 1 se desideri essere 'Umano'\n" + "Digita 2 se desideri essere 'Nano'\n"
+            if (scheda.Razza == 0) {
+                Razza1 = JOptionPane.showInputDialog(" Prego inserisci la razza del tuo personaggio:\n puoi scegliere:\nDigita 1 se desideri essere 'Umano'\n" + "Digita 2 se desideri essere 'Nano'\n"
                         + "Digita 3 se desideri essere 'Elfo'\n" + "Digita 4 se desideri essere 'Dracolide'\n" + "Digita 5 se desideri essere 'Vergheuden'\n "
                         + "Se desideri invece informazioni sulle razze, digita 6.\n");
 
-                Razza = Integer.parseInt(Razza1);
-                if (Razza == 6) {
-                    Razza = spiega_razza(Razza);
+                scheda.Razza = Integer.parseInt(Razza1);
+                if (scheda.Razza == 6) {
+                    spiegaRazza(scheda);
                 }
             }//if razza
-        } while (Razza == 0);//while per visualizzare info sulle razze
+        } while (scheda.Razza == 0);//while per visualizzare info sulle razze
 
-        return Razza;
     }//fine scegliRazza()
 
-    static Integer spiega_razza(int Razza) {//switch per aver espiegazioni sulle razze
+    static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
-        while (Razza < 7 && Razza != 0) {
+        while (scheda.Razza < 7 && scheda.Razza != 0) {
 
             String frase = "Hai inserito un valore non valido";
 
@@ -95,13 +94,13 @@ public class creaPersonaggio {
             int choice = Integer.parseInt(choice1);
             switch (choice) {
                 case 1:
-                    frase = "La razza Umano offre un bonus all'esperienza del 10% e consente \ndi scegliere un secondo talento.\n";
-                    frase += "Seppur non sia la razza più forte fisicamente\n, possiede grandi capacità adattive e di apprendimento";
+                    frase = "Seppur non sia la razza più forte fisicamente\n, possiede grandi capacità adattive e di apprendimento";
+                    frase += "La razza Umano offre un bonus all'esperienza del 10% e consente \ndi scegliere un secondo talento.\n";
                     break;
 
                 case 2:
-                    frase = "La razza Elfo offre un bonus all'agilità pari a +1 e un malus alla costituzione di -1, ma \nconsente di avere bonus con le armi leggere e quelle da tiro.\n";
-                    frase += "Creature molto sensibili alla natura e dalla gracile costituzione,\npossiedono un'agilità senza pari.";
+                    frase = "Creature molto sensibili alla natura e dalla gracile costituzione,\npossiedono un'agilità senza pari.";
+                    frase += "La razza Elfo offre un bonus all'agilità pari a +1 e un malus alla costituzione di -1, ma \nconsente di avere bonus con le armi leggere e quelle da tiro.\n";                    
                     break;
 
                 case 3:
@@ -120,17 +119,81 @@ public class creaPersonaggio {
                     break;
 
                 case 0:
-                    Razza = 0;
-                    return Razza;
+                    scheda.Razza = 0;
 
             }//switch descrizione razze            
 
-            JOptionPane.showMessageDialog(null, frase);
+            if (scheda.Razza != 0) {
+                JOptionPane.showMessageDialog(null, frase);
+            }
         }
 
-        Razza = 0;
-        return Razza;
+        scheda.Razza = 0;
 
     }
-}
+
+    static void valoriRazza(SchedaPersonaggio scheda) {
+
+        switch (scheda.Razza) {
+            case 1://umano
+                scheda.exp += 10;
+
+            case 2://elfo
+
+                for (int i = 0; i < 10; i++) {
+                    statistiche_valore[i] = 0;
+                    if (i == 4) {//bonus agilità
+                        statistiche_valore[i] += 1;
+                    }
+                    if (i == 2) {//malus costituzione
+                        statistiche_valore[i] -= 1;
+                    }
+                }
+
+                return statistiche_valore;
+
+            case 3://nano
+
+                for (int i = 0; i < 10; i++) {
+                    statistiche_valore[i] = 0;
+                    if (i == 4) {//malus agilità
+                        statistiche_valore[i] -= 1;
+                    }
+                    if (i == 2) {//bonus costituzione
+                        statistiche_valore[i] += 1;
+                    }
+                }
+
+                return statistiche_valore;
+
+            case 4://dracolide
+
+                for (int i = 0; i < 10; i++) {
+                    statistiche_valore[i] = 0;
+                    if (i == 0) {//bonus forza
+                        statistiche_valore[i] += 1;
+                    }
+                    if (i == 7) {//bonus totale armatura
+                        statistiche_valore[i] += 2;
+                    }
+                }
+
+                return statistiche_valore;
+
+            case 5://vergheuden
+
+                for (int i = 0; i < 10; i++) {
+                    statistiche_valore[i] = 0;
+                    if (i == 7) {//bonus totale armatura
+                        statistiche_valore[i] += 3;
+                    }
+                }
+
+                return statistiche_valore;
+
+        }//fine switch
+
+        return statistiche_valore;
+
+    }// fine valorizzaRazza
 }

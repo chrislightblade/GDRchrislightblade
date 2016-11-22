@@ -36,7 +36,7 @@ public class SchedaPersonaggio {
     int statistiche_valore[] = new int[statistiche.length];
 
     //parametri per le razze
-    int Razza = 0;
+    int Razza;
     String RazzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
 
     

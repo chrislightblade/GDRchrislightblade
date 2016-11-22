@@ -21,15 +21,10 @@ public class avventura_testuale {
         // TODO code application logic here
         JOptionPane.showMessageDialog(null, "Benvenuto in questa entusiasmate\n             avventura testuale");
         //tutti i parametri per gestire il gioco
-        
+
         String input = "";
         boolean controllo = false;
         int i = 0, j = 0;
-        
-        SchedaPersonaggio scheda = new SchedaPersonaggio();
-        System.out.println("Nome e Cognome personaggio:");
-        
-        creaPersonaggio.inserisciNome_Cognome(scheda);
 
         input = JOptionPane.showInputDialog("Se desideri caricare un salvataggio digita 1,\n "
                 + "altrimenti premi semplicemente invio");
@@ -38,10 +33,11 @@ public class avventura_testuale {
 
         } else {// crea una nuova partita
 
-            while (i < 3) {
-                scheda.inserisciNome_Cognome(i);
-                i++;
-            }//fine while inserimento nome e cognome
+            SchedaPersonaggio scheda = new SchedaPersonaggio();
+            System.out.println("Nome e Cognome personaggio:");
+
+            creaPersonaggio.inserisciNome_Cognome(scheda);
+            creaPersonaggio.scegliRazza(scheda);
 
             System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
             Razza = scegliRazza();
@@ -60,80 +56,6 @@ public class avventura_testuale {
 
     //static caricaPartita(){}
     
-
-    
-
-    static int[] valoriRazza(int[] statistiche_valore, int Razza) {
-
-        switch (Razza) {
-            case 1://umano
-                for (int i = 0; i < 10; i++) {
-                    statistiche_valore[i] = 0;
-                    if (i == 5) {
-                        statistiche_valore[i] += 10;
-                    }
-                }
-
-                return statistiche_valore;
-
-            case 2://elfo
-
-                for (int i = 0; i < 10; i++) {
-                    statistiche_valore[i] = 0;
-                    if (i == 4) {//bonus agilità
-                        statistiche_valore[i] += 1;
-                    }
-                    if (i == 2) {//malus costituzione
-                        statistiche_valore[i] -= 1;
-                    }
-                }
-
-                return statistiche_valore;
-
-            case 3://nano
-
-                for (int i = 0; i < 10; i++) {
-                    statistiche_valore[i] = 0;
-                    if (i == 4) {//malus agilità
-                        statistiche_valore[i] -= 1;
-                    }
-                    if (i == 2) {//bonus costituzione
-                        statistiche_valore[i] += 1;
-                    }
-                }
-
-                return statistiche_valore;
-
-            case 4://dracolide
-
-                for (int i = 0; i < 10; i++) {
-                    statistiche_valore[i] = 0;
-                    if (i == 0) {//bonus forza
-                        statistiche_valore[i] += 1;
-                    }
-                    if (i == 7) {//bonus totale armatura
-                        statistiche_valore[i] += 2;
-                    }
-                }
-
-                return statistiche_valore;
-
-            case 5://vergheuden
-
-                for (int i = 0; i < 10; i++) {
-                    statistiche_valore[i] = 0;
-                    if (i == 7) {//bonus totale armatura
-                        statistiche_valore[i] += 3;
-                    }
-                }
-
-                return statistiche_valore;
-
-        }//fine switch
-
-        return statistiche_valore;
-
-    }// fine valorizzaRazza
 
 }//fine main
 
