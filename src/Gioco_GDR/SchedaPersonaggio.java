@@ -14,30 +14,31 @@ public class SchedaPersonaggio {
 
     String NomeCognome[] = new String[3];//stringa nome e cognome
 
-    int forza;
-    int intelligenza;
-    int difesa;
-    int agilità;
-    int costituzione;
+    int forza = 3;    
+    int difesa = 3;
+    int intelligenza = 3;
+    int agilità = 3;
+    int costituzione = 3;    
+    int exp = 1;
     int punti_vita;
-    int exp;
-    int cariche_magiche;
-    int cariche_tecniche;
-    int cariche_elementali;
-    int danno_arma;
-    int totale_armatura;
-    int perforare;
+    int cariche_magiche = 0;
+    int cariche_tecniche = 0;
+    int cariche_elementali = 0;
+    int danno_arma = 1;
+    int totale_armatura = difesa + agilità;
+    int perforare = forza + intelligenza;
 
     int Classe;
     String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
 
     //parametri per statistiche
-    String statistiche[] = new String[]{"Forza", "Difesa", "Costituzione", "Intelligenza", "Agilità", "Mod. Exp.", "Punti Vita", "Totale Armatura", "Cariche Magiche", "Cariche Elementali"};//Cariche Tecnologiche
-    int statistiche_valore[] = new int[statistiche.length];
+    String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
+    //int statistiche_valore[] = new int[statistiche.length];
 
     //parametri per le razze
     int Razza;
     String RazzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
+    
 
     
 }

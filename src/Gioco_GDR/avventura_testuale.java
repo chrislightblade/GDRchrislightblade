@@ -36,38 +36,23 @@ public class avventura_testuale {
             SchedaPersonaggio scheda = new SchedaPersonaggio();
             System.out.println("Nome e Cognome personaggio:");
 
-            creaPersonaggio.inserisciNome_Cognome(scheda);
-            creaPersonaggio.scegliRazza(scheda);
+            CreaPersonaggio.inserisciNome_Cognome(scheda);
+            CreaPersonaggio.scegliRazza(scheda);
+            CreaPersonaggio.scegliClasse(scheda);
+            CreaPersonaggio.impostaStatistiche(scheda);
+            
 
-            System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
+            /*System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
             Razza = scegliRazza();
 
             statistiche_valore = valoriRazza(statistiche_valore, Razza);
             System.out.println("razza personaggio: " + RazzaPersonaggio[Razza - 1] + "\n");
 
             for (i = 0; i < 10; i++) {
-                System.out.println(statistiche[i] + " : " + statistiche_valore[i] + "\n");
+                System.out.println(statistiche[i] + " : " + statistiche_valore[i] + "\n");*/
 
-            }
-            //scegliClasse();
-            //definisciStatistiche(statistiche[]);
-        }//fine else nuova partita
-    }
-
-    //static caricaPartita(){}
-    
-
-}//fine main
-
-/*static int definisciStatistiche(int statistiche[]) {
-
-        String input;
-        input = JOptionPane.showInputDialog(
-    }
-
+            }//fine else nuova partita
+            
+        }
 }
-
-/*public scegli_classe_con_cui_giocare (){
-        
-    }
-    }*/
+   
