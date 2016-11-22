@@ -20,10 +20,13 @@ public class SchedaPersonaggio {
     int agilità;
     int costituzione;
     int punti_vita;
-    int totale_armatura;
     int exp;
     int cariche_magiche;
     int cariche_tecniche;
+    int cariche_elementali;
+    int danno_arma;
+    int totale_armatura;
+    int perforare;
 
     int Classe;
     String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
