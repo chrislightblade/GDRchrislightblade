@@ -74,7 +74,12 @@ public class CreaPersonaggio {
                         + "Digita 3 se desideri essere 'Elfo'\n" + "Digita 4 se desideri essere 'Dracolide'\n" + "Digita 5 se desideri essere 'Vergheuden'\n"
                         + "Se desideri invece informazioni sulle razze, digita 6.\n");
 
-                scheda.Razza = Integer.parseInt(Razza1);
+                if (Razza1.equalsIgnoreCase("")) {
+                    scheda.Razza = 6;
+                } else {
+                    scheda.Razza = Integer.parseInt(Razza1);
+                }
+
                 if (scheda.Razza == 6) {
                     spiegaRazza(scheda);
                 }
@@ -91,11 +96,17 @@ public class CreaPersonaggio {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
+            int choice;
             String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Umano' \n2 per avere infomazioni su 'Elfo'\n"
                     + "3 per avere informazioni su 'Nano'\n4 per avere informazioni su 'Dracolo'\n5 per avere infomazioni su 'Vergheuden'\n"
                     + "altrimenti digitare 0.");
 
-            int choice = Integer.parseInt(choice1);
+            if (choice1.equalsIgnoreCase("")) {
+                choice = 0;
+            } else {
+                choice = Integer.parseInt(choice1);
+            }
+
             switch (choice) {
                 case 1:
                     frase = "Seppur non sia la razza più forte fisicamente,\npossiede grandi capacità adattive e di apprendimento";
@@ -141,21 +152,26 @@ public class CreaPersonaggio {
         switch (scheda.Razza) {// a seconda della razza scelta implementa dei parametri specifici
             case 1://umano               
                 scheda.exp += 10;
+                break;
 
             case 2://nano
                 scheda.costituzione += 1;
                 scheda.agilità -= 1;
+                break;
 
             case 3://elfo
                 scheda.agilità += 1;
                 scheda.costituzione -= 1;
+                break;
 
             case 4://dracolide
                 scheda.forza += 1;
                 scheda.totale_armatura += 2;
+                break;
 
             case 5://vergheuden
                 scheda.totale_armatura += 3;
+                break;
 
             //case 6: //Faithy    
         }//fine switch
@@ -265,10 +281,14 @@ public class CreaPersonaggio {
         int input1 = 0, input2 = 0;//input che userò per inserire il valore, con riferimento *valore* e *razza*
         String statistiche[] = new String[]{"forza", "difesa", "intelligenza", "agilità", "costituzione"}; //stringa e array con gli ordinali per fare le scelte
         int statistiche_n[] = new int[]{1, 2, 3, 4, 5};
+        boolean ok = false;//controlli per i cicli while
+        String report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
+        String report2 = "";
+
+        report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
         for (int i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
             int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
             int b = (random.nextInt(6) + 1) + 2;
-            b = 0;
 
             /*if(a > b)
                 valori[i] = a;
@@ -277,53 +297,116 @@ public class CreaPersonaggio {
             valori[i] = (a > b) ? a : b;
         }
 
-        String report3 = "";
-        int z = 0;
-
-        while (j > 0) {
-
-            String report1 = "hai a disposizione i seguenti valori: ";
-            String report2 = "";
-
-            for (int i = 0; i < 5; i++) {//stampo i valori residui
-                if (valori[i] != 0) {
-                    report1 += "\n" + valori[i];
-                } else {
-                    continue;
-                }
-                //report1 += "\n" + valori[i];
-            }
-
-            for (int i = 0; i < 5; i++) {//stampo le stat che non hanno ancora ricevuto un input
-                if (statistiche_n[i] != 0) {
-                    report2 += "\n" + statistiche_n[i] + ". " + statistiche[i];
-                } else {
-                    continue;
-                }
-                //report1 += "\n" + valori[i];
-            }
-
-            input1 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nQuale valore desideri utilizzare?\n" + report3));
-            report1 += "\nHai deciso di usare il valore " + input1;
-            input2 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nIn quale statistica desideri inserirlo?" + report2 + "\n" + report3));
-            z = impostaParametro(scheda, input1, input2, statistiche[input2 - 1]);
-            //for che cancella valore usato
-            for (int i = 0; i < 5; i++) {//stampo i valori residui
-                if (valori[i] != input1) {
-                    continue;
-                } else {
-                    valori[i] = 0;
-                    break;
-                }
-                //report1 += "\n" + valori[i];
-            }
-            statistiche_n[input2 - 1] = 0;
-            if (report3.equalsIgnoreCase("")) {
-                report3 = "\nI tuoi parametri attualmente sono:\n";
-            }
-            report3 += statistiche[input2 - 1] + " = " + z + "\n";
-            //JOptionPane.showMessageDialog(null, report);
+        for (int i = 0; i < 5; i++) {//stampo i valori residui
+            report1 += "\n" + valori[i];
         }
+
+        report2 = JOptionPane.showInputDialog(report1 + "\nSono stati estratti questi valori, vanno bene?\nSe si, premi semplicemente 'invio',"
+                + " altrimenti dimmi quanti valori desideri cambiare\ned effettuerò un unico e secondo rialncio dei valori che desideri cambiare.");
+        if (report2.equalsIgnoreCase("")) {
+            input2 = 0;
+        } else {
+            input2 = Integer.parseInt(report2);
+        }
+
+        if (input2 > 0 && input2 < 5) {
+            int stat_da_cambiare[] = new int[input2];//inizializzo
+            for (int k = 0; k < stat_da_cambiare.length; k++) {
+                stat_da_cambiare[k] = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nquale valore desideri cambiare?\nInserisci il valore del " + (k + 1) + "° numero da cambaire"));
+                report1 = "";
+                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                    if (valori[i] != stat_da_cambiare[k]) {
+                        if (valori[i] != 0) {
+                            report1 += "\n" + valori[i];
+                        } else {
+                            continue;
+                        }
+                    } else {
+                        valori[i] = 0;
+                        stat_da_cambiare[k] = 99;
+                        continue;
+                    }
+                }
+            }//fine for cambio stat
+
+            for (int k = 0; k < stat_da_cambiare.length; k++) {
+                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                    if (valori[i] != 0) {
+                        continue;
+                    } else {
+                        int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
+                        int b = (random.nextInt(6) + 1) + 2;
+                        valori[i] = (a > b) ? a : b;
+                        break;
+                    }
+                }
+            }
+
+        } else {//fine unico if per cambio stat
+            if (input2 == 5) {
+                for (int i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
+                    int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
+                    int b = (random.nextInt(6) + 1) + 2;
+                    valori[i] = (a > b) ? a : b;
+                }
+            }
+        }
+
+        report1 = "hai a disposizione i seguenti valori: ";
+        ok = false;
+
+        while (ok == false) {
+
+            String report3 = "";//le stat attualmente settate
+            report2 = "";//le stat che non hanno ancora ricevuto un input
+            int z = 0;
+
+            while (j > 0) {
+
+                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                    if (valori[i] != 0) {
+                        report1 += "\n" + valori[i];
+                    } else {
+                        continue;
+                    }
+                    //report1 += "\n" + valori[i];
+                }
+
+                for (int i = 0; i < 5; i++) {//stampo le stat che non hanno ancora ricevuto un input
+                    if (statistiche_n[i] != 0) {
+                        report2 += "\n" + statistiche_n[i] + ". " + statistiche[i];
+                    } else {
+                        continue;
+                    }
+                    //report1 += "\n" + valori[i];
+                }
+
+                input1 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nOra devi distribuire i valori nelle tue statistiche\nQuale valore desideri utilizzare?\n" + report3));
+                report1 += "\nHai deciso di usare il valore " + input1;
+                input2 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nIn quale statistica desideri inserirlo?" + report2 + "\n" + report3));
+                z = impostaParametro(scheda, input1, input2, statistiche[input2 - 1]);
+                //for che cancella valore usato
+                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                    if (valori[i] != input1) {
+                        continue;
+                    } else {
+                        valori[i] = 0;
+                        break;
+                    }
+                    //report1 += "\n" + valori[i];
+                }
+                statistiche_n[input2 - 1] = 0;
+                if (report3.equalsIgnoreCase("")) {//prima stampa in report3
+                    report3 = "\nI tuoi parametri attualmente sono:\n";
+                }
+                report3 += statistiche[input2 - 1] + " = " + z + "\n";
+                //JOptionPane.showMessageDialog(null, report);
+            }
+
+            ok = true;// FINIRE IL WHILE
+            //JOptionPane.showMessageDialog(null, "Sei soddisfatto della distribuzione dei punti statistica?");
+
+        }// fine while == false
 
     }
 
@@ -378,6 +461,8 @@ public class CreaPersonaggio {
                     return scheda.costituzione;
                 }
         }
+
+        return 1;
     }
 
 }
