@@ -65,11 +65,11 @@ public class CreaPersonaggio {
 
     static void scegliRazza(SchedaPersonaggio scheda) {
         String Razza1 = "";
-        scheda.Razza = 0;//definisco la razza
+        scheda.Razza = -1;//definisco la razza
 
         do {//ciclo per visualizzare le informazioni sulle razze
 
-            if (scheda.Razza == 0) {
+            if (scheda.Razza == -1) {
                 Razza1 = JOptionPane.showInputDialog("Prego inserisci la razza del tuo personaggio:\npuoi scegliere:\nDigita 1 se desideri essere 'Umano'\n" + "Digita 2 se desideri essere 'Nano'\n"
                         + "Digita 3 se desideri essere 'Elfo'\n" + "Digita 4 se desideri essere 'Dracolide'\n" + "Digita 5 se desideri essere 'Vergheuden'\n"
                         + "Se desideri invece informazioni sulle razze, digita 6.\n");
@@ -77,14 +77,14 @@ public class CreaPersonaggio {
                 if (Razza1.equalsIgnoreCase("")) {
                     scheda.Razza = 6;
                 } else {
-                    scheda.Razza = Integer.parseInt(Razza1);
+                    scheda.Razza = (Integer.parseInt(Razza1) - 1);
                 }
 
-                if (scheda.Razza == 6) {
+                if (scheda.Razza == 5) {
                     spiegaRazza(scheda);
                 }
             }//if razza
-        } while (scheda.Razza == 0);//while per visualizzare info sulle razze
+        } while (scheda.Razza == -1);//while per visualizzare info sulle razze
 
         valoriRazza(scheda);//inserisco i bonus e i malus delle razze nella scheda
 
@@ -92,7 +92,7 @@ public class CreaPersonaggio {
 
     static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
-        while (scheda.Razza < 7 && scheda.Razza != 0) {
+        while (scheda.Razza < 7 && scheda.Razza != -1) {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
@@ -134,46 +134,46 @@ public class CreaPersonaggio {
                     break;
 
                 case 0:
-                    scheda.Razza = 0;
+                    scheda.Razza = -1;
 
             }//switch descrizione razze            
 
-            if (scheda.Razza != 0) {
+            if (scheda.Razza != -1) {
                 JOptionPane.showMessageDialog(null, frase);
             }
         }
 
-        scheda.Razza = 0;
+        scheda.Razza = -1;
 
     }
 
     static void valoriRazza(SchedaPersonaggio scheda) {
 
         switch (scheda.Razza) {// a seconda della razza scelta implementa dei parametri specifici
-            case 1://umano               
+            case 0://umano               
                 scheda.exp += 10;
                 break;
 
-            case 2://nano
+            case 1://nano
                 scheda.costituzione += 1;
                 scheda.agilità -= 1;
                 break;
 
-            case 3://elfo
+            case 2://elfo
                 scheda.agilità += 1;
                 scheda.costituzione -= 1;
                 break;
 
-            case 4://dracolide
+            case 3://dracolide
                 scheda.forza += 1;
                 scheda.totale_armatura += 2;
                 break;
 
-            case 5://vergheuden
+            case 4://vergheuden
                 scheda.totale_armatura += 3;
                 break;
 
-            //case 6: //Faithy    
+            //case 5: //Faithy    
         }//fine switch
 
     }// fine valorizzaRazza
@@ -277,7 +277,6 @@ public class CreaPersonaggio {
     static void impostaStatistiche(SchedaPersonaggio scheda) {
         Random random = new Random();
         int valori[] = new int[5];//array che ospiterà i miei 2 valori da mettere in scheda
-        int j = 5;
         int input1 = 0, input2 = 0;//input che userò per inserire il valore, con riferimento *valore* e *razza*
         String statistiche[] = new String[]{"forza", "difesa", "intelligenza", "agilità", "costituzione"}; //stringa e array con gli ordinali per fare le scelte
         int statistiche_n[] = new int[]{1, 2, 3, 4, 5};
@@ -307,7 +306,7 @@ public class CreaPersonaggio {
             input2 = 0;
         } else {
             input2 = Integer.parseInt(report2);
-        }  
+        }
 
         if (input2 > 0 && input2 < 5) {
             int stat_da_cambiare[] = new int[input2];//inizializzo
@@ -353,15 +352,26 @@ public class CreaPersonaggio {
         }
 
         report1 = "hai a disposizione i seguenti valori: ";
+        String report = "";
         ok = false;
+        int tmp[] = new int[5];//stringhe per salvare i valori randomici per settare le stat e per salvare le stat prima dell'evento di settaggio
+        tmp = valori;
+        int tmp2[] = new int[5];
+        tmp2[0] = scheda.forza;
+        tmp2[1] = scheda.difesa;
+        tmp2[2] = scheda.intelligenza;
+        tmp2[3] = scheda.agilità;
+        tmp2[4] = scheda.costituzione;
+        int j = 5;
 
-        while (ok == false) {
-
+        while (ok == false) { // per distribuzione punti statistica
             String report3 = "";//le stat attualmente settate
-            report2 = "";//le stat che non hanno ancora ricevuto un input
+            //report2 = "";//le stat che non hanno ancora ricevuto un input
             int z = 0;
 
             while (j > 0) {
+                report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
+                report2 = "";//le stat che non hanno ancora ricevuto un input
 
                 for (int i = 0; i < 5; i++) {//stampo i valori residui
                     if (valori[i] != 0) {
@@ -401,11 +411,23 @@ public class CreaPersonaggio {
                 }
                 report3 += statistiche[input2 - 1] + " = " + z + "\n";
                 //JOptionPane.showMessageDialog(null, report);
+                j--;
+            }
+            
+            report3 = JOptionPane.showInputDialog(report3 + "Sei soddisfatto della distribuzione dei punti statistica?\nScrivere Si o No");
+            if (report3.equalsIgnoreCase("si")) {
+                ok = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Ok, allora ridistribuisci le statistiche");
+                scheda.forza = tmp2[0];
+                scheda.difesa = tmp2[1];
+                scheda.intelligenza = tmp2[2];
+                scheda.agilità = tmp2[3];
+                scheda.costituzione = tmp2[4];
+                j = 5;
             }
 
-            ok = true;// FINIRE IL WHILE per benino
-            //JOptionPane.showMessageDialog(null, "Sei soddisfatto della distribuzione dei punti statistica?");
-
+            // FINIRE IL WHILE per benino
         }// fine while == false
 
     }
@@ -416,7 +438,7 @@ public class CreaPersonaggio {
             case 1://inserisci il valore in forza, ecc
                 if (scheda.forza != 0) {
                     scheda.forza += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.Razza);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
                     return scheda.forza;
 
                 } else {
@@ -427,7 +449,7 @@ public class CreaPersonaggio {
             case 2:
                 if (scheda.difesa != 0) {
                     scheda.difesa += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.Razza);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.difesa + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
                     return scheda.difesa;
                 } else {
                     scheda.difesa += input1;
@@ -436,7 +458,7 @@ public class CreaPersonaggio {
             case 3:
                 if (scheda.intelligenza != 0) {
                     scheda.intelligenza += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.Razza);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.intelligenza + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
                     return scheda.intelligenza;
                 } else {
                     scheda.intelligenza += input1;
@@ -445,7 +467,7 @@ public class CreaPersonaggio {
             case 4:
                 if (scheda.agilità != 0) {
                     scheda.agilità += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.Razza);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.agilità + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
                     return scheda.agilità;
                 } else {
                     scheda.agilità += input1;
@@ -454,7 +476,7 @@ public class CreaPersonaggio {
             case 5:
                 if (scheda.costituzione != 0) {
                     scheda.costituzione += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.Razza);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.costituzione + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
                     return scheda.costituzione;
                 } else {
                     scheda.costituzione += input1;
