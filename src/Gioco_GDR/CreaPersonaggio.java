@@ -307,7 +307,7 @@ public class CreaPersonaggio {
             input2 = 0;
         } else {
             input2 = Integer.parseInt(report2);
-        }
+        }  
 
         if (input2 > 0 && input2 < 5) {
             int stat_da_cambiare[] = new int[input2];//inizializzo
@@ -403,7 +403,7 @@ public class CreaPersonaggio {
                 //JOptionPane.showMessageDialog(null, report);
             }
 
-            ok = true;// FINIRE IL WHILE
+            ok = true;// FINIRE IL WHILE per benino
             //JOptionPane.showMessageDialog(null, "Sei soddisfatto della distribuzione dei punti statistica?");
 
         }// fine while == false
