@@ -19,8 +19,8 @@ public class try_catch_generico {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        boolean varie = false;
-        while (varie == false) {
+        boolean verifica = false;
+        while (verifica == false) {
 
             report2 = JOptionPane.showInputDialog(report1 + "\nSono stati estratti questi valori, vanno bene?\nSe si, premi semplicemente 'invio',"
                     + " altrimenti dimmi quanti valori desideri cambiare\ned effettuerò un unico e secondo rialncio dei valori che desideri cambiare.");
@@ -28,10 +28,10 @@ public class try_catch_generico {
             try {
                 if (report2.equalsIgnoreCase("")) {
                     input2 = 0;
-                    varie = true;
+                    verifica = true;
                 } else {
                     input2 = Integer.parseInt(report2);
-                    varie = true;
+                    verifica = true;
                 }
             } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");

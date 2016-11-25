@@ -283,9 +283,10 @@ public class CreaPersonaggio {
         boolean ok = false;//controlli per i cicli while
         String report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
         String report2 = "";
+        int i = 0;
 
         report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
-        for (int i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
+        for (i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
             int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
             int b = (random.nextInt(6) + 1) + 2;
 
@@ -296,24 +297,62 @@ public class CreaPersonaggio {
             valori[i] = (a > b) ? a : b;
         }
 
-        for (int i = 0; i < 5; i++) {//stampo i valori residui
+        for (i = 0; i < 5; i++) {//stampo i valori residui
             report1 += "\n" + valori[i];
         }
 
-        report2 = JOptionPane.showInputDialog(report1 + "\nSono stati estratti questi valori, vanno bene?\nSe si, premi semplicemente 'invio',"
-                + " altrimenti dimmi quanti valori desideri cambiare\ned effettuerò un unico e secondo rialncio dei valori che desideri cambiare.");
-        if (report2.equalsIgnoreCase("")) {
-            input2 = 0;
-        } else {
-            input2 = Integer.parseInt(report2);
-        }
+        boolean verifica = false;
+        while (verifica == false) {
+
+            report2 = JOptionPane.showInputDialog(report1 + "\nSono stati estratti questi valori, vanno bene?\nSe si, premi semplicemente 'invio',"
+                    + " altrimenti dimmi quanti valori desideri cambiare\ned effettuerò un unico e secondo rialncio dei valori che desideri cambiare.");
+
+            try {
+                if (report2.equalsIgnoreCase("")) {
+                    input2 = 0;
+                    verifica = true;
+                } else {
+                    input2 = Integer.parseInt(report2);
+                    verifica = true;
+                }
+            } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+            }
+        }//fine while controllo inserimento
 
         if (input2 > 0 && input2 < 5) {
             int stat_da_cambiare[] = new int[input2];//inizializzo
             for (int k = 0; k < stat_da_cambiare.length; k++) {
-                stat_da_cambiare[k] = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nquale valore desideri cambiare?\nInserisci il valore del " + (k + 1) + "° numero da cambaire"));
+
+                verifica = false;
+                while (verifica == false) {
+
+                    report2 = JOptionPane.showInputDialog(report1 + "\nquale valore desideri cambiare?\nInserisci il valore del " + (k + 1) + "° numero da cambiare");
+
+                    try {
+                        stat_da_cambiare[k] = Integer.parseInt(report2);
+
+                        if (stat_da_cambiare[k] > 0 && stat_da_cambiare[k] < 9) {
+                            for (i = 0; i < 5; i++) {
+                                if (stat_da_cambiare[k] == valori[i]) {// ok se trova il valore inserito
+                                    verifica = true;
+                                    break;
+                                }
+                            }
+                            if (i == 5) {// non ha trovato il valore
+                                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                            }
+                        } else {//se è un numero al di fuore del range
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                        }
+
+                    } catch (Exception error) {//se ha iinserito porcheria
+                        JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                    }
+                }//fine while controllo inserimento
+
                 report1 = "";
-                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                for (i = 0; i < 5; i++) {//stampo i valori residui
                     if (valori[i] != stat_da_cambiare[k]) {
                         if (valori[i] != 0) {
                             report1 += "\n" + valori[i];
@@ -329,7 +368,7 @@ public class CreaPersonaggio {
             }//fine for cambio stat
 
             for (int k = 0; k < stat_da_cambiare.length; k++) {
-                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                for (i = 0; i < 5; i++) {//stampo i valori residui
                     if (valori[i] != 0) {
                         continue;
                     } else {
@@ -343,7 +382,7 @@ public class CreaPersonaggio {
 
         } else {//fine unico if per cambio stat
             if (input2 == 5) {
-                for (int i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
+                for (i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
                     int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
                     int b = (random.nextInt(6) + 1) + 2;
                     valori[i] = (a > b) ? a : b;
@@ -351,7 +390,6 @@ public class CreaPersonaggio {
             }
         }
 
-        report1 = "hai a disposizione i seguenti valori: ";
         String report = "";
         ok = false;
         int tmp[] = new int[5];//stringhe per salvare i valori randomici per settare le stat e per salvare le stat prima dell'evento di settaggio
@@ -373,7 +411,7 @@ public class CreaPersonaggio {
                 report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
                 report2 = "";//le stat che non hanno ancora ricevuto un input
 
-                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                for (i = 0; i < 5; i++) {//stampo i valori residui
                     if (valori[i] != 0) {
                         report1 += "\n" + valori[i];
                     } else {
@@ -382,7 +420,7 @@ public class CreaPersonaggio {
                     //report1 += "\n" + valori[i];
                 }
 
-                for (int i = 0; i < 5; i++) {//stampo le stat che non hanno ancora ricevuto un input
+                for (i = 0; i < 5; i++) {//stampo le stat che non hanno ancora ricevuto un input
                     if (statistiche_n[i] != 0) {
                         report2 += "\n" + statistiche_n[i] + ". " + statistiche[i];
                     } else {
@@ -390,13 +428,64 @@ public class CreaPersonaggio {
                     }
                     //report1 += "\n" + valori[i];
                 }
+                
+                verifica = false;
+                while (verifica == false) {
 
-                input1 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nOra devi distribuire i valori nelle tue statistiche\nQuale valore desideri utilizzare?\n" + report3));
+                    try {
+                        input1 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nOra devi distribuire i valori nelle tue statistiche\nQuale valore desideri utilizzare?\n" + report3));
+                        
+                        if (input1 > 0 && input1 < 9) {
+                            for (i = 0; i < 5; i++) {
+                                if (input1 == valori[i]) {// ok se trova il valore inserito
+                                    verifica = true;
+                                    break;
+                                }
+                            }
+                            if (i == 5) {// non ha trovato il valore
+                                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                            }
+                        } else {//se è un numero al di fuore del range
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                        }
+
+                    } catch (Exception error) {//se ha iinserito porcheria
+                        JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                    }
+                }//fine while controllo inserimento
+
+                
                 report1 += "\nHai deciso di usare il valore " + input1;
-                input2 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nIn quale statistica desideri inserirlo?" + report2 + "\n" + report3));
+                
+                verifica = false;
+                while (verifica == false) {
+
+                    try {
+                        input2 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nIn quale statistica desideri inserirlo?" + report2 + "\n" + report3));
+                        
+                        if (input1 > 0 && input1 < 6) {
+                            for (i = 0; i < 5; i++) {
+                                if (input2 == valori[i]) {// ok se trova il valore inserito
+                                    verifica = true;
+                                    break;
+                                }
+                            }
+                            if (i == 5) {// non ha trovato il valore
+                                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                            }
+                        } else {//se è un numero al di fuore del range
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                        }
+
+                    } catch (Exception error) {//se ha iinserito porcheria
+                        JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                    }
+                }//fine while controllo inserimento
+                
+                
                 z = impostaParametro(scheda, input1, input2, statistiche[input2 - 1]);
                 //for che cancella valore usato
-                for (int i = 0; i < 5; i++) {//stampo i valori residui
+                for (i = 0; i < 5; i++) {//stampo i valori residui
                     if (valori[i] != input1) {
                         continue;
                     } else {
@@ -413,7 +502,7 @@ public class CreaPersonaggio {
                 //JOptionPane.showMessageDialog(null, report);
                 j--;
             }
-            
+
             report3 = JOptionPane.showInputDialog(report3 + "Sei soddisfatto della distribuzione dei punti statistica?\nScrivere Si o No");
             if (report3.equalsIgnoreCase("si")) {
                 ok = true;
