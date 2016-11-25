@@ -29,10 +29,10 @@ public class SchedaPersonaggio {
     int perforare = forza + intelligenza;
 
     int Classe;
-    String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
+    String Classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
 
     //parametri per statistiche
-    String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
+    String Statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
     //int statistiche_valore[] = new int[statistiche.length];
 
     //parametri per le razze

@@ -1,5 +1,3 @@
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,9 +10,11 @@ import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
- * cose da fare: implementare nella scelta stat la possibilità di ridistribuire i parametri (gli stessi, salvare gli array in altri array)
- * usare intelligenza nel colpire se si ha competenza nell'arma ( il bonus agilità è solo "modificatore"
- * 
+ * cose da fare: implementare nella scelta stat la possibilità di ridistribuire
+ * i parametri (gli stessi, salvare gli array in altri array) usare intelligenza
+ * nel colpire se si ha competenza nell'arma ( il bonus agilità è solo
+ * "modificatore"
+ *
  * @author tss
  */
 public class avventura_testuale {
@@ -24,30 +24,36 @@ public class avventura_testuale {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JOptionPane.showMessageDialog(null, "Benvenuto in questa entusiasmate\n             avventura testuale");
+        //JOptionPane.showMessageDialog(null, "Benvenuto in questa entusiasmate\n             avventura testuale");
         //tutti i parametri per gestire il gioco
 
         String input = "";
         boolean controllo = false;
         int i = 0, j = 0;
 
-        input = JOptionPane.showInputDialog("Se desideri caricare un salvataggio digita 1,\n "
+        /*input = JOptionPane.showInputDialog("Se desideri caricare un salvataggio digita 1,\n "
                 + "altrimenti premi semplicemente invio");
 
         if (input.equals("1")) {
 
-        } else {// crea una nuova partita
+        } else {// crea una nuova partita*/
+        SchedaPersonaggio scheda = new SchedaPersonaggio();
+        System.out.println("Nome e Cognome personaggio:");
 
-            SchedaPersonaggio scheda = new SchedaPersonaggio();
-            System.out.println("Nome e Cognome personaggio:");
+        CreaPersonaggio.inserisciNome_Cognome(scheda);
+        CreaPersonaggio.scegliRazza(scheda);
+        CreaPersonaggio.impostaStatistiche(scheda);
+        CreaPersonaggio.scegliClasse(scheda);
+        
+        System.out.println(scheda.Statistiche[0] + ": " + scheda.forza);
+        System.out.println(scheda.Statistiche[1] + ": " + scheda.difesa);
+        System.out.println(scheda.Statistiche[2] + ": " + scheda.intelligenza);
+        System.out.println(scheda.Statistiche[3] + ": " + scheda.agilità);
+        System.out.println(scheda.Statistiche[4] + ": " + scheda.costituzione);
+        
 
-            CreaPersonaggio.inserisciNome_Cognome(scheda);
-            CreaPersonaggio.scegliRazza(scheda);
-            //CreaPersonaggio.scegliClasse(scheda);
-            CreaPersonaggio.impostaStatistiche(scheda);
-            
 
-            /*System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
+        /*System.out.println("Nome personaggio: " + NomeCognome[0] + NomeCognome[1] + "\nCognome personaggio: " + NomeCognome[2] + "\n");
             Razza = scegliRazza();
 
             statistiche_valore = valoriRazza(statistiche_valore, Razza);
@@ -55,9 +61,6 @@ public class avventura_testuale {
 
             for (i = 0; i < 10; i++) {
                 System.out.println(statistiche[i] + " : " + statistiche_valore[i] + "\n");*/
-
-            }//fine else nuova partita
-            
-        }
+        // }//fine else nuova partita
+    }
 }
-   

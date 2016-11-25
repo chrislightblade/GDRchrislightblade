@@ -69,25 +69,42 @@ public class CreaPersonaggio {
 
         do {//ciclo per visualizzare le informazioni sulle razze
 
-            if (scheda.Razza == -1) {
+            boolean verifica = false;
+            while (verifica == false) {
+
                 Razza1 = JOptionPane.showInputDialog("Prego inserisci la razza del tuo personaggio:\npuoi scegliere:\nDigita 1 se desideri essere 'Umano'\n" + "Digita 2 se desideri essere 'Nano'\n"
                         + "Digita 3 se desideri essere 'Elfo'\n" + "Digita 4 se desideri essere 'Dracolide'\n" + "Digita 5 se desideri essere 'Vergheuden'\n"
                         + "Se desideri invece informazioni sulle razze, digita 6.\n");
 
-                if (Razza1.equalsIgnoreCase("")) {
-                    scheda.Razza = 6;
-                } else {
-                    scheda.Razza = (Integer.parseInt(Razza1) - 1);
+                try {
+
+                    if (Razza1.equalsIgnoreCase("")) {// se fai solo invio vai alle spiegazioni
+                        scheda.Razza = 5;
+                    } else {//altrimenti prova il parseInt
+                        scheda.Razza = (Integer.parseInt(Razza1) - 1);
+                    }
+
+                    if (scheda.Razza == 5) {// al 5 vai alle spiegazioni
+                        spiegaRazza(scheda);
+                    } else {
+                        if (scheda.Razza >= 0 && scheda.Razza < 6) {// sono valori validi
+                            verifica = true;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");//altrimenti hai messo un numero non accettabile
+                            scheda.Razza = -1;
+                        }
+                    }
+                } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                    scheda.Razza = -1;
                 }
 
-                if (scheda.Razza == 5) {
-                    spiegaRazza(scheda);
-                }
-            }//if razza
+            }//fine while controllo inserimento
+
         } while (scheda.Razza == -1);//while per visualizzare info sulle razze
 
         valoriRazza(scheda);//inserisco i bonus e i malus delle razze nella scheda
-
+        System.out.println("Razza personaggio: " + scheda.RazzaPersonaggio[scheda.Razza] + "\n");
     }//fine scegliRazza()
 
     static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
@@ -184,20 +201,42 @@ public class CreaPersonaggio {
 
         do {//ciclo per visualizzare le informazioni sulle classi
 
-            if (scheda.Classe == 0) {
-                Classe1 = JOptionPane.showInputDialog(" Prego inserisci la razza del tuo personaggio:\n puoi scegliere:\nDigita 1 se desideri essere 'Umano'\n" + "Digita 2 se desideri essere 'Nano'\n"
-                        + "Digita 3 se desideri essere 'Elfo'\n" + "Digita 4 se desideri essere 'Dracolide'\n" + "Digita 5 se desideri essere 'Vergheuden'\n "
-                        + "Se desideri invece informazioni sulle razze, digita 6.\n");
+            boolean verifica = false;
+            while (verifica == false) {
 
-                scheda.Classe = Integer.parseInt(Classe1);
-                if (scheda.Classe == 6) {
-                    spiegaClasse(scheda);
+                Classe1 = JOptionPane.showInputDialog(" Prego inserisci la classe del tuo personaggio:\n puoi scegliere:\nDigita 1 se desideri essere 'Armigero'\n" + "Digita 2 se desideri essere 'Magicante'\n"
+                        //+ "Digita 3 se desideri essere 'Shadow'\n" + "Digita 4 se desideri essere 'Elementalista'\n" + "Digita 5 se desideri essere 'Feral'\n "
+                        + "Se desideri invece informazioni sulle classi, digita 6.\n");
+
+                try {
+
+                    if (Classe1.equalsIgnoreCase("")) {// se fai solo invio vai alle spiegazioni
+                        scheda.Classe = 5;
+                    } else {//altrimenti prova il parseInt
+                        scheda.Classe = (Integer.parseInt(Classe1) - 1);
+                    }
+
+                    if (scheda.Classe == 5) {// al 5 vai alle spiegazioni
+                        spiegaClasse(scheda);
+                    } else {
+                        if (scheda.Classe >= 0 && scheda.Classe < 2) {// sono valori validi
+                            verifica = true;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");//altrimenti hai messo un numero non accettabile
+                            scheda.Classe = -1;
+                        }
+                    }
+                } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                    scheda.Classe = -1;
                 }
-            }//if classe
-        } while (scheda.Classe == 0);//while per visualizzare info sulle classi
+
+            }// fine while controllo inserimento
+            
+        } while (scheda.Classe == -1);//while per visualizzare info sulle classi
 
         valoriClasse(scheda);//inserisco i bonus e i malus delle classe nella scheda
-
+        System.out.println("Classe Personaggio: " + scheda.Classi[scheda.Classe] + "\n");
     }//fine scegliClasse()
 
     static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
@@ -206,22 +245,22 @@ public class CreaPersonaggio {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
-            String choice1 = JOptionPane.showInputDialog("Digitare:\n.1 per avere informazioni su 'Armigero' \n.2 per avere infomazioni su 'Magicante'\n"
-                    + ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+            String choice1 = JOptionPane.showInputDialog("Digitare:\n.1 per avere informazioni su 'Armigero' \n.2 per avere infomazioni su 'Magicante'");//\n"
+                    //+ ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
 
             int choice = Integer.parseInt(choice1);
             switch (choice) {
                 case 1://Armigero
-                    frase = "";
-                    frase += ".\n";
+                    frase = "Classe dedita al combattimento corpo a corpo, usa la forza, la velocità e l'istinto\nper afforntare i più temibili nemici.";
+                    frase += "Scegliere questa claasse offre un bonus immediato di +2 alla forza,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
                     break;
 
                 case 2://Magicante
-                    frase = ".";
-                    frase += "\n.\n";
+                    frase = "Classe specializzata nell'uso della magia e di tutte le sue sfaccettature,\nil talento e la riflessione sono i suoi migliori amici.";
+                    frase += "Scegliere questa claasse offre un bonus immediato di +2 alle cariche magiche,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
                     break;
 
-                case 3://Shadow
+                /*case 3://Shadow
                     frase = "";
                     frase += "\n.\n";
                     break;
@@ -249,17 +288,18 @@ public class CreaPersonaggio {
 
     }
 
-    /*static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
+    static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
 
-        switch (scheda.Razza) {
+        switch (scheda.Classe) {
             case 1://umano               
-                scheda.exp += 10;
+                Armigero.applicaBonus(scheda);
+                break;
 
             case 2://elfo
-                scheda.agilità += 1;
-                scheda.costituzione -= 1;
+                Magicante.applicaBonus(scheda);
+                break;
 
-            case 3://nano
+            /*case 3://nano
                 scheda.costituzione += 1;
                 scheda.agilità -= 1;
 
@@ -267,13 +307,14 @@ public class CreaPersonaggio {
                 scheda.forza += 1;
                 scheda.totale_armatura += 2;
 
-            case 5://vergheuden
-                scheda.totale_armatura += 3;
+            //case 5://vergheuden
+                //scheda.totale_armatura += 3;
 
-            //case 6: //Faithy    
+            //case 6: //Faithy*/
         }//fine switch
 
-    }// fine valorizzaRazza*/
+    }// fine valoriClasse
+
     static void impostaStatistiche(SchedaPersonaggio scheda) {
         Random random = new Random();
         int valori[] = new int[5];//array che ospiterà i miei 2 valori da mettere in scheda
@@ -428,13 +469,13 @@ public class CreaPersonaggio {
                     }
                     //report1 += "\n" + valori[i];
                 }
-                
+
                 verifica = false;
                 while (verifica == false) {
 
                     try {
                         input1 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nOra devi distribuire i valori nelle tue statistiche\nQuale valore desideri utilizzare?\n" + report3));
-                        
+
                         if (input1 > 0 && input1 < 9) {
                             for (i = 0; i < 5; i++) {
                                 if (input1 == valori[i]) {// ok se trova il valore inserito
@@ -454,18 +495,17 @@ public class CreaPersonaggio {
                     }
                 }//fine while controllo inserimento
 
-                
                 report1 += "\nHai deciso di usare il valore " + input1;
-                
+
                 verifica = false;
                 while (verifica == false) {
 
                     try {
                         input2 = Integer.parseInt(JOptionPane.showInputDialog(report1 + "\nIn quale statistica desideri inserirlo?" + report2 + "\n" + report3));
-                        
-                        if (input1 > 0 && input1 < 6) {
+
+                        if (input2 > 0 && input2 < 6) {
                             for (i = 0; i < 5; i++) {
-                                if (input2 == valori[i]) {// ok se trova il valore inserito
+                                if (input2 == statistiche_n[i]) {// ok se trova il valore inserito
                                     verifica = true;
                                     break;
                                 }
@@ -481,8 +521,7 @@ public class CreaPersonaggio {
                         JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
                     }
                 }//fine while controllo inserimento
-                
-                
+
                 z = impostaParametro(scheda, input1, input2, statistiche[input2 - 1]);
                 //for che cancella valore usato
                 for (i = 0; i < 5; i++) {//stampo i valori residui

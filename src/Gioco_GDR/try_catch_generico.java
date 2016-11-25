@@ -19,6 +19,8 @@ public class try_catch_generico {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        /*
+
         boolean verifica = false;
         while (verifica == false) {
 
@@ -37,6 +39,8 @@ public class try_catch_generico {
                 JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
             }
         }//fine while controllo inserimento
+        */
     }
+    
     
 }
