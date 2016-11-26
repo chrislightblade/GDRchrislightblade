@@ -24,9 +24,10 @@ public class SchedaPersonaggio {
     int cariche_magiche = 0;
     int cariche_tecniche = 0;
     int cariche_elementali = 0;
-    int danno_arma = 1;
+    //int danno_arma = Arma.dannoArma(dado);
     int totale_armatura = difesa + agilità;
     int perforare = forza + intelligenza;
+    int danno = Arma.dannoArma(Arma.dado) + forza - 7;
 
     int Classe;
     String Classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4

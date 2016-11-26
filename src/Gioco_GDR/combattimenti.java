@@ -13,9 +13,9 @@ import java.util.Random;
  */
 public class combattimenti {
 
-    int valori[] = new int[]{-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8};
-    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13
-    //-4-3-2-1 0 1 2 3 4 5  6  7  8  9 
+    int valori[] = new int[]{-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+    //-4-3-2-1 0 1 2 3 4 5  6  7  8  9 10 11
     int forzapg = personaggio.forza;
     int agilitàpg = personaggio.agilità;
     int difesapg = personaggio.difesa;
@@ -29,6 +29,7 @@ public class combattimenti {
     int bonus_colpirepg = personaggio.bonus_colpire;
     int danno_armapg = personaggio.danno_arma;
     int totale_armaturapg = personaggio.totale_armatura;
+    
 
     int forza_mostro[] = new int[10];
     int agilità_mostro[] = new int[10];
@@ -42,6 +43,7 @@ public class combattimenti {
     int bonus_colpire_mostro[] = new int[10];
     int totale_armatura_mostro[] = new int [10];
     int danno_arma_mostro[] = new int[10];
+    
 
     Random random = new Random();//uso un d20
 

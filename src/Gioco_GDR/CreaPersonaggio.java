@@ -232,7 +232,7 @@ public class CreaPersonaggio {
                 }
 
             }// fine while controllo inserimento
-            
+
         } while (scheda.Classe == -1);//while per visualizzare info sulle classi
 
         valoriClasse(scheda);//inserisco i bonus e i malus delle classe nella scheda
@@ -246,7 +246,7 @@ public class CreaPersonaggio {
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
             String choice1 = JOptionPane.showInputDialog("Digitare:\n.1 per avere informazioni su 'Armigero' \n.2 per avere infomazioni su 'Magicante'");//\n"
-                    //+ ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+            //+ ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
 
             int choice = Integer.parseInt(choice1);
             switch (choice) {
@@ -316,7 +316,7 @@ public class CreaPersonaggio {
     }// fine valoriClasse
 
     static void impostaStatistiche(SchedaPersonaggio scheda) {
-        Random random = new Random();
+
         int valori[] = new int[5];//array che ospiterà i miei 2 valori da mettere in scheda
         int input1 = 0, input2 = 0;//input che userò per inserire il valore, con riferimento *valore* e *razza*
         String statistiche[] = new String[]{"forza", "difesa", "intelligenza", "agilità", "costituzione"}; //stringa e array con gli ordinali per fare le scelte
@@ -328,8 +328,8 @@ public class CreaPersonaggio {
 
         report1 = "hai a disposizione i seguenti valori: ";//inizializzo stringa per stampare le stat
         for (i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
-            int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
-            int b = (random.nextInt(6) + 1) + 2;
+            int a = Utility_calcolo_valori.lanciaD(6) + 2;//2 lanci su un d6 e tengo il migliore
+            int b = Utility_calcolo_valori.lanciaD(6) + 2;
 
             /*if(a > b)
                 valori[i] = a;
@@ -413,8 +413,8 @@ public class CreaPersonaggio {
                     if (valori[i] != 0) {
                         continue;
                     } else {
-                        int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
-                        int b = (random.nextInt(6) + 1) + 2;
+                        int a = Utility_calcolo_valori.lanciaD(6) + 2;//2 lanci su un d6 e tengo il migliore
+                        int b = Utility_calcolo_valori.lanciaD(6) + 2;
                         valori[i] = (a > b) ? a : b;
                         break;
                     }
@@ -424,8 +424,8 @@ public class CreaPersonaggio {
         } else {//fine unico if per cambio stat
             if (input2 == 5) {
                 for (i = 0; i < 5; i++) {//sputa fuori i valori da mettere nelle stat sopra
-                    int a = (random.nextInt(6) + 1) + 2;//2 lanci su un d6 e tengo il migliore
-                    int b = (random.nextInt(6) + 1) + 2;
+                    int a = Utility_calcolo_valori.lanciaD(6) + 2;//2 lanci su un d6 e tengo il migliore
+                    int b = Utility_calcolo_valori.lanciaD(6) + 2;
                     valori[i] = (a > b) ? a : b;
                 }
             }
