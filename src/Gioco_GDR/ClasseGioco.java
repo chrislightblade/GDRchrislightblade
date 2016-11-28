@@ -11,7 +11,7 @@ package Gioco_GDR;
  */
 public class ClasseGioco {
     
-    String Bonus = "";
+    String bonus = "";
     String talenti[] = new String[5];
     
     void applicaBonus(SchedaPersonaggio scheda){

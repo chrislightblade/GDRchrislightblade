@@ -11,8 +11,8 @@ package Gioco_GDR;
  */
 public class Armigero {
 
-    String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalze", "Furia"};
-    int TabellaAssalto[][] = new int[][];
+    String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
+    int tabellaAssalto[][] = new int[][];
 
     static void applicaBonus(SchedaPersonaggio scheda) {
         scheda.forza += 2;

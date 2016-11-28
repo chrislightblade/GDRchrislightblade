@@ -13,27 +13,30 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public class CreaPersonaggio {
-
+    
+    
     //rivedere che stampa una riga vuota
-    static void inserisciNome_Cognome(SchedaPersonaggio scheda) {
+    static SchedaPersonaggio inserisciNome_Cognome(SchedaPersonaggio scheda) {
 
         for (int i = 0; i < 3; i++) {
             //scheda.NomeCognome[i] = CreaPersonaggio.inserisciNome_Cognome(i);
+            
+            String NomeCognome[] = new String[3];
 
-            scheda.NomeCognome[i] = "";
+            //NomeCognome = "";
             switch (i) {
                 case 0:
                     //NomeCognome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
-                    scheda.NomeCognome[i] = "Chris";
+                    NomeCognome[i] = "Chris";
                     break;
 
                 case 1:
                     String selezione = "no";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
                     if (selezione.toLowerCase() == "si") {
-                        scheda.NomeCognome[i] = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
+                        NomeCognome[i] = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
 
                     } else {
-                        scheda.NomeCognome[i] = "";
+                        NomeCognome[i] = "";
                     }
 
                     break;
@@ -43,7 +46,7 @@ public class CreaPersonaggio {
                     return NomeCognome;
                 }*/
                 case 2:
-                    scheda.NomeCognome[i] = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
+                    NomeCognome[i] = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
                     break;
                 //return NomeCognome;
 
@@ -51,15 +54,19 @@ public class CreaPersonaggio {
                 
                 return NomeCognome;*/
             }//fine switch
-
-            if (scheda.NomeCognome[i] == "") {
+            
+            scheda = new SchedaPersonaggio(NomeCognome);
+            
+            /*if (NomeCognome[i] == "") {
                 continue;
             } else {
-                System.out.println(scheda.NomeCognome[i] + "\n");
+                System.out.println(NomeCognome[i] + "\n");
 
-            }
+            }*/
 
         }
+        
+        return scheda;
 
     }//fine inserisciNome_Cognome
 

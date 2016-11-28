@@ -11,7 +11,7 @@ package Gioco_GDR;
  */
 public class Arma {
     
-    int Modificatore;
+    int modificatore;
     int Dado;
     //int DannoArma = dannoArma(dado);//vedi tipi dadi
     String Categoria = "";
