@@ -16,7 +16,7 @@ public class CreaPersonaggio {
     
     
     //rivedere che stampa una riga vuota
-    static SchedaPersonaggio inserisciNome_Cognome(SchedaPersonaggio scheda) {
+    public static /*SchedaPersonaggio*/ void inserisciNome_Cognome(/*SchedaPersonaggio scheda*/) {
 
         for (int i = 0; i < 3; i++) {
             //scheda.NomeCognome[i] = CreaPersonaggio.inserisciNome_Cognome(i);
@@ -70,7 +70,7 @@ public class CreaPersonaggio {
 
     }//fine inserisciNome_Cognome
 
-    static void scegliRazza(SchedaPersonaggio scheda) {
+    public static void scegliRazza(SchedaPersonaggio scheda) {
         String Razza1 = "";
         scheda.Razza = -1;//definisco la razza
 
@@ -114,7 +114,7 @@ public class CreaPersonaggio {
         System.out.println("Razza personaggio: " + scheda.RazzaPersonaggio[scheda.Razza] + "\n");
     }//fine scegliRazza()
 
-    static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
+    public static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
         while (scheda.Razza < 7 && scheda.Razza != -1) {
 
@@ -171,7 +171,7 @@ public class CreaPersonaggio {
 
     }
 
-    static void valoriRazza(SchedaPersonaggio scheda) {
+    public static void valoriRazza(SchedaPersonaggio scheda) {
 
         switch (scheda.Razza) {// a seconda della razza scelta implementa dei parametri specifici
             case 0://umano               
@@ -202,7 +202,7 @@ public class CreaPersonaggio {
 
     }// fine valorizzaRazza
 
-    static void scegliClasse(SchedaPersonaggio scheda) {
+    public static void scegliClasse(SchedaPersonaggio scheda) {
         String Classe1 = "";
         scheda.Classe = 0;//definisco la classe
 
@@ -246,7 +246,7 @@ public class CreaPersonaggio {
         System.out.println("Classe Personaggio: " + scheda.Classi[scheda.Classe] + "\n");
     }//fine scegliClasse()
 
-    static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
+    public static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
         while (scheda.Classe < 5 && scheda.Classe != 0) {
 
@@ -295,7 +295,7 @@ public class CreaPersonaggio {
 
     }
 
-    static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
+    public static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
 
         switch (scheda.Classe) {
             case 1://umano               
@@ -322,7 +322,7 @@ public class CreaPersonaggio {
 
     }// fine valoriClasse
 
-    static void impostaStatistiche(SchedaPersonaggio scheda) {
+    public static void impostaStatistiche(SchedaPersonaggio scheda) {
 
         int valori[] = new int[5];//array che ospiterà i miei 2 valori da mettere in scheda
         int input1 = 0, input2 = 0;//input che userò per inserire il valore, con riferimento *valore* e *razza*
@@ -567,7 +567,7 @@ public class CreaPersonaggio {
 
     }
 
-    static int impostaParametro(SchedaPersonaggio scheda, int input1, int input2, String statistiche) {
+    public static int impostaParametro(SchedaPersonaggio scheda, int input1, int input2, String statistiche) {
 
         switch (input2) {
             case 1://inserisci il valore in forza, ecc
