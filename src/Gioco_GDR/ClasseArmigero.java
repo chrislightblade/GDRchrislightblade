@@ -9,16 +9,16 @@ package Gioco_GDR;
  *
  * @author Administrator
  */
-public class Armigero {
+public class ClasseArmigero {
 
     String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
     int tabellaAssalto[][] = new int[][];
 
-    static void applicaBonus(SchedaPersonaggio scheda) {
-        scheda.forza += 2;
+    void applicaBonus(SchedaPersonaggio scheda) {
+        scheda.setForza(2);
     }
 
-    static int usaAssalto(SchedaPersonaggio scheda ) {
+    int usaAssalto(SchedaPersonaggio scheda ) {
         int danno = 
         return 1;
     }

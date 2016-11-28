@@ -13,66 +13,28 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public class CreaPersonaggio {
-    
-    
-    //rivedere che stampa una riga vuota
-    public static /*SchedaPersonaggio*/ void inserisciNome_Cognome(/*SchedaPersonaggio scheda*/) {
 
-        for (int i = 0; i < 3; i++) {
-            //scheda.NomeCognome[i] = CreaPersonaggio.inserisciNome_Cognome(i);
-            
-            String NomeCognome[] = new String[3];
+    public static SchedaPersonaggio inserisciNome_Cognome(SchedaPersonaggio scheda) {
 
-            //NomeCognome = "";
-            switch (i) {
-                case 0:
-                    //NomeCognome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
-                    NomeCognome[i] = "Chris";
-                    break;
+        String nome = "Chris";
+        //nome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
+        String secondoNome = "si";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
+        if (secondoNome.toLowerCase() == "si") {
+            secondoNome = "Legeth";//secondoNome = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
 
-                case 1:
-                    String selezione = "no";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
-                    if (selezione.toLowerCase() == "si") {
-                        NomeCognome[i] = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
-
-                    } else {
-                        NomeCognome[i] = "";
-                    }
-
-                    break;
-
-                /*} else {
-                    scheda.NomeCognome = "";
-                    return NomeCognome;
-                }*/
-                case 2:
-                    NomeCognome[i] = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio (ed eventuale secondo nome):\n");//inserimento cognome e secondo nome
-                    break;
-                //return NomeCognome;
-
-                /*default:
-                
-                return NomeCognome;*/
-            }//fine switch
-            
-            scheda = new SchedaPersonaggio(NomeCognome);
-            
-            /*if (NomeCognome[i] == "") {
-                continue;
-            } else {
-                System.out.println(NomeCognome[i] + "\n");
-
-            }*/
-
+        } else {
+            secondoNome = "";
         }
-        
+        String cognome = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio:\n");//inserimento cognome
+
+        scheda.setNomeCognome(nome, secondoNome, cognome);
+
         return scheda;
 
     }//fine inserisciNome_Cognome
 
     public static void scegliRazza(SchedaPersonaggio scheda) {
         String Razza1 = "";
-        scheda.Razza = -1;//definisco la razza
 
         do {//ciclo per visualizzare le informazioni sulle razze
 
@@ -86,37 +48,37 @@ public class CreaPersonaggio {
                 try {
 
                     if (Razza1.equalsIgnoreCase("")) {// se fai solo invio vai alle spiegazioni
-                        scheda.Razza = 5;
+                        scheda.setRazza(5);
                     } else {//altrimenti prova il parseInt
-                        scheda.Razza = (Integer.parseInt(Razza1) - 1);
+                        scheda.setRazza((Integer.parseInt(Razza1) - 1));
                     }
 
-                    if (scheda.Razza == 5) {// al 5 vai alle spiegazioni
+                    if (scheda.getRazza() == 5) {// al 5 vai alle spiegazioni
                         spiegaRazza(scheda);
                     } else {
-                        if (scheda.Razza >= 0 && scheda.Razza < 6) {// sono valori validi
+                        if (scheda.getRazza() >= 0 && scheda.getRazza() < 6) {// sono valori validi
                             verifica = true;
                         } else {
                             JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");//altrimenti hai messo un numero non accettabile
-                            scheda.Razza = -1;
+                            scheda.setRazza(-1);
                         }
                     }
                 } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
-                    scheda.Razza = -1;
+                    scheda.setRazza(-1);
                 }
 
             }//fine while controllo inserimento
 
-        } while (scheda.Razza == -1);//while per visualizzare info sulle razze
+        } while (scheda.getRazza() == -1);//while per visualizzare info sulle razze
 
         valoriRazza(scheda);//inserisco i bonus e i malus delle razze nella scheda
-        System.out.println("Razza personaggio: " + scheda.RazzaPersonaggio[scheda.Razza] + "\n");
+        System.out.println("Razza personaggio: " + scheda.getRazzaPersonaggio() + "\n");
     }//fine scegliRazza()
 
     public static void spiegaRazza(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
-        while (scheda.Razza < 7 && scheda.Razza != -1) {
+        while (scheda.getRazza() != -1) {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
@@ -158,43 +120,43 @@ public class CreaPersonaggio {
                     break;
 
                 case 0:
-                    scheda.Razza = -1;
+                    scheda.setRazza(-1);
 
             }//switch descrizione razze            
 
-            if (scheda.Razza != -1) {
+            if (scheda.getRazza() != -1) {
                 JOptionPane.showMessageDialog(null, frase);
             }
         }
 
-        scheda.Razza = -1;
+        scheda.setRazza(-1);
 
     }
 
     public static void valoriRazza(SchedaPersonaggio scheda) {
 
-        switch (scheda.Razza) {// a seconda della razza scelta implementa dei parametri specifici
+        switch (scheda.getRazza()) {// a seconda della razza scelta implementa dei parametri specifici
             case 0://umano               
-                scheda.exp += 10;
+                scheda.setExp(10);
                 break;
 
             case 1://nano
-                scheda.costituzione += 1;
-                scheda.agilità -= 1;
+                scheda.setCostituzione(1);
+                scheda.setAgilità(-1);
                 break;
 
             case 2://elfo
-                scheda.agilità += 1;
-                scheda.costituzione -= 1;
+                scheda.setAgilità(1);
+                scheda.setCostituzione(-1);
                 break;
 
             case 3://dracolide
-                scheda.forza += 1;
-                scheda.totale_armatura += 2;
+                scheda.setForza(1);
+                scheda.setTotaleArmatura(2);
                 break;
 
             case 4://vergheuden
-                scheda.totale_armatura += 3;
+                scheda.setTotaleArmatura(3);
                 break;
 
             //case 5: //Faithy    
@@ -204,7 +166,6 @@ public class CreaPersonaggio {
 
     public static void scegliClasse(SchedaPersonaggio scheda) {
         String Classe1 = "";
-        scheda.Classe = 0;//definisco la classe
 
         do {//ciclo per visualizzare le informazioni sulle classi
 
@@ -218,44 +179,50 @@ public class CreaPersonaggio {
                 try {
 
                     if (Classe1.equalsIgnoreCase("")) {// se fai solo invio vai alle spiegazioni
-                        scheda.Classe = 5;
+                        scheda.setClasse(5);
                     } else {//altrimenti prova il parseInt
-                        scheda.Classe = (Integer.parseInt(Classe1) - 1);
+                        scheda.setClasse((Integer.parseInt(Classe1) - 1));
                     }
 
-                    if (scheda.Classe == 5) {// al 5 vai alle spiegazioni
+                    if (scheda.getClasse() == 5) {// al 5 vai alle spiegazioni
                         spiegaClasse(scheda);
                     } else {
-                        if (scheda.Classe >= 0 && scheda.Classe < 2) {// sono valori validi
+                        if (scheda.getClasse() >= 0 && scheda.getClasse() < 2) {// sono valori validi
                             verifica = true;
                         } else {
                             JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");//altrimenti hai messo un numero non accettabile
-                            scheda.Classe = -1;
+                            scheda.setClasse(-1);
                         }
                     }
                 } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
-                    scheda.Classe = -1;
+                    scheda.setClasse(-1);
                 }
 
             }// fine while controllo inserimento
 
-        } while (scheda.Classe == -1);//while per visualizzare info sulle classi
+        } while (scheda.getClasse() == -1);//while per visualizzare info sulle classi
 
         valoriClasse(scheda);//inserisco i bonus e i malus delle classe nella scheda
-        System.out.println("Classe Personaggio: " + scheda.Classi[scheda.Classe] + "\n");
+        System.out.println("Classe Personaggio: " + scheda.getClassi() + "\n");
     }//fine scegliClasse()
 
     public static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
-        while (scheda.Classe < 5 && scheda.Classe != 0) {
+        while (scheda.getClasse() != -1) {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
-            String choice1 = JOptionPane.showInputDialog("Digitare:\n.1 per avere informazioni su 'Armigero' \n.2 per avere infomazioni su 'Magicante'");//\n"
-            //+ ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+            String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Armigero' \n2 per avere infomazioni su 'Magicante'"
+                    +//\n"
+                    /*+ ".3 per avere informazioni su 'Shadow'\n.4 per avere informazioni su 'Elementalista'*/ "\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
 
-            int choice = Integer.parseInt(choice1);
+            int choice;
+            if (choice1.equalsIgnoreCase("")) {
+                choice = 0;
+            } else {
+                choice = Integer.parseInt(choice1);
+            }
             switch (choice) {
                 case 1://Armigero
                     frase = "Classe dedita al combattimento corpo a corpo, usa la forza, la velocità e l'istinto\nper afforntare i più temibili nemici.";
@@ -264,7 +231,7 @@ public class CreaPersonaggio {
 
                 case 2://Magicante
                     frase = "Classe specializzata nell'uso della magia e di tutte le sue sfaccettature,\nil talento e la riflessione sono i suoi migliori amici.";
-                    frase += "Scegliere questa claasse offre un bonus immediato di +2 alle cariche magiche,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
+                    frase += "Scegliere questa claasse offre un bonus immediato di +4 alle cariche magiche,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
                     break;
 
                 /*case 3://Shadow
@@ -282,28 +249,29 @@ public class CreaPersonaggio {
                     frase += "La razza Vergheuden offre un bonus alla CA di +3 e consente \ndi usare 'Stridore', tecnica che stordisce il nemico per 2 turni.\n";
                     break;*/
                 case 0:
-                    scheda.Classe = 0;
+                    scheda.setClasse(-1);
+                    break;
 
             }//switch descrizione razze            
 
-            if (scheda.Classe != 0) {
+            if (scheda.getClasse() != -1) {
                 JOptionPane.showMessageDialog(null, frase);
             }
         }
 
-        scheda.Classe = 0;
+        scheda.setClasse(-1);
 
     }
 
     public static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
 
-        switch (scheda.Classe) {
+        switch (scheda.getClasse()) {
             case 1://umano               
-                Armigero.applicaBonus(scheda);
+                ClasseArmigero.applicaBonus(scheda);
                 break;
 
             case 2://elfo
-                Magicante.applicaBonus(scheda);
+                ClasseMagicante.applicaBonus(scheda);
                 break;
 
             /*case 3://nano
@@ -359,9 +327,12 @@ public class CreaPersonaggio {
                 if (report2.equalsIgnoreCase("")) {
                     input2 = 0;
                     verifica = true;
-                } else {
-                    input2 = Integer.parseInt(report2);
-                    verifica = true;
+                } else {                    
+                        input2 = Integer.parseInt(report2);
+                        if (input2 >= 0 && input2 <= 5) {
+                        verifica = true;
+                    }
+                    
                 }
             } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
@@ -441,13 +412,17 @@ public class CreaPersonaggio {
         String report = "";
         ok = false;
         int tmp[] = new int[5];//stringhe per salvare i valori randomici per settare le stat e per salvare le stat prima dell'evento di settaggio
-        tmp = valori;
+
+        for (int k = 0; k < 5; k++) {
+            tmp[k] = valori[k];
+        }
+
         int tmp2[] = new int[5];
-        tmp2[0] = scheda.forza;
-        tmp2[1] = scheda.difesa;
-        tmp2[2] = scheda.intelligenza;
-        tmp2[3] = scheda.agilità;
-        tmp2[4] = scheda.costituzione;
+        tmp2[0] = scheda.getForza();
+        tmp2[1] = scheda.getDifesa();
+        tmp2[2] = scheda.getIntelligenza();
+        tmp2[3] = scheda.getAgilità();
+        tmp2[4] = scheda.getCostituzione();
         int j = 5;
 
         while (ok == false) { // per distribuzione punti statistica
@@ -550,20 +525,47 @@ public class CreaPersonaggio {
             }
 
             report3 = JOptionPane.showInputDialog(report3 + "Sei soddisfatto della distribuzione dei punti statistica?\nScrivere Si o No");
-            if (report3.equalsIgnoreCase("si")) {
+            
+            
+            if (report3.equalsIgnoreCase("si") || report3.equalsIgnoreCase("")) {
                 ok = true;
             } else {
-                JOptionPane.showMessageDialog(null, "Ok, allora ridistribuisci le statistiche");
-                scheda.forza = tmp2[0];
-                scheda.difesa = tmp2[1];
-                scheda.intelligenza = tmp2[2];
-                scheda.agilità = tmp2[3];
-                scheda.costituzione = tmp2[4];
-                j = 5;
-            }
+                if(report3.equalsIgnoreCase("no")){
+                JOptionPane.showMessageDialog(null, "Ok, allora ridistribuisci le statistiche");//azzera le modifiche e riporta a valore di inizio
+                j = scheda.getForza();
+                scheda.setForza(-j);
+                scheda.setForza(tmp2[0]);
 
-            // FINIRE IL WHILE per benino
-        }// fine while == false
+                j = scheda.getDifesa();
+                scheda.setDifesa(-j);
+                scheda.setDifesa(tmp2[1]);
+
+                j = scheda.getIntelligenza();
+                scheda.setIntelligenza(-j);
+                scheda.setForza(tmp2[2]);
+
+                j = scheda.getAgilità();
+                scheda.setAgilità(-j);
+                scheda.setAgilità(tmp2[3]);
+
+                j = scheda.getCostituzione();
+                scheda.setCostituzione(-j);
+                scheda.setCostituzione(tmp2[4]);
+
+                j = 5;
+
+                for (int k = 0; k < 5; k++) {
+                    valori[k] = tmp[k];
+                }
+
+                for (int k = 0; k < 5; k++) {
+                    statistiche_n[k] = (k + 1);
+                }
+                }//if equals no
+            }//else equals si
+            
+            
+        }// fine while ok == false
 
     }
 
@@ -571,51 +573,51 @@ public class CreaPersonaggio {
 
         switch (input2) {
             case 1://inserisci il valore in forza, ecc
-                if (scheda.forza != 0) {
-                    scheda.forza += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.forza + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
-                    return scheda.forza;
+                if (scheda.getForza() != 0) {
+                    scheda.setForza(input1);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.getForza() + " poichè sei " + scheda.getRazzaPersonaggio());
+                    return scheda.getForza();
 
                 } else {
-                    scheda.forza += input1;
-                    return scheda.forza;
+                    scheda.setForza(input1);
+                    return scheda.getForza();
                 }
 
             case 2:
-                if (scheda.difesa != 0) {
-                    scheda.difesa += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.difesa + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
-                    return scheda.difesa;
+                if (scheda.getDifesa() != 0) {
+                    scheda.setDifesa(input1);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.getDifesa() + " poichè sei " + scheda.getRazzaPersonaggio());
+                    return scheda.getDifesa();
                 } else {
-                    scheda.difesa += input1;
-                    return scheda.difesa;
+                    scheda.setDifesa(input1);
+                    return scheda.getDifesa();
                 }
             case 3:
-                if (scheda.intelligenza != 0) {
-                    scheda.intelligenza += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.intelligenza + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
-                    return scheda.intelligenza;
+                if (scheda.getIntelligenza() != 0) {
+                    scheda.setIntelligenza(input1);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.getIntelligenza() + " poichè sei " + scheda.getRazzaPersonaggio());
+                    return scheda.getIntelligenza();
                 } else {
-                    scheda.intelligenza += input1;
-                    return scheda.intelligenza;
+                    scheda.setIntelligenza(input1);
+                    return scheda.getIntelligenza();
                 }
             case 4:
-                if (scheda.agilità != 0) {
-                    scheda.agilità += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.agilità + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
-                    return scheda.agilità;
+                if (scheda.getAgilità() != 0) {
+                    scheda.setAgilità(input1);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.getAgilità() + " poichè sei " + scheda.getRazzaPersonaggio());
+                    return scheda.getAgilità();
                 } else {
-                    scheda.agilità += input1;
-                    return scheda.agilità;
+                    scheda.setAgilità(input1);
+                    return scheda.getAgilità();
                 }
             case 5:
-                if (scheda.costituzione != 0) {
-                    scheda.costituzione += input1;
-                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.costituzione + " poichè sei " + scheda.RazzaPersonaggio[scheda.Razza]);
-                    return scheda.costituzione;
+                if (scheda.getCostituzione() != 0) {
+                    scheda.setCostituzione(input1);
+                    JOptionPane.showMessageDialog(null, "il tuo parametro di " + statistiche + " è " + scheda.getCostituzione() + " poichè sei " + scheda.getRazzaPersonaggio());
+                    return scheda.getCostituzione();
                 } else {
-                    scheda.costituzione += input1;
-                    return scheda.costituzione;
+                    scheda.setCostituzione(input1);
+                    return scheda.getCostituzione();
                 }
         }
 

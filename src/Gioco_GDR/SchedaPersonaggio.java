@@ -11,50 +11,168 @@ package Gioco_GDR;
  */
 public class SchedaPersonaggio {
 
-    private String NomeCognome[] = new String[3];//stringa nome e cognome
-
-    private int forza = 0;
-    private int difesa = 0;
-    private int intelligenza = 0;
-    private int agilità = 0;
-    private int costituzione = 0;
-    private int exp = 0;
+    private String nome, secondonome, cognome;//stringa nome e cognome
+    private int forza;
+    private int difesa;
+    private int intelligenza;
+    private int agilità;
+    private int costituzione;
+    private int exp;
     private int punti_vita;
     private int cariche_magiche = 0;
     private int cariche_tecniche = 0;
     private int cariche_elementali = 0;
     //int danno_arma = Arma.dannoArma(dado);
-    private int totale_armatura = difesa + agilità;
+    //private int totale_armatura = difesa + agilità + bonus;
     private int perforare = forza + intelligenza;
     //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
 
-    private int Classe;
-    String Classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
+    private int classe;
+    String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
 
     //parametri per statistiche
-    String Statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
+    String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
     //int statistiche_valore[] = new int[statistiche.length];
 
     //parametri per le razze
-    private int Razza;
-    String RazzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
+    private int razza;
+    private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
 
     public SchedaPersonaggio() {
+        this.razza = -1;
+        this.classe = -1;
+        this.forza = 0;
+        this.difesa = 0;
+        this.intelligenza = 0;
+        this.agilità = 0;
+        this.costituzione = 0;
+        this.cariche_magiche = 1;
+        this.cariche_tecniche = 1;
+        this.cariche_elementali = 1;
     }
 
-    public SchedaPersonaggio(String[] NomeCognome) {
-        this.NomeCognome = NomeCognome;
+    public int getClasse() {
+        return classe;
     }
 
-    
-    
+    public void setClasse(int classe) {
+        this.classe = classe;
+    }
+
+    public String getClassi() {
+        return this.classi[this.classe];
+    }
+
+    public void setRazza(int razza) {
+        this.razza = razza;
+    }
+
+    public int getRazza() {
+        return razza;
+    }
+
+    public String getRazzaPersonaggio() {
+        return this.razzaPersonaggio[this.razza];
+    }
+
+    public void setNomeCognome(String nome, String secondoNome, String cognome) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.secondonome = secondoNome;
+    }
+
     public String getNomeCognome() {
 
         String NomeCognome = "";
-        for (int i = 0; i < 3; i++) {
-            NomeCognome += this.NomeCognome[i] + "\n";
+        NomeCognome += this.nome + "\n";
+        if (!(this.secondonome.equalsIgnoreCase(""))) {
+            NomeCognome += this.secondonome + "\n";
         }
+        NomeCognome += this.cognome + "\n";
+
         return NomeCognome;
     }
 
+    public int getAgilità() {
+        return agilità;
+    }
+
+    public void setAgilità(int agilità) {
+        this.agilità += agilità;
+    }
+
+    public int getCostituzione() {
+        return costituzione;
+    }
+
+    public void setCostituzione(int costituzione) {
+        this.costituzione += costituzione;
+    }
+
+    public int getForza() {
+        return forza;
+    }
+
+    public void setForza(int forza) {
+        this.forza += forza;
+    }
+
+    public int getDifesa() {
+        return difesa;
+    }
+
+    public void setDifesa(int difesa) {
+        this.difesa += difesa;
+    }
+
+    public int getIntelligenza() {
+        return intelligenza;
+    }
+
+    public void setIntelligenza(int intelligenza) {
+        this.intelligenza += intelligenza;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp += exp;
+    }
+
+    /*public int getTotaleArmatura() {
+        return totale_armatura;
+    }
+
+    public void setTotaleArmatura(int totale_armatura) {
+        this.totale_armatura += totale_armatura;
+    }*/
+
+    public int getCaricheMagiche() {
+        return cariche_magiche;
+    }
+
+    public void setCaricheMagiche(int cariche_magiche) {
+        this.cariche_magiche += cariche_magiche;
+    }
+
+    public int getCaricheElementali() {
+        return cariche_elementali;
+    }
+
+    public void setCaricheElementali(int cariche_elementali) {
+        this.cariche_elementali += cariche_elementali;
+    }
+
+    public int getCaricheTecniche() {
+        return cariche_tecniche;
+    }
+
+    public void setCaricheTecniche(int cariche_tecniche) {
+        this.cariche_tecniche += cariche_tecniche;
+    }
+
+    
+    
 }

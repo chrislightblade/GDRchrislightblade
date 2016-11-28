@@ -40,17 +40,18 @@ public class avventura_testuale {
         SchedaPersonaggio scheda = new SchedaPersonaggio();
         System.out.println("Nome e Cognome personaggio:");
 
-        scheda = CreaPersonaggio.inserisciNome_Cognome(scheda);
+        CreaPersonaggio.inserisciNome_Cognome(scheda);
         System.out.println(scheda.getNomeCognome());
-        /*CreaPersonaggio.scegliRazza(scheda);
-        /*CreaPersonaggio.impostaStatistiche(scheda);
-        /*CreaPersonaggio.scegliClasse(scheda);
         
-        System.out.println(scheda.Statistiche[0] + ": " + scheda.forza);
-        System.out.println(scheda.Statistiche[1] + ": " + scheda.difesa);
-        System.out.println(scheda.Statistiche[2] + ": " + scheda.intelligenza);
-        System.out.println(scheda.Statistiche[3] + ": " + scheda.agilità);
-        System.out.println(scheda.Statistiche[4] + ": " + scheda.costituzione);*/
+        CreaPersonaggio.scegliRazza(scheda);
+        CreaPersonaggio.impostaStatistiche(scheda);
+        CreaPersonaggio.scegliClasse(scheda);
+        String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione"};
+        System.out.println(statistiche[0] + ": " + scheda.getForza());
+        System.out.println(statistiche[1] + ": " + scheda.getDifesa());
+        System.out.println(statistiche[2] + ": " + scheda.getIntelligenza());
+        System.out.println(statistiche[3] + ": " + scheda.getAgilità());
+        System.out.println(statistiche[4] + ": " + scheda.getCostituzione());
         
 
 
