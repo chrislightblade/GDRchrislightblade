@@ -11,7 +11,9 @@ package Gioco_GDR;
  */
 public class ClasseArmigero {
 
-    String talenti[] = new String[5];
+    private String talenti[] = new String[5];
+    private int talentoAttivo[] = new int[]{0, 0, 0, 0, 0};
+    
 
     public ClasseArmigero(SchedaPersonaggio scheda) {
         this.talenti[0] = "Assalto";
@@ -24,10 +26,37 @@ public class ClasseArmigero {
         //int tabellaAssalto[][] = new int[][];
     }
 
+    public int getTalentoAttivo(int i) {
+        return talentoAttivo[i];
+    }
+
+    public void setTalentoAttivo(int talentoAttivo) {
+        this.talentoAttivo[talentoAttivo]++;
+    }
+    
+    
+    
+    public int usaTalento(int i, SchedaPersonaggio scheda){
+        switch(i){
+            case 1:
+                int bonus = usaAssalto(scheda);
+                return bonus;
+             
+            case 2:
+                
+            case 3:
+                
+            case 4:
+                
+            case 5:   
+            
+        }
+     }
+
     /*void applicaBonus(SchedaPersonaggio scheda) {
         scheda.setForza(2);
     }*/
-    int usaAssalto(SchedaPersonaggio scheda) {
+    public int usaAssalto(SchedaPersonaggio scheda) {
         int forza = scheda.getAgilità();
         int agilità = scheda.getForza();
 

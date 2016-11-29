@@ -37,6 +37,8 @@ public class SchedaPersonaggio {
     //parametri per le razze
     private int razza;
     private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
+    
+    private int talentiAttivi;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /*private ClasseGioco classe_pg = ClasseGiocop.ClasseArmigero.;
@@ -65,8 +67,17 @@ public class SchedaPersonaggio {
         this.cariche_magiche = 1;
         this.cariche_tecniche = 1;
         this.cariche_elementali = 1;
+        this.talentiAttivi = 1;
     }
 
+    public int getTalentiAttivi() {
+        return talentiAttivi;
+    }    
+    
+    public void setTalentiAttivi(int talentiAttivi) {
+        this.talentiAttivi += talentiAttivi;
+    }    
+    
     public int getClasse() {
         return classe;
     }

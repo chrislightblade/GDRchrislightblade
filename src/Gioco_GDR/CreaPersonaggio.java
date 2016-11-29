@@ -136,6 +136,7 @@ public class CreaPersonaggio {
         switch (scheda.getRazza()) {// a seconda della razza scelta implementa dei parametri specifici
             case 0://umano               
                 scheda.setExp(10);
+                scheda.setTalentiAttivi(1);
                 break;
 
             case 1://nano
@@ -201,12 +202,10 @@ public class CreaPersonaggio {
 
         } while (scheda.getClasse() == -1);//while per visualizzare info sulle classi
 
-                
         //creaClasse(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
-        
         System.out.println("Classe Personaggio: " + scheda.getClassi() + "\n");
     }//fine scegliClasse()
-    
+
     public static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
         while (scheda.getClasse() != -1) {
@@ -262,7 +261,7 @@ public class CreaPersonaggio {
         scheda.setClasse(-1);
 
     }
-    
+
     /*public static void creaClasse(int classe, SchedaPersonaggio scheda) {
 
         switch (classe) {
@@ -279,25 +278,159 @@ public class CreaPersonaggio {
         }
         
     }*/
+    public static void scegliTalentiClasseArmigero(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+        int j = 0;
+        while (j < scheda.getTalentiAttivi()) {//1 giro normalmente, 2 se umano
+            String frase;
+            frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\n";
 
-    public static String scegliTalentiClasseArmigero(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+            for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
+                if (classe_pg.getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + classe_pg.getTalenti(i) + "\n";
+                }
+            }
+
+            boolean verifica = false;
+            while (verifica == false) {
+
+                String report2 = JOptionPane.showInputDialog("Quale talento desideri attivare?\nPer informazioni, digitare 6.\n" + frase);
+
+                try {
+                    if (report2.equals("")) {
+                        spiegaTalentiArmigero();                        
+                    }
+
+                    int input2 = Integer.parseInt(report2);
+                    if (input2 > 0 && input2 < 6) {
+                        classe_pg.setTalentoAttivo(input2 - 1);
+                        verifica = true;
+                        j++;
+                    } else {
+                        if (input2 == 6) {
+                            spiegaTalentiArmigero();
+                            input2 = 0;
+                        }
+
+                    }
+                } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                }
+            }//fine while controllo inserimento
+        }
+    }
+
+    public static void spiegaTalentiArmigero() {//switch per aver espiegazioni sulle razze
+
+        int choice = -1;
+        while (choice != 0) {
+            choice = -1;
+
+            String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
+
+            String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Assalto' \n2 per avere infomazioni su 'Colpo Vigoroso'"
+                    + "\n3 per avere informazioni su 'Incalzare'\n4 per avere informazioni su 'Furia'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+
+            if (choice1.equalsIgnoreCase("")) {
+                choice = 0;
+            } else {
+                choice = Integer.parseInt(choice1);
+            }
+            switch (choice) {
+                case 1://
+                    frase = ",\n.";
+                    frase += ",\n.\n";
+                    break;
+
+                case 2://
+                    frase = ",\n.";
+                    frase += ",\n.\n";
+                    break;
+
+                case 3://
+                    frase = ",\n.";
+                    frase += "\n.\n";
+                    break;
+
+                case 4://
+                    frase = ",\n.";
+                    frase += "\n.\n";
+                    break;
+
+                /*case 5:
+                    frase = "Razza misteriosa, dall'aspetto metallico e minaccioso,\npossono rivelare sorprese inaspettate";
+                    frase += "La razza Vergheuden offre un bonus alla CA di +3 e consente \ndi usare 'Stridore', tecnica che stordisce il nemico per 2 turni.\n";
+                    break;*/
+                case 0:
+                    break;
+
+            }//switch descrizione razze            
+
+            if (choice != 0) {
+                JOptionPane.showMessageDialog(null, frase);
+            }
+        }
+    }
+
+    public static String scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
         String frase = "";
-        for(int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             frase = "";
             frase += "" + classe_pg.getTalenti(i) + "\n";
             System.out.println(frase);
         }
         return frase;
     }
-    
-    public static String scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
-        String frase = "";
-        for(int i = 0; i < 4; i++){
-            frase = "";
-            frase += "" + classe_pg.getTalenti(i) + "\n";
-            System.out.println(frase);
+
+    public static void spiegaTalentiMagicante() {//switch per aver espiegazioni sulle razze
+
+        int choice = -1;
+        while (choice != 0) {
+            choice = -1;
+
+            String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
+
+            String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Assalto' \n2 per avere infomazioni su 'Colpo Vigoroso'"
+                    + "\n3 per avere informazioni su 'Incalzare'\n.4 per avere informazioni su 'Furia'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+
+            if (choice1.equalsIgnoreCase("")) {
+                choice = 0;
+            } else {
+                choice = Integer.parseInt(choice1);
+            }
+            switch (choice) {
+                case 1://
+                    frase = ",\n.";
+                    frase += ",\n.\n";
+                    break;
+
+                case 2://
+                    frase = ",\n.";
+                    frase += ",\n.\n";
+                    break;
+
+                case 3://
+                    frase = "";
+                    frase += "\n.\n";
+                    break;
+
+                case 4://
+                    frase = "";
+                    frase += "\n.\n";
+                    break;
+
+                /*case 5:
+                    frase = "Razza misteriosa, dall'aspetto metallico e minaccioso,\npossono rivelare sorprese inaspettate";
+                    frase += "La razza Vergheuden offre un bonus alla CA di +3 e consente \ndi usare 'Stridore', tecnica che stordisce il nemico per 2 turni.\n";
+                    break;*/
+                case 0:
+                    break;
+
+            }//switch descrizione razze            
+
+            if (choice == -1) {
+                JOptionPane.showMessageDialog(null, frase);
+            }
         }
-        return frase;
     }
 
     public static void impostaStatistiche(SchedaPersonaggio scheda) {

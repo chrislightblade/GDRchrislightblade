@@ -42,9 +42,14 @@ public class avventura_testuale {
 
         CreaPersonaggio.inserisciNome_Cognome(scheda);
         System.out.println(scheda.getNomeCognome());
-        
+        //scheda.setRazza(0);
+        scheda.setAgilità(7);
+        scheda.setDifesa(7);
+        scheda.setIntelligenza(7);
+        scheda.setForza(7);
+        scheda.setCostituzione(7);
         CreaPersonaggio.scegliRazza(scheda);
-        CreaPersonaggio.impostaStatistiche(scheda);
+        //CreaPersonaggio.impostaStatistiche(scheda);
         CreaPersonaggio.scegliClasse(scheda);
         if(scheda.getClasse() == 0){
             ClasseArmigero classe = new ClasseArmigero(scheda);
