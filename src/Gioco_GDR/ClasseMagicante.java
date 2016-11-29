@@ -7,9 +7,9 @@ package Gioco_GDR;
 
 /**
  *
- * @author Administrator
+ * @author tss
  */
-public class ClasseMagicante extends ClasseGioco {
+public class ClasseMagicante {
 
     public ClasseMagicante(SchedaPersonaggio scheda) {
         this.talenti[0] = "Ricarica";
@@ -21,5 +21,5 @@ public class ClasseMagicante extends ClasseGioco {
         //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
         //int tabellaAssalto[][] = new int[][];
     }
-    
+
 }

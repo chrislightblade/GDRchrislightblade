@@ -39,24 +39,17 @@ public class SchedaPersonaggio {
     private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private ClasseGioco classe_pg = new ClasseGioco();
+    /*private ClasseGioco classe_pg = ClasseGiocop.ClasseArmigero.;
 
-    public void classeCrea(int classe, SchedaPersonaggio scheda) {
-
-        switch (classe) {
-            case 0:
-                ClasseArmigero classepg = new ClasseArmigero(scheda);
-                this.classe_pg = classepg;
-                break;
-
-            case 1:
-                ClasseMagicante classepg2 = new ClasseMagicante(scheda);
-                this.classe_pg = classepg2;
-                break;
-
-        }
-        
+    public void setClasse_pg(ClasseGioco classe_pg) {
+        this.classe_pg = classe_pg;
     }
+
+    public ClasseGioco getClasse_pg() {
+        return classe_pg;
+    }*/
+
+    
 
     /*class ClasseArmigero extends ClasseGioco {
 

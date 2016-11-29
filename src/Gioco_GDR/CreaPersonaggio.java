@@ -201,11 +201,12 @@ public class CreaPersonaggio {
 
         } while (scheda.getClasse() == -1);//while per visualizzare info sulle classi
 
-        scheda.classeCrea(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
+                
+        //creaClasse(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
         
         System.out.println("Classe Personaggio: " + scheda.getClassi() + "\n");
     }//fine scegliClasse()
-
+    
     public static void spiegaClasse(SchedaPersonaggio scheda) {//switch per aver espiegazioni sulle razze
 
         while (scheda.getClasse() != -1) {
@@ -261,38 +262,32 @@ public class CreaPersonaggio {
         scheda.setClasse(-1);
 
     }
+    
+    /*public static void creaClasse(int classe, SchedaPersonaggio scheda) {
 
-    /*public static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
-
-        switch (scheda.getClasse()) {//impongo i valori di modifica sulle statistiche in base alla clase scelta
-            case 1://armigero               
-                scheda.setForza(2);
+        switch (classe) {
+            case 0:
+                ClasseArmigero classepg = new ClasseArmigero(scheda);
+                scheda.setClasse_pg(classepg);
                 break;
 
-            case 2://magicante
-                scheda.setIntelligenza(1);
-                scheda.setCaricheMagiche(4);
+            case 1:
+                ClasseMagicante classepg2 = new ClasseMagicante(scheda);
+                scheda.setClasse_pg(classepg2);
                 break;
 
-            /*case 3://nano
-                scheda.costituzione += 1;
-                scheda.agilità -= 1;
+        }
+        
+    }*/
 
-            case 4://dracolide
-                scheda.forza += 1;
-                scheda.totale_armatura += 2;
-
-            //case 5://vergheuden
-                //scheda.totale_armatura += 3;
-
-            //case 6: //Faithy
-        }//fine switch
-
-    }// fine valoriClasse*/
-
-    public static void scegliTalentiClasse(SchedaPersonaggio scheda) {
-        frase = "";
-        frase = SchedaPersonaggio.ClasseArmigero.getTalenti();
+    public static String scegliTalentiClasse(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+        String frase = "";
+        for(int i = 0; i < 4; i++){
+            frase = "";
+            frase += "" + classe_pg.getTalenti(i) + "\n";
+            System.out.println(frase);
+        }
+        return frase;
     }
 
     public static void impostaStatistiche(SchedaPersonaggio scheda) {
