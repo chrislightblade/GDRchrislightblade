@@ -48,12 +48,14 @@ public class avventura_testuale {
         CreaPersonaggio.scegliClasse(scheda);
         if(scheda.getClasse() == 0){
             ClasseArmigero classe = new ClasseArmigero(scheda);
+            CreaPersonaggio.scegliTalentiClasseArmigero(scheda, classe);
         }
         if(scheda.getClasse() == 1){
             ClasseMagicante classe = new ClasseMagicante(scheda);
+            CreaPersonaggio.scegliTalentiClasseMagicante(scheda, classe);
         }
         
-        CreaPersonaggio.scegliTalentiClasse(scheda, classe);
+        
         String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione"};
         System.out.println(statistiche[0] + ": " + scheda.getForza());
         System.out.println(statistiche[1] + ": " + scheda.getDifesa());

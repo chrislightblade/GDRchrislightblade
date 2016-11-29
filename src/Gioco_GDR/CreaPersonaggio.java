@@ -280,7 +280,17 @@ public class CreaPersonaggio {
         
     }*/
 
-    public static String scegliTalentiClasse(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+    public static String scegliTalentiClasseArmigero(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+        String frase = "";
+        for(int i = 0; i < 4; i++){
+            frase = "";
+            frase += "" + classe_pg.getTalenti(i) + "\n";
+            System.out.println(frase);
+        }
+        return frase;
+    }
+    
+    public static String scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
         String frase = "";
         for(int i = 0; i < 4; i++){
             frase = "";

@@ -51,35 +51,7 @@ public class SchedaPersonaggio {
 
     
 
-    /*class ClasseArmigero extends ClasseGioco {
-
-        String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
-        //int tabellaAssalto[][] = new int[][];
-                       
-        /*static{
-            int forza = getForza();
-            this.forza += 2;
-        }*/
-
-        /*void applicaBonus() {
-            setForza(2);
-        }*/
-
-        /*int usaAssalto(SchedaPersonaggio scheda ) {
-        int danno = 
-        return 1;
-    }
-    }
-
-    class ClasseMagicante extends ClasseGioco {
-
-        String talenti[] = new String[]{"Ricarica", "Ottimizzazione", "Doppio Lancio", "Potenza Arcana"};
-
-        /*void applicaBonus() {
-            setIntelligenza(1);
-            setCaricheMagiche(4);
-        }
-    }*/
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public SchedaPersonaggio() {
