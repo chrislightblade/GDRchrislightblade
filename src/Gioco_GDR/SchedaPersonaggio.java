@@ -38,6 +38,57 @@ public class SchedaPersonaggio {
     private int razza;
     private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private ClasseGioco classe_pg = new ClasseGioco();
+
+    public void classeCrea(int classe, SchedaPersonaggio scheda) {
+
+        switch (classe) {
+            case 0:
+                ClasseArmigero classepg = new ClasseArmigero(scheda);
+                this.classe_pg = classepg;
+                break;
+
+            case 1:
+                ClasseMagicante classepg2 = new ClasseMagicante(scheda);
+                this.classe_pg = classepg2;
+                break;
+
+        }
+        
+    }
+
+    /*class ClasseArmigero extends ClasseGioco {
+
+        String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
+        //int tabellaAssalto[][] = new int[][];
+                       
+        /*static{
+            int forza = getForza();
+            this.forza += 2;
+        }*/
+
+        /*void applicaBonus() {
+            setForza(2);
+        }*/
+
+        /*int usaAssalto(SchedaPersonaggio scheda ) {
+        int danno = 
+        return 1;
+    }
+    }
+
+    class ClasseMagicante extends ClasseGioco {
+
+        String talenti[] = new String[]{"Ricarica", "Ottimizzazione", "Doppio Lancio", "Potenza Arcana"};
+
+        /*void applicaBonus() {
+            setIntelligenza(1);
+            setCaricheMagiche(4);
+        }
+    }*/
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public SchedaPersonaggio() {
         this.razza = -1;
         this.classe = -1;
@@ -148,7 +199,6 @@ public class SchedaPersonaggio {
     public void setTotaleArmatura(int totale_armatura) {
         this.totale_armatura += totale_armatura;
     }*/
-
     public int getCaricheMagiche() {
         return cariche_magiche;
     }
@@ -173,6 +223,4 @@ public class SchedaPersonaggio {
         this.cariche_tecniche += cariche_tecniche;
     }
 
-    
-    
 }

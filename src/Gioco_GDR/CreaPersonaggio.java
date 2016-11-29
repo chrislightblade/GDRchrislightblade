@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class CreaPersonaggio {
 
-    public static SchedaPersonaggio inserisciNome_Cognome(SchedaPersonaggio scheda) {
+    public static void inserisciNome_Cognome(SchedaPersonaggio scheda) {
 
         String nome = "Chris";
         //nome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
@@ -28,8 +28,6 @@ public class CreaPersonaggio {
         String cognome = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio:\n");//inserimento cognome
 
         scheda.setNomeCognome(nome, secondoNome, cognome);
-
-        return scheda;
 
     }//fine inserisciNome_Cognome
 
@@ -203,7 +201,8 @@ public class CreaPersonaggio {
 
         } while (scheda.getClasse() == -1);//while per visualizzare info sulle classi
 
-        valoriClasse(scheda);//inserisco i bonus e i malus delle classe nella scheda
+        scheda.classeCrea(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
+        
         System.out.println("Classe Personaggio: " + scheda.getClassi() + "\n");
     }//fine scegliClasse()
 
@@ -263,15 +262,16 @@ public class CreaPersonaggio {
 
     }
 
-    public static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
+    /*public static void valoriClasse(SchedaPersonaggio scheda) {// a seconda della razza scelta implementa dei parametri specifici
 
-        switch (scheda.getClasse()) {
-            case 1://umano               
-                ClasseArmigero.applicaBonus(scheda);
+        switch (scheda.getClasse()) {//impongo i valori di modifica sulle statistiche in base alla clase scelta
+            case 1://armigero               
+                scheda.setForza(2);
                 break;
 
-            case 2://elfo
-                ClasseMagicante.applicaBonus(scheda);
+            case 2://magicante
+                scheda.setIntelligenza(1);
+                scheda.setCaricheMagiche(4);
                 break;
 
             /*case 3://nano
@@ -285,10 +285,15 @@ public class CreaPersonaggio {
             //case 5://vergheuden
                 //scheda.totale_armatura += 3;
 
-            //case 6: //Faithy*/
+            //case 6: //Faithy
         }//fine switch
 
-    }// fine valoriClasse
+    }// fine valoriClasse*/
+
+    public static void scegliTalentiClasse(SchedaPersonaggio scheda) {
+        frase = "";
+        frase = SchedaPersonaggio.ClasseArmigero.getTalenti();
+    }
 
     public static void impostaStatistiche(SchedaPersonaggio scheda) {
 
@@ -327,12 +332,12 @@ public class CreaPersonaggio {
                 if (report2.equalsIgnoreCase("")) {
                     input2 = 0;
                     verifica = true;
-                } else {                    
-                        input2 = Integer.parseInt(report2);
-                        if (input2 >= 0 && input2 <= 5) {
+                } else {
+                    input2 = Integer.parseInt(report2);
+                    if (input2 >= 0 && input2 <= 5) {
                         verifica = true;
                     }
-                    
+
                 }
             } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
@@ -525,46 +530,44 @@ public class CreaPersonaggio {
             }
 
             report3 = JOptionPane.showInputDialog(report3 + "Sei soddisfatto della distribuzione dei punti statistica?\nScrivere Si o No");
-            
-            
+
             if (report3.equalsIgnoreCase("si") || report3.equalsIgnoreCase("")) {
                 ok = true;
             } else {
-                if(report3.equalsIgnoreCase("no")){
-                JOptionPane.showMessageDialog(null, "Ok, allora ridistribuisci le statistiche");//azzera le modifiche e riporta a valore di inizio
-                j = scheda.getForza();
-                scheda.setForza(-j);
-                scheda.setForza(tmp2[0]);
+                if (report3.equalsIgnoreCase("no")) {
+                    JOptionPane.showMessageDialog(null, "Ok, allora ridistribuisci le statistiche");//azzera le modifiche e riporta a valore di inizio
+                    j = scheda.getForza();
+                    scheda.setForza(-j);
+                    scheda.setForza(tmp2[0]);
 
-                j = scheda.getDifesa();
-                scheda.setDifesa(-j);
-                scheda.setDifesa(tmp2[1]);
+                    j = scheda.getDifesa();
+                    scheda.setDifesa(-j);
+                    scheda.setDifesa(tmp2[1]);
 
-                j = scheda.getIntelligenza();
-                scheda.setIntelligenza(-j);
-                scheda.setForza(tmp2[2]);
+                    j = scheda.getIntelligenza();
+                    scheda.setIntelligenza(-j);
+                    scheda.setForza(tmp2[2]);
 
-                j = scheda.getAgilità();
-                scheda.setAgilità(-j);
-                scheda.setAgilità(tmp2[3]);
+                    j = scheda.getAgilità();
+                    scheda.setAgilità(-j);
+                    scheda.setAgilità(tmp2[3]);
 
-                j = scheda.getCostituzione();
-                scheda.setCostituzione(-j);
-                scheda.setCostituzione(tmp2[4]);
+                    j = scheda.getCostituzione();
+                    scheda.setCostituzione(-j);
+                    scheda.setCostituzione(tmp2[4]);
 
-                j = 5;
+                    j = 5;
 
-                for (int k = 0; k < 5; k++) {
-                    valori[k] = tmp[k];
-                }
+                    for (int k = 0; k < 5; k++) {
+                        valori[k] = tmp[k];
+                    }
 
-                for (int k = 0; k < 5; k++) {
-                    statistiche_n[k] = (k + 1);
-                }
+                    for (int k = 0; k < 5; k++) {
+                        statistiche_n[k] = (k + 1);
+                    }
                 }//if equals no
             }//else equals si
-            
-            
+
         }// fine while ok == false
 
     }

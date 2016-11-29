@@ -9,17 +9,23 @@ package Gioco_GDR;
  *
  * @author Administrator
  */
-public class ClasseArmigero {
+public class ClasseArmigero extends ClasseGioco {
 
-    String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
-    int tabellaAssalto[][] = new int[][];
-
-    void applicaBonus(SchedaPersonaggio scheda) {
+    public ClasseArmigero(SchedaPersonaggio scheda){
+    this.talenti[0] = "Assalto";
+    this.talenti[1] = "Colpo Vigoroso";
+    this.talenti[2] = "Incalzare";
+    this.talenti[3] = "Furia";
+    scheda.setForza(2);
+    //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
+    //int tabellaAssalto[][] = new int[][];
+        }
+    /*void applicaBonus(SchedaPersonaggio scheda) {
         scheda.setForza(2);
-    }
+    }*/
 
-    int usaAssalto(SchedaPersonaggio scheda ) {
+    /*int usaAssalto(SchedaPersonaggio scheda ) {
         int danno = 
         return 1;
-    }
+    }*/
 }

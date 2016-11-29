@@ -9,11 +9,17 @@ package Gioco_GDR;
  *
  * @author Administrator
  */
-public class ClasseMagicante {
-    
-    String talenti[] = new String[]{"Ricarica", "Ottimizzazione", "Doppio Lancio", "Potenza Arcana"};
-    
-    static void applicaBonus(SchedaPersonaggio scheda){
+public class ClasseMagicante extends ClasseGioco {
+
+    public ClasseMagicante(SchedaPersonaggio scheda) {
+        this.talenti[0] = "Ricarica";
+        this.talenti[1] = "Ottimizzazione";
+        this.talenti[2] = "Doppio Lancio";
+        this.talenti[3] = "Potenza Arcana";
+        scheda.setIntelligenza(1);
         scheda.setCaricheMagiche(4);
+        //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
+        //int tabellaAssalto[][] = new int[][];
     }
+    
 }
