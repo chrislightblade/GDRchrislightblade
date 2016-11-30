@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gioco_GDR;
+package Gioco_GDR.Classi;
+
+import Gioco_GDR.SchedaPersonaggio;
 
 /**
  *
@@ -57,6 +59,7 @@ public class ClasseArmigero {
             case 5:
 
         }
+        return 1;
     }
 
     /*void applicaBonus(SchedaPersonaggio scheda) {

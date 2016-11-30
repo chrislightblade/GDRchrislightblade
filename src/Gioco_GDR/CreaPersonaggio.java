@@ -5,7 +5,8 @@
  */
 package Gioco_GDR;
 
-import java.util.Random;
+import Gioco_GDR.Classi.ClasseMagicante;
+import Gioco_GDR.Classi.ClasseArmigero;
 import javax.swing.JOptionPane;
 
 /**
@@ -336,22 +337,22 @@ public class CreaPersonaggio {
                 choice = Integer.parseInt(choice1);
             }
             switch (choice) {
-                case 1://
+                case 1://assalto
                     frase = ",\n.";
                     frase += ",\n.\n";
                     break;
 
-                case 2://
+                case 2://colpo vigoro
                     frase = ",\n.";
                     frase += ",\n.\n";
                     break;
 
-                case 3://
+                case 3://incalzare
                     frase = ",\n.";
                     frase += "\n.\n";
                     break;
 
-                case 4://
+                case 4://furia
                     frase = ",\n.";
                     frase += "\n.\n";
                     break;
@@ -371,11 +372,11 @@ public class CreaPersonaggio {
         }
     }
 
-    public static String scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
+    public static void scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
         int j = 0;
         while (j < scheda.getTalentiAttivi()) {//1 giro normalmente, 2 se umano
             String frase;
-            frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\n";
+            frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\nIl talento 'Ricarica' è già attivo";
 
             for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
                 if (classe_pg.getTalentoAttivo(i) == 0) {
@@ -420,8 +421,8 @@ public class CreaPersonaggio {
 
             String frase = "Hai inserito un valore non valido";//output nel caso in cui meta un valore non accettabile != 0
 
-            String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Assalto' \n2 per avere infomazioni su 'Colpo Vigoroso'"
-                    + "\n3 per avere informazioni su 'Incalzare'\n.4 per avere informazioni su 'Furia'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
+            String choice1 = JOptionPane.showInputDialog("Digitare:\n1 per avere informazioni su 'Ricarica' \n2 per avere infomazioni su 'Ottimizzazione'"
+                    + "\n3 per avere informazioni su 'Doppio Lancio'\n.4 per avere informazioni su 'Potenza Arcana'\naltrimenti digitare 0.");// .5 per avere infomazioni su 'Vergheuden'\n"+ "altrimenti digitare 0.");
 
             if (choice1.equalsIgnoreCase("")) {
                 choice = 0;
@@ -429,22 +430,22 @@ public class CreaPersonaggio {
                 choice = Integer.parseInt(choice1);
             }
             switch (choice) {
-                case 1://
+                case 1://Ricarica
+                    frase = "Ottieni la capacità di spendere Cariche Elementali per ricaricare le Cariche Magiche,\ne lo puoi fare anche durante uno scontro.";
+                    frase += "Inizialmente puoi spendere una C.E. per ricaricare 3 C.M,\npoi il valore ricaricato cresce col livello del personaggio.";
+                    break;
+
+                case 2://Ottimizzazione
                     frase = ",\n.";
                     frase += ",\n.\n";
                     break;
 
-                case 2://
-                    frase = ",\n.";
-                    frase += ",\n.\n";
-                    break;
-
-                case 3://
-                    frase = "";
+                case 3://Doppio Lancio
+                    frase = "Questo talento ti consente di lanciare 2 incantesimi nello stesso turno,\nma per farlo il prossimo incantesimo costerà una C.M. in più.";
                     frase += "\n.\n";
                     break;
 
-                case 4://
+                case 4://Potenza Arcana
                     frase = "";
                     frase += "\n.\n";
                     break;

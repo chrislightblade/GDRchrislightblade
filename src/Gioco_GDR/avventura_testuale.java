@@ -5,6 +5,8 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Classi.ClasseMagicante;
+import Gioco_GDR.Classi.ClasseArmigero;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.objects.NativeString;
 

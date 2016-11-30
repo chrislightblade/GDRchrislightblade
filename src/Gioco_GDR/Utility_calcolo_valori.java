@@ -15,7 +15,7 @@ public class Utility_calcolo_valori {
     
     
     
-    static int lanciaD(int dado){//Utility_calcolo_valori.lanciaD(int dado);
+    public static int lanciaD(int dado){//Utility_calcolo_valori.lanciaD(int dado);
         Random random = new Random();
         int valore = random.nextInt(dado) + 1;
         return valore;

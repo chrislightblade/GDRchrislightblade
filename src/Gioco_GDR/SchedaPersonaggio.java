@@ -19,7 +19,8 @@ public class SchedaPersonaggio {
     private int agilità;
     private int costituzione;
     private int exp;
-    private int punti_vita;
+    private int punti_vita_max;
+    private int punti_vita;//attuali
     private int cariche_magiche = 0;
     private int cariche_tecniche = 0;
     private int cariche_elementali = 0;
@@ -30,6 +31,7 @@ public class SchedaPersonaggio {
     private int valore_difesa_guanti;
     private int perforare = forza + intelligenza;
     //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
+    private int portafoglio;
 
     private int classe;
     String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
@@ -73,6 +75,7 @@ public class SchedaPersonaggio {
         this.cariche_elementali = 1;
         this.talentiAttivi = 1;
         this.totale_armatura_base = 0;
+        this.portafoglio = 100;
     }
 
     public int getTalentiAttivi() {
@@ -217,8 +220,15 @@ public class SchedaPersonaggio {
     }
 
     public void setPunti_vita(int punti_vita) {
-        this.punti_vita += punti_vita;
+        this.punti_vita = punti_vita;
+    }
+        
+    public int getPunti_vita_max() {
+        return punti_vita_max;
     }
 
+    public void setPunti_vita_max(int punti_vita) {
+        this.punti_vita_max += punti_vita;
+    }
     
 }
