@@ -54,13 +54,19 @@ public class Combattimenti {
         this.punti_vitapg = scheda.getPunti_vita();
     }
 
+    public int valoreTotaleArmaturapg(SchedaPersonaggio scheda){
+        int armatura;
+        armatura = scheda.getTotale_armatura_base() + scheda.get
+        return armatura;
+    }
+    
     public void colpireilNemico() {
 
-        int colpire = difesapg + agilitàpg + bonus_colpirepg + (random.nextInt(20) + 1);
-        int difendere = difesa_mostro[0] + agilità_mostro[0] + totale_armatura_mostro[0] + (random.nextInt(20) + 1);
+        int colpire = forzapg + agilitàpg + bonus_colpirepg + (random.nextInt(12) + 1);
+        int difendere = difesa_mostro[0] + agilità_mostro[0] + totale_armatura_mostro[0] + (random.nextInt(12) + 1);
 
         if (colpire > difendere) {
-            int danno = danno_armapg + forzapg - 7;
+            int danno = danno_armapg + (forzapg - 4);
             punti_vita_mostro -= danno;
         }
     }

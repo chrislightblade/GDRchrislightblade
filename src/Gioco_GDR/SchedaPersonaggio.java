@@ -5,6 +5,7 @@
  */
 package Gioco_GDR;
 
+import java.util.ArrayList;
 /**
  *
  * @author tss
@@ -23,7 +24,10 @@ public class SchedaPersonaggio {
     private int cariche_tecniche = 0;
     private int cariche_elementali = 0;
     //int danno_arma = Arma.dannoArma(dado);
-    //private int totale_armatura = difesa + agilità + bonus;
+    private int totale_armatura_base;// = difesa + agilità + bonus; // bonus razziali e altro
+    private int valore_difesa_armatura;
+    private int valore_difesa_elmo;
+    private int valore_difesa_guanti;
     private int perforare = forza + intelligenza;
     //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
 
@@ -68,6 +72,7 @@ public class SchedaPersonaggio {
         this.cariche_tecniche = 1;
         this.cariche_elementali = 1;
         this.talentiAttivi = 1;
+        this.totale_armatura_base = 0;
     }
 
     public int getTalentiAttivi() {
@@ -119,6 +124,14 @@ public class SchedaPersonaggio {
 
         return NomeCognome;
     }
+
+    public int getTotale_armatura_base() {
+        return totale_armatura_base;
+    }
+
+    public void setTotale_armatura_base(int totale_armatura_base) {
+        this.totale_armatura_base += totale_armatura_base;
+    }   
 
     public int getAgilità() {
         return agilità;
