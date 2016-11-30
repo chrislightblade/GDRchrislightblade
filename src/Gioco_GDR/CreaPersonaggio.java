@@ -372,13 +372,44 @@ public class CreaPersonaggio {
     }
 
     public static String scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
-        String frase = "";
-        for (int i = 0; i < 4; i++) {
-            frase = "";
-            frase += "" + classe_pg.getTalenti(i) + "\n";
-            System.out.println(frase);
+        int j = 0;
+        while (j < scheda.getTalentiAttivi()) {//1 giro normalmente, 2 se umano
+            String frase;
+            frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\n";
+
+            for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
+                if (classe_pg.getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + classe_pg.getTalenti(i) + "\n";
+                }
+            }
+
+            boolean verifica = false;
+            while (verifica == false) {
+
+                String report2 = JOptionPane.showInputDialog("Quale talento desideri attivare?\nPer informazioni, digitare 6.\n" + frase);
+
+                try {
+                    if (report2.equals("")) {
+                        spiegaTalentiMagicante();                        
+                    }
+
+                    int input2 = Integer.parseInt(report2);
+                    if (input2 > 0 && input2 < 6) {
+                        classe_pg.setTalentoAttivo(input2 - 1);
+                        verifica = true;
+                        j++;
+                    } else {
+                        if (input2 == 6) {
+                            spiegaTalentiMagicante();
+                            input2 = 0;
+                        }
+
+                    }
+                } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                }
+            }//fine while controllo inserimento
         }
-        return frase;
     }
 
     public static void spiegaTalentiMagicante() {//switch per aver espiegazioni sulle razze

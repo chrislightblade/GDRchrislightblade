@@ -199,4 +199,13 @@ public class SchedaPersonaggio {
         this.cariche_tecniche += cariche_tecniche;
     }
 
+    public int getPunti_vita() {
+        return punti_vita;
+    }
+
+    public void setPunti_vita(int punti_vita) {
+        this.punti_vita += punti_vita;
+    }
+
+    
 }

@@ -13,7 +13,6 @@ public class ClasseArmigero {
 
     private String talenti[] = new String[5];
     private int talentoAttivo[] = new int[]{0, 0, 0, 0, 0};
-    
 
     public ClasseArmigero(SchedaPersonaggio scheda) {
         this.talenti[0] = "Assalto";
@@ -33,25 +32,32 @@ public class ClasseArmigero {
     public void setTalentoAttivo(int talentoAttivo) {
         this.talentoAttivo[talentoAttivo]++;
     }
-    
-    
-    
-    public int usaTalento(int i, SchedaPersonaggio scheda){
-        switch(i){
+
+    public int usaTalento(int i, SchedaPersonaggio scheda) {
+
+        String frase = "Quale talento vuoi utilizzare?";
+        //int z = 1;
+        for (int k = 0; k < 5; k++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 1
+            if (talentoAttivo[k] == 1) {
+                frase += (k + 1) + "." + talenti[k] + "\n";
+            }
+        }
+
+        switch (i) {
             case 1:
                 int bonus = usaAssalto(scheda);
                 return bonus;
-             
+
             case 2:
-                
+
             case 3:
-                
+
             case 4:
-                
-            case 5:   
-            
+
+            case 5:
+
         }
-     }
+    }
 
     /*void applicaBonus(SchedaPersonaggio scheda) {
         scheda.setForza(2);
