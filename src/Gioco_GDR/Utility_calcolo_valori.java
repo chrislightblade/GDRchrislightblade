@@ -20,4 +20,10 @@ public class Utility_calcolo_valori {
         int valore = random.nextInt(dado) + 1;
         return valore;
     }
+    
+    public static int lanciaD2(int dado){
+        int valore = (int) Math.floor(Math.random() * dado);
+        return valore;
+        
+    }
 }
