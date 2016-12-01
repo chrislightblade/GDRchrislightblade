@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class SchedaPersonaggio {
 
     private String nome, secondonome, cognome;//stringa nome e cognome
+    private int elemento_personaggio;
+    private String elementi_personaggio[] = new String[]{"Fuoco", "Acqua", "Terra", "Aria", "Luce", "Ombra", "Ghiaccio", "Fulmine", "Metallo", "Legno", "Arcano", "Nessuno"};
     private int forza;
     private int difesa;
     private int intelligenza;
@@ -76,8 +78,13 @@ public class SchedaPersonaggio {
         this.talentiAttivi = 1;
         this.totale_armatura_base = 0;
         this.portafoglio = 100;
+        this.elemento_personaggio = 11;
     }
 
+    public int getElemento_personaggio() {
+        return elemento_personaggio;
+    }
+    
     public int getTalentiAttivi() {
         return talentiAttivi;
     }    

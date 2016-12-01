@@ -5,6 +5,9 @@
  */
 package Gioco_GDR.Classi;
 
+import Gioco_GDR.SchedaMostro;
+import Gioco_GDR.SchedaPersonaggio;
+
 /**
  *
  * @author tss
@@ -15,7 +18,7 @@ public class Incantesimi {
     private int tipo;
 
     public Incantesimi(int danno, int tipo) {
-        this.danno = (int) Math.floor(Math.random() * danno);
+        this.danno = danno;//
         this.tipo = tipo;
     }
 
@@ -26,8 +29,20 @@ public class Incantesimi {
     public int getTipo() {
         return tipo;
     }
+    
+    public int dannoIncantesimo(SchedaPersonaggio scheda, SchedaMostro schedamostro, Incantesimi incanto){
+        
+        int danno = ((int) Math.floor(Math.random() * incanto.danno)) + 1;
+        double efficacia = efficaciaDanno(scheda.getElemento_personaggio(), schedamostro.getElemento_mostro());
+        danno = (int)(danno * efficacia);
+        //int dannofinale = (int)(Math.floor(danno);
+        return danno;
+    }
 
     public double efficaciaDanno(int tipo1, int tipo2) {//sarà più comodo fare una tabella array con i singoli valori specificati (per gli 8 lementi tabulati, per ombra e luce è un discorso a parte
+        if(tipo1 == 11){// se è privo di elemento
+            return 1;
+        } else {//se ha un elemento
         if(tipo1 == 10){
             return 3;
             
@@ -79,7 +94,7 @@ public class Incantesimi {
         }//fine else 4 elementi + 4 elementi
         
         }// fine else tipo1 == 10
-
+        }
         return 1;//in tutti gli altri casi
             // tipi incantesimi: 
             // fuoco, acqua, terra, aria, luce, ombra, ghiaccio, fulmine, metallo, legno, arcano//
