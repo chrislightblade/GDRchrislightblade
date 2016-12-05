@@ -6,18 +6,21 @@
 package Gioco_GDR.Classi;
 
 import Gioco_GDR.SchedaPersonaggio;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author tss
  */
-public class ClasseMagicante {
+public class ClasseMagicante extends ClasseGioco{
 
     String talenti[] = new String[5];
     private int talentoAttivo[] = new int[]{1, 0, 0, 0, 0};
+    ArrayList<Incantesimi> incantesimi;
 
     public ClasseMagicante(SchedaPersonaggio scheda) {
+        this.talentoAttivo[0] = 1;
         this.talenti[0] = "Ricarica";
         this.talenti[1] = "Ottimizzazione";
         this.talenti[2] = "Doppio Lancio";
@@ -25,17 +28,13 @@ public class ClasseMagicante {
         this.talenti[4] = "";
         scheda.setIntelligenza(1);
         scheda.setCaricheMagiche(4);
+        scheda.setCariche_magiche_max(4);
+        this.incantesimi = new ArrayList<Incantesimi>;
         //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
         //int tabellaAssalto[][] = new int[][];
     }
 
-    public int getTalentoAttivo(int i) {
-        return talentoAttivo[i];
-    }
-
-    public void setTalentoAttivo(int talentoAttivo) {
-        this.talentoAttivo[talentoAttivo]++;
-    }
+    
 
     public int usaTalento(int i, SchedaPersonaggio scheda) {
 
@@ -63,7 +62,22 @@ public class ClasseMagicante {
         }
         return 1;
     }
+    
+    public void usaOttimizzazione(){
+        
+        
+    }
 
+    public void usaDoppioLancio(){
+        
+        
+    }
+    
+    public void usaPotenzaArcana(){
+        
+        
+    }
+    
     public void lanciaIncantesimo() {
 
         boolean verifica = false;

@@ -19,10 +19,13 @@ public class ClasseArmigero {
     public ClasseArmigero(SchedaPersonaggio scheda) {
         this.talenti[0] = "Assalto";
         this.talenti[1] = "Colpo Vigoroso";
-        this.talenti[2] = "Incalzare";
+        this.talenti[2] = "Incalzare";//passiva
         this.talenti[3] = "Furia";
         this.talenti[4] = "";
         scheda.setForza(2);
+        scheda.setCostituzione(1);
+        scheda.setPunti_vita_max(20 + (scheda.getCostituzione() - 4));
+        scheda.setPunti_vita(20 + (scheda.getCostituzione() - 4));
         //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
         //int tabellaAssalto[][] = new int[][];
     }
@@ -71,6 +74,20 @@ public class ClasseArmigero {
 
         int danno = (forza + agilità) / 3;
         return 1;
+    }
+    
+    public int colpoVigoroso (SchedaPersonaggio scheda, int dannoattacco){
+        int danno = 0;
+        danno = dannoattacco * (scheda.getForza() - 4);        
+        return danno;
+    }
+    
+    public void usaIncalzarePassiva(){        
+        
+    }
+    
+    public void usaFuria(){        
+        
     }
 
     public String getTalenti(int i) {

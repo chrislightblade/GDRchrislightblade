@@ -29,6 +29,9 @@ public class Combattimenti {
     private int bonus_colpirepg;
     private int danno_armapg;
     private int totale_armaturapg;
+    private int cariche_magiche_maxpg;
+    private int cariche_tecniche_maxpg;
+    private int cariche_elementali_maxpg;
 
     private int forza_mostro[] = new int[10];
     private int agilità_mostro[] = new int[10];
@@ -52,14 +55,20 @@ public class Combattimenti {
         this.intelligenzapg = scheda.getIntelligenza();
         this.costituzionepg = scheda.getCostituzione();
         this.punti_vitapg = scheda.getPunti_vita();
+        this.cariche_magichepg = scheda.getCaricheMagiche();
+        this.cariche_tecnichepg = scheda.getCaricheTecniche();
+        this.cariche_elementalipg = scheda.getCaricheMagiche();
+        this.cariche_magiche_maxpg = scheda.getCariche_magiche_max();
+        this.cariche_tecniche_maxpg = scheda.getCariche_tecniche_max();
+        this.cariche_elementali_maxpg = scheda.getCariche_magiche_max();
     }
 
-    public int valoreTotaleArmaturapg(SchedaPersonaggio scheda){
+    public int valoreTotaleArmaturapg(SchedaPersonaggio scheda) {
         int armatura;
         armatura = scheda.getTotale_armatura_base() + agilitàpg + difesapg;
         return armatura;
     }
-    
+
     public void colpireilNemico() {
 
         int colpire = forzapg + agilitàpg + bonus_colpirepg + (random.nextInt(12) + 1);

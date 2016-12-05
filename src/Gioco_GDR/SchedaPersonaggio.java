@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class SchedaPersonaggio {
 
     private String nome, secondonome, cognome;//stringa nome e cognome
+    private String sesso;
     private int elemento_personaggio;
-    private String elementi_personaggio[] = new String[]{"Fuoco", "Acqua", "Terra", "Aria", "Luce", "Ombra", "Ghiaccio", "Fulmine", "Metallo", "Legno", "Arcano", "Nessuno"};
+    private String elementi_personaggio[] = new String[]{"Fuoco", "Acqua", "Terra", "Aria", "Luce", "Ombra", "Ghiaccio", "Fulmine", "Metallo", "Legno", "Arcano", "Vuoto", "Nessuno"};
     private int forza;
     private int difesa;
     private int intelligenza;
@@ -23,6 +24,9 @@ public class SchedaPersonaggio {
     private int exp;
     private int punti_vita_max;
     private int punti_vita;//attuali
+    private int cariche_magiche_max = 0;
+    private int cariche_tecniche_max = 0;
+    private int cariche_elementali_max = 0;
     private int cariche_magiche = 0;
     private int cariche_tecniche = 0;
     private int cariche_elementali = 0;
@@ -47,17 +51,20 @@ public class SchedaPersonaggio {
     private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
     
     private int talentiAttivi;
+    
+    //private ArrayList<Oggetti> zaino;
+    private int[] zaino;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*private ClasseGioco classe_pg = ClasseGiocop.ClasseArmigero.;
+    private ClasseGioco classe_pg = ClasseGiocop.ClasseArmigero.;
 
     public void setClasse_pg(ClasseGioco classe_pg) {
-        this.classe_pg = classe_pg;
+        this.classe_pg = (ClasseGioco)classe_pg;
     }
 
     public ClasseGioco getClasse_pg() {
         return classe_pg;
-    }*/
+    }
 
     
 
@@ -75,10 +82,14 @@ public class SchedaPersonaggio {
         this.cariche_magiche = 1;
         this.cariche_tecniche = 1;
         this.cariche_elementali = 1;
+        this.cariche_magiche_max = 1;
+        this.cariche_tecniche_max = 1;
+        this.cariche_elementali_max = 1;
         this.talentiAttivi = 1;
         this.totale_armatura_base = 0;
         this.portafoglio = 100;
-        this.elemento_personaggio = 11;
+        this.elemento_personaggio = 12;
+        this.zaino = new int[30];//ArrayList<Oggetti>();
     }
 
     public int getElemento_personaggio() {
@@ -206,6 +217,30 @@ public class SchedaPersonaggio {
         this.cariche_magiche += cariche_magiche;
     }
 
+    public int getCariche_magiche_max() {
+        return cariche_magiche_max;
+    }
+
+    public void setCariche_magiche_max(int cariche_magiche_max) {
+        this.cariche_magiche_max += cariche_magiche_max;
+    }
+
+    public int getCariche_elementali_max() {
+        return cariche_elementali_max;
+    }
+
+    public void setCariche_elementali_max(int cariche_elementali_max) {
+        this.cariche_elementali_max += cariche_elementali_max;
+    }
+
+    public int getCariche_tecniche_max() {
+        return cariche_tecniche_max;
+    }
+
+    public void setCariche_tecniche_max(int cariche_tecniche_max) {
+        this.cariche_tecniche_max += cariche_tecniche_max;
+    }
+        
     public int getCaricheElementali() {
         return cariche_elementali;
     }
@@ -227,7 +262,11 @@ public class SchedaPersonaggio {
     }
 
     public void setPunti_vita(int punti_vita) {
-        this.punti_vita = punti_vita;
+        this.punti_vita += punti_vita;
+    }
+    
+    public void fullPunti_vita(){
+        this.punti_vita = punti_vita_max;
     }
         
     public int getPunti_vita_max() {

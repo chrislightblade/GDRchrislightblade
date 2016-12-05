@@ -226,7 +226,7 @@ public class CreaPersonaggio {
             switch (choice) {
                 case 1://Armigero
                     frase = "Classe dedita al combattimento corpo a corpo, usa la forza, la velocità e l'istinto\nper afforntare i più temibili nemici.";
-                    frase += "Scegliere questa claasse offre un bonus immediato di +2 alla forza,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
+                    frase += "Scegliere questa claasse offre un bonus immediato di +2 alla Forza e +1 alla Costituzione,\nseguito ovviamente dalla scelta dei talenti annessi.\n";
                     break;
 
                 case 2://Magicante
@@ -338,17 +338,17 @@ public class CreaPersonaggio {
             }
             switch (choice) {
                 case 1://assalto
-                    frase = ",\n.";
+                    frase = "Questo talento consente all'armigero di sferrare una attacco fisico con colpire automatico\nche infligge un danno proporzionale alla forza e alla agilità.";
                     frase += ",\n.\n";
                     break;
 
                 case 2://colpo vigoro
-                    frase = ",\n.";
+                    frase = "Un colpo fisico tremendamente violento utilizzabile alcune volte in battaglia\nche basa la sua potenza sulla forza fissica del personaggio.";
                     frase += ",\n.\n";
                     break;
 
                 case 3://incalzare
-                    frase = ",\n.";
+                    frase = "Durante lo scontro, nel caso in cui si sferri un colpo mortale,\nquesto talento consente di sferrare un attaco aggiuntivo,\nsenza attender il prossimo turno.";
                     frase += "\n.\n";
                     break;
 
@@ -446,7 +446,7 @@ public class CreaPersonaggio {
                     break;
 
                 case 4://Potenza Arcana
-                    frase = "";
+                    frase = "Questo talento consente di spendere un certo ammontare di C.M, C.E. o C.T.\nper aumentare la potenza degli incantesimi"; //o aggiungere effetti a questi ultimi";
                     frase += "\n.\n";
                     break;
 
