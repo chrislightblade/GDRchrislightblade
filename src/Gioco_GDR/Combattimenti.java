@@ -5,6 +5,7 @@
  */
 package Gioco_GDR;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,7 +17,9 @@ public class Combattimenti {
     private int valori[] = new int[]{-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     //-4-3-2-1 0 1 2 3 4 5  6  7  8  9 10 11
-    private int forzapg;
+    private SchedaPersonaggio schedaPg;
+    private ArrayList<SchedaMostro> schedaMob;
+    /*private int forzapg;
     private int agilitàpg;
     private int difesapg;
     private int intelligenzapg;
@@ -31,9 +34,9 @@ public class Combattimenti {
     private int totale_armaturapg;
     private int cariche_magiche_maxpg;
     private int cariche_tecniche_maxpg;
-    private int cariche_elementali_maxpg;
+    private int cariche_elementali_maxpg;*/
 
-    private int forza_mostro[] = new int[10];
+    /*private int forza_mostro[] = new int[10];
     private int agilità_mostro[] = new int[10];
     private int difesa_mostro[] = new int[10];
     private int intelligenza_mostro[] = new int[10];
@@ -44,12 +47,19 @@ public class Combattimenti {
     private int cariche_elementali_mostro[] = new int[10];
     private int bonus_colpire_mostro[] = new int[10];
     private int totale_armatura_mostro[] = new int[10];
-    private int danno_arma_mostro[] = new int[10];
+    private int danno_arma_mostro[] = new int[10];*/
 
     Random random = new Random();//uso un dado
 
     public Combattimenti(SchedaPersonaggio scheda) {
-        this.forzapg = scheda.getForza();
+        this.schedaPg = scheda;        
+        this.schedaMob = new ArrayList<SchedaMostro>();
+        int valore = (int) Math.floor(Math.random() * 5);
+        for(int i = 0; i < valore; i++){
+        Mostro mostro = new Mostro();    
+        this.schedaMob.add(mostro);
+        }
+        /*this.forzapg = scheda.getForza();
         this.agilitàpg = scheda.getAgilità();
         this.difesapg = scheda.getDifesa();
         this.intelligenzapg = scheda.getIntelligenza();
@@ -60,7 +70,8 @@ public class Combattimenti {
         this.cariche_elementalipg = scheda.getCaricheMagiche();
         this.cariche_magiche_maxpg = scheda.getCariche_magiche_max();
         this.cariche_tecniche_maxpg = scheda.getCariche_tecniche_max();
-        this.cariche_elementali_maxpg = scheda.getCariche_magiche_max();
+        this.cariche_elementali_maxpg = scheda.getCariche_magiche_max();*/
+        
     }
 
     public int valoreTotaleArmaturapg(SchedaPersonaggio scheda) {

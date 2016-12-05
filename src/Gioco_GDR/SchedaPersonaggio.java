@@ -5,6 +5,7 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Classi.ClasseGioco;
 import java.util.ArrayList;
 /**
  *
@@ -56,7 +57,7 @@ public class SchedaPersonaggio {
     private int[] zaino;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private ClasseGioco classe_pg = ClasseGiocop.ClasseArmigero.;
+    private ClasseGioco classe_pg;
 
     public void setClasse_pg(ClasseGioco classe_pg) {
         this.classe_pg = (ClasseGioco)classe_pg;

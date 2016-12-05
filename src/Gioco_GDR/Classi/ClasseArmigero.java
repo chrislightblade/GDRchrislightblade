@@ -11,9 +11,9 @@ import Gioco_GDR.SchedaPersonaggio;
  *
  * @author tss
  */
-public class ClasseArmigero {
+public class ClasseArmigero extends ClasseGioco{
 
-    private String talenti[] = new String[5];
+    //private String talenti[] = new String[5];
     private int talentoAttivo[] = new int[]{0, 0, 0, 0, 0};
 
     public ClasseArmigero(SchedaPersonaggio scheda) {
@@ -30,13 +30,13 @@ public class ClasseArmigero {
         //int tabellaAssalto[][] = new int[][];
     }
 
-    public int getTalentoAttivo(int i) {
+    /*public int getTalentoAttivo(int i) {
         return talentoAttivo[i];
     }
 
     public void setTalentoAttivo(int talentoAttivo) {
         this.talentoAttivo[talentoAttivo]++;
-    }
+    }*/
 
     public int usaTalento(int i, SchedaPersonaggio scheda) {
 

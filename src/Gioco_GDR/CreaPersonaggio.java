@@ -16,6 +16,9 @@ import javax.swing.JOptionPane;
 public class CreaPersonaggio {
 
     public static void inserisciNome_Cognome(SchedaPersonaggio scheda) {
+        //ClasseArmigero armigero = new ClasseArmigero(scheda);
+        //armigero.
+        
 
         String nome = "Chris";
         //nome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
