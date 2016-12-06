@@ -33,7 +33,7 @@ public class Incantesimi {
     public int dannoIncantesimo(SchedaPersonaggio scheda, SchedaMostro schedamostro, Incantesimi incanto) {
 
         int danno = ((int) Math.floor(Math.random() * incanto.danno)) + 1;
-        double efficacia = efficaciaDanno(scheda.getElemento_personaggio(), schedamostro.getElemento_mostro());
+        double efficacia = efficaciaDanno(scheda.getElemento_personaggio(), schedamostro.getElemento_personaggio());
         danno = (int) (danno * efficacia);
         //int dannofinale = (int)(Math.floor(danno);
         return danno;

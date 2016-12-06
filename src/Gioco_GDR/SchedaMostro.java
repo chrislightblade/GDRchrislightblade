@@ -9,6 +9,11 @@ package Gioco_GDR;
  *
  * @author tss
  */
-public class SchedaMostro {
-    
+public class SchedaMostro extends SchedaPersonaggio {
+
+    private class Goblin {
+        
+
+    }
+
 }

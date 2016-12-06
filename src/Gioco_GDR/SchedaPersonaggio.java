@@ -5,7 +5,10 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Classi.ClasseArmigero;
 import Gioco_GDR.Classi.ClasseGioco;
+import Gioco_GDR.Classi.ClasseMagicante;
+import Gioco_GDR.Classi.ClasseMagoTemporale;
 import java.util.ArrayList;
 /**
  *
@@ -39,10 +42,13 @@ public class SchedaPersonaggio {
     private int perforare = forza + intelligenza;
     //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
     private int portafoglio;
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
     private int classe;
     String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
-
+    private ClasseArmigero classe1;
+    private ClasseMagicante classe2;
+    private ClasseMagoTemporale classe3;
+////////////////////////////////////////////////////////////////////////////////////////////////////////
     //parametri per statistiche
     String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
     //int statistiche_valore[] = new int[statistiche.length];
@@ -117,6 +123,30 @@ public class SchedaPersonaggio {
         return this.classi[this.classe];
     }
 
+    public ClasseArmigero getClasse1() {
+        return classe1;
+    }
+
+    public ClasseMagicante getClasse2() {
+        return classe2;
+    }
+
+    public ClasseMagoTemporale getClasse3() {
+        return classe3;
+    }
+
+    public void setClasse3(ClasseMagoTemporale classe3) {
+        this.classe3 = classe3;
+    }    
+
+    public void setClasse1(ClasseArmigero classe1) {
+        this.classe1 = classe1;
+    }
+
+    public void setClasse2(ClasseMagicante classe2) {
+        this.classe2 = classe2;
+    }    
+    
     public void setRazza(int razza) {
         this.razza = razza;
     }

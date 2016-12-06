@@ -13,7 +13,8 @@ import java.util.Random;
  */
 public class Utility_calcolo_valori {
     
-    
+    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+    //-4-3-2-1 0 1 2 3 4 5  6  7  8  9 10 11
     
     public static int lanciaD(int dado){//Utility_calcolo_valori.lanciaD(int dado);
         Random random = new Random();

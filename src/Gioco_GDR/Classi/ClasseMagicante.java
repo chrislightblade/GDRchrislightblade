@@ -14,9 +14,7 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public class ClasseMagicante extends ClasseGioco{
-
-    String talenti[] = new String[5];
-    private int talentoAttivo[] = new int[]{1, 0, 0, 0, 0};
+    
     ArrayList<Incantesimi> incantesimi;
 
     public ClasseMagicante(SchedaPersonaggio scheda) {
@@ -26,17 +24,19 @@ public class ClasseMagicante extends ClasseGioco{
         this.talenti[2] = "Doppio Lancio";
         this.talenti[3] = "Potenza Arcana";
         this.talenti[4] = "";
+        ClasseMagicante classe = new ClasseMagicante(scheda);
+        scheda.setClasse2(classe);        
         scheda.setIntelligenza(1);
         scheda.setCaricheMagiche(4);
         scheda.setCariche_magiche_max(4);
-        this.incantesimi = new ArrayList<Incantesimi>;
+        this.incantesimi = new ArrayList<Incantesimi>();
         //String talenti[] = new String[]{"Assalto", "Colpo Vigoroso", "Incalzare", "Furia"};
         //int tabellaAssalto[][] = new int[][];
     }
 
     
 
-    public int usaTalento(int i, SchedaPersonaggio scheda) {
+    /*public int usaTalento(int i, SchedaPersonaggio scheda) {
 
         String frase = "Quale talento vuoi utilizzare?";
         //int z = 1;
@@ -46,22 +46,8 @@ public class ClasseMagicante extends ClasseGioco{
             }
         }
 
-        switch (i) {
-            case 1:
-                int bonus = (scheda);
-                return bonus;
-
-            case 2:
-
-            case 3:
-
-            case 4:
-
-            case 5:
-
-        }
-        return 1;
-    }
+        
+    }*/
     
     public void usaOttimizzazione(){
         
