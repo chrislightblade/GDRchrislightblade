@@ -11,9 +11,16 @@ package Gioco_GDR;
  */
 public class SchedaMostro extends SchedaPersonaggio {
 
-    private class Goblin {
-        
-
+    public void creaGoblin(int livello){
+        SchedaPersonaggio goblin = new SchedaPersonaggio();
+        goblin.setLivello(livello);
+        goblin.setForza(6 + (livello%2));
+        goblin.setCostituzione(5 + livello);
+        goblin.setIntelligenza(2);
+        goblin.setAgilità(6 + (livello%3) );
+        goblin.setDifesa(5 + livello);
+        goblin.setTotale_armatura_base(2);
+        goblin.setTotaleArmatura();
+                
     }
-
 }

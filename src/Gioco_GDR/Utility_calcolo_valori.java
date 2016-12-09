@@ -27,4 +27,33 @@ public class Utility_calcolo_valori {
         return valore;
         
     }
+    
+    //Salva i dati della nel file specificato
+public void salvaRub(String nomeFile){
+ObjectOutputStream oss;
+try{
+oss = new ObjectOutputStream(new FileOutputStream(nomeFile));
+oss.writeObject(rubrica);
+oss.close();
+}
+catch(Exception e){
+//messaggio di errore
+}
+} 
+
+Quando invece vuoi caricare da file un oggetto devi usare questo codice
+
+
+//Carica i dati della rubrica dal file specificato
+public void apriRub(String nomeFile){
+rubrica = new Vector();
+ObjectInputStream ois;
+try{
+ois = new ObjectInputStream(new FileInputStream(nomeFile));
+rubrica = (Vector) ois.readObject();
+}
+catch(Exception e){
+//messaggio di errore
+}
+} 
 }

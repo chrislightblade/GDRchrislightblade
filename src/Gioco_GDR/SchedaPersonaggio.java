@@ -6,79 +6,20 @@
 package Gioco_GDR;
 
 import Gioco_GDR.Classi.ClasseArmigero;
-import Gioco_GDR.Classi.ClasseGioco;
+
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseMagoTemporale;
+import Gioco_GDR.Oggetti.Armi.ClasseArma;
+import Gioco_GDR.Oggetti.ClasseOggetto;
 import java.util.ArrayList;
 /**
  *
  * @author tss
  */
 public class SchedaPersonaggio {
-
-    private String nome, secondonome, cognome;//stringa nome e cognome
-    private String sesso;
-    private int elemento_personaggio;
-    private String elementi_personaggio[] = new String[]{"Fuoco", "Acqua", "Terra", "Aria", "Luce", "Ombra", "Ghiaccio", "Fulmine", "Metallo", "Legno", "Arcano", "Vuoto", "Nessuno"};
-    private int forza;
-    private int difesa;
-    private int intelligenza;
-    private int agilità;
-    private int costituzione;
-    private int exp;
-    private int punti_vita_max;
-    private int punti_vita;//attuali
-    private int cariche_magiche_max = 0;
-    private int cariche_tecniche_max = 0;
-    private int cariche_elementali_max = 0;
-    private int cariche_magiche = 0;
-    private int cariche_tecniche = 0;
-    private int cariche_elementali = 0;
-    //int danno_arma = Arma.dannoArma(dado);
-    private int totale_armatura_base;// = difesa + agilità + bonus; // bonus razziali e altro
-    private int valore_difesa_armatura;
-    private int valore_difesa_elmo;
-    private int valore_difesa_guanti;
-    private int perforare = forza + intelligenza;
-    //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
-    private int portafoglio;
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private int classe;
-    String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
-    private ClasseArmigero classe1;
-    private ClasseMagicante classe2;
-    private ClasseMagoTemporale classe3;
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //parametri per statistiche
-    String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
-    //int statistiche_valore[] = new int[statistiche.length];
-
-    //parametri per le razze
-    private int razza;
-    private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
     
-    private int talentiAttivi;
-    
-    //private ArrayList<Oggetti> zaino;
-    private int[] zaino;
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private ClasseGioco classe_pg;
-
-    public void setClasse_pg(ClasseGioco classe_pg) {
-        this.classe_pg = (ClasseGioco)classe_pg;
-    }
-
-    public ClasseGioco getClasse_pg() {
-        return classe_pg;
-    }
-
-    
-
-    
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public SchedaPersonaggio() {
+        this.livello = 1;
         this.razza = -1;
         this.classe = -1;
         this.forza = 0;
@@ -94,71 +35,25 @@ public class SchedaPersonaggio {
         this.cariche_elementali_max = 1;
         this.talentiAttivi = 1;
         this.totale_armatura_base = 0;
+        //this.classe_armatura = 0; 
         this.portafoglio = 100;
         this.elemento_personaggio = 12;
-        this.zaino = new int[30];//ArrayList<Oggetti>();
-    }
-
-    public int getElemento_personaggio() {
-        return elemento_personaggio;
+        //this.zaino = new int[30];//ArrayList<Oggetti>();
     }
     
-    public int getTalentiAttivi() {
-        return talentiAttivi;
-    }    
+    private int livello;    
     
-    public void setTalentiAttivi(int talentiAttivi) {
-        this.talentiAttivi += talentiAttivi;
-    }    
+    public int getLivello() {
+        return livello;
+    }
+
+    public void setLivello(int livello) {
+        this.livello += livello;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private String nome, secondonome, cognome;//stringa nome e cognome
+    private String sesso;
     
-    public int getClasse() {
-        return classe;
-    }
-
-    public void setClasse(int classe) {
-        this.classe = classe;
-    }
-
-    public String getClassi() {
-        return this.classi[this.classe];
-    }
-
-    public ClasseArmigero getClasse1() {
-        return classe1;
-    }
-
-    public ClasseMagicante getClasse2() {
-        return classe2;
-    }
-
-    public ClasseMagoTemporale getClasse3() {
-        return classe3;
-    }
-
-    public void setClasse3(ClasseMagoTemporale classe3) {
-        this.classe3 = classe3;
-    }    
-
-    public void setClasse1(ClasseArmigero classe1) {
-        this.classe1 = classe1;
-    }
-
-    public void setClasse2(ClasseMagicante classe2) {
-        this.classe2 = classe2;
-    }    
-    
-    public void setRazza(int razza) {
-        this.razza = razza;
-    }
-
-    public int getRazza() {
-        return razza;
-    }
-
-    public String getRazzaPersonaggio() {
-        return this.razzaPersonaggio[this.razza];
-    }
-
     public void setNomeCognome(String nome, String secondoNome, String cognome) {
         this.nome = nome;
         this.cognome = cognome;
@@ -176,7 +71,30 @@ public class SchedaPersonaggio {
 
         return NomeCognome;
     }
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private int forza;
+    private int difesa;
+    private int intelligenza;
+    private int agilità;
+    private int costituzione;
+    private int exp;
+    private int punti_vita_max;
+    private int punti_vita;//attuali
+    private int cariche_magiche_max = 0;
+    private int cariche_tecniche_max = 0;
+    private int cariche_elementali_max = 0;
+    private int cariche_magiche = 0;
+    private int cariche_tecniche = 0;
+    private int cariche_elementali = 0;    
+    //int danno_arma = Arma.dannoArma(dado);
+    //private int classe_armatura;
+    private int totale_armatura_base;// bonus razziali e altro
+    //private int valore_difesa_armatura;
+    //private int valore_difesa_elmo;
+    //private int valore_difesa_guanti;
+    private int perforare = forza + intelligenza;
+    //private int danno = Arma.dannoArma(Arma.dado) + forza - 7;
+        
     public int getTotale_armatura_base() {
         return totale_armatura_base;
     }
@@ -233,13 +151,18 @@ public class SchedaPersonaggio {
         this.exp += exp;
     }
 
-    /*public int getTotaleArmatura() {
-        return totale_armatura;
+    public int getTotaleArmatura() {/////////*/*//*/**///*/*/*/*/*/***/*/*/*/*/*/*/*/*/*
+        int classe_armatura;
+        classe_armatura = totale_armatura_base + agilità + difesa;
+        return classe_armatura;
     }
 
-    public void setTotaleArmatura(int totale_armatura) {
-        this.totale_armatura += totale_armatura;
+    /*public void setTotaleArmatura() {
+        int classe_armatura;
+        classe_armatura = totale_armatura_base + agilità + difesa;        
+        this.classe_armatura = classe_armatura;
     }*/
+    
     public int getCaricheMagiche() {
         return cariche_magiche;
     }
@@ -307,5 +230,114 @@ public class SchedaPersonaggio {
     public void setPunti_vita_max(int punti_vita) {
         this.punti_vita_max += punti_vita;
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //parametri per statistiche
+    String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione", "Mod. Exp.", "Punti Vita", "Perforare", "Cariche Magiche", "Cariche Elementali", "Totale Armatura", "Danno Arma"};//Cariche Tecnologiche
+    //int statistiche_valore[] = new int[statistiche.length];
+
+    private int elemento_personaggio;
+    private String elementi_personaggio[] = new String[]{"Fuoco", "Acqua", "Terra", "Aria", "Luce", "Ombra", "Ghiaccio", "Fulmine", "Metallo", "Legno", "Arcano", "Vuoto", "Nessuno"};
     
+    public int getElemento_personaggio() {
+        return elemento_personaggio;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    //parametri per le razze
+    private int razza;
+    private String razzaPersonaggio[] = new String[]{"Umano", "Nano", "Elfo", "Dracolide", "Vergheuden"};//Faithy
+    
+    public void setRazza(int razza) {
+        this.razza = razza;
+    }
+
+    public int getRazza() {
+        return razza;
+    }
+
+    public String getRazzaPersonaggio() {
+        return this.razzaPersonaggio[this.razza];
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private int talentiAttivi;
+    
+    public int getTalentiAttivi() {
+        return talentiAttivi;
+    }    
+    
+    public void setTalentiAttivi(int talentiAttivi) {
+        this.talentiAttivi += talentiAttivi;
+    }
+    
+    private ArrayList<ClasseOggetto> zaino;
+    private ClasseArma ClasseArma[2];// = new ClasseArma();
+    private ClasseElmo ClasseElmo;// = new ClasseElmo();
+    private ClasseGuanti ClasseGuanti;// = new ClasseGuanti();
+    private ClasseScudo ClasseScudo;// = new ClasseScudo();
+    //private ClasseArma ClasseArma;// = new ClasseArma();
+    //private ClasseArma ClasseArma;// = new ClasseArma();    
+    private int portafoglio;
+
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private int classe;
+    String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
+    private ClasseArmigero classe1;
+    private ClasseMagicante classe2;
+    private ClasseMagoTemporale classe3;
+    
+    //private ClasseGioco classe_pg;
+    
+    public int getClasse() {
+        return classe;
+    }
+
+    public void setClasse(int classe) {
+        this.classe = classe;
+    }
+
+    public String getClassi() {
+        return this.classi[this.classe];
+    }
+
+    public ClasseArmigero getClasse1() {
+        return classe1;
+    }
+
+    public ClasseMagicante getClasse2() {
+        return classe2;
+    }
+
+    public ClasseMagoTemporale getClasse3() {
+        return classe3;
+    }
+
+    public void setClasse3(ClasseMagoTemporale classe3) {
+        this.classe3 = classe3;
+    }    
+
+    public void setClasse1(ClasseArmigero classe1) {
+        this.classe1 = classe1;
+    }
+
+    public void setClasse2(ClasseMagicante classe2) {
+        this.classe2 = classe2;
+    }
+
+    /*public void setClasse_pg(ClasseGioco classe_pg) {
+        this.classe_pg = (ClasseGioco)classe_pg;
+    }
+
+    public ClasseGioco getClasse_pg() {
+        return classe_pg;
+    }*/
+
+    
+
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    
+     
 }
