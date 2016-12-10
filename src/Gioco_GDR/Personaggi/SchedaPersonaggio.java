@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gioco_GDR;
+package Gioco_GDR.Personaggi;
 
 import Gioco_GDR.Classi.ClasseArmigero;
 
@@ -17,8 +17,39 @@ import java.util.ArrayList;
  * @author tss
  */
 public class SchedaPersonaggio {
+
+    public SchedaPersonaggio(String nome) {
+        this.nome = nome;
+        this.cognome = "LightBlade";
+        this.secondonome = "Legeth";        
+        //this.ClasseArma[0] = ClasseArma.manoVuota();// = new ClasseArma();
+        //this.ClasseArma[1] = ClasseArma.manoVuota();
+        this.livello = 1;
+        this.razza = 0;
+        this.classe = 1;
+        this.forza = 7;
+        this.difesa = 7;
+        this.intelligenza = 7;
+        this.agilità = 7;
+        this.costituzione = 7;
+        this.cariche_magiche = 1;
+        this.cariche_tecniche = 1;
+        this.cariche_elementali = 1;
+        this.cariche_magiche_max = 1;
+        this.cariche_tecniche_max = 1;
+        this.cariche_elementali_max = 1;
+        this.talentiAttivi = 1;
+        this.totale_armatura_base = 0;
+        //this.classe_armatura = 0; 
+        this.portafoglio = 100;
+        this.elemento_personaggio = 12;
+        //this.zaino = new int[30];//ArrayList<Oggetti>();
+    }   
     
     public SchedaPersonaggio() {
+        //this.ClasseArma[2];// = new ClasseArma[2];
+        //this.ClasseArma[0] = ClasseArma[0].manoVuota();// = new ClasseArma();
+        //this.ClasseArma[1] = ClasseArma[1].manoVuota();
         this.livello = 1;
         this.razza = -1;
         this.classe = -1;
@@ -59,6 +90,10 @@ public class SchedaPersonaggio {
         this.cognome = cognome;
         this.secondonome = secondoNome;
     }
+
+    public String getNome() {
+        return nome;
+    }       
 
     public String getNomeCognome() {
 
@@ -270,11 +305,12 @@ public class SchedaPersonaggio {
         this.talentiAttivi += talentiAttivi;
     }
     
-    private ArrayList<ClasseOggetto> zaino;
-    private ClasseArma ClasseArma[2];// = new ClasseArma();
-    private ClasseElmo ClasseElmo;// = new ClasseElmo();
-    private ClasseGuanti ClasseGuanti;// = new ClasseGuanti();
-    private ClasseScudo ClasseScudo;// = new ClasseScudo();
+    private ArrayList<ClasseOggetto> zaino;    
+    private ClasseArma manoDestra = new ClasseArma(0, 1, "mano", 1, "nessuno");// = new ClasseArma[2];
+    private ClasseArma manoSinistra = new ClasseArma(0, 1, "mano", 1, "nessuno");
+    //private ClasseElmo ClasseElmo;// = new ClasseElmo();
+    //private ClasseGuanti ClasseGuanti;// = new ClasseGuanti();
+    //private ClasseScudo ClasseScudo;// = new ClasseScudo();
     //private ClasseArma ClasseArma;// = new ClasseArma();
     //private ClasseArma ClasseArma;// = new ClasseArma();    
     private int portafoglio;

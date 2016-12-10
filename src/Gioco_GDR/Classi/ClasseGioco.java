@@ -5,7 +5,7 @@
  */
 package Gioco_GDR.Classi;
 
-import Gioco_GDR.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 
 /**
  *
@@ -14,8 +14,13 @@ import Gioco_GDR.SchedaPersonaggio;
 public class ClasseGioco {
 
     //private ClasseGioco classe;
-    String talenti[] = new String[5];
-    int talentoAttivo[] = new int[]{0, 0, 0, 0, 0};
+    String talenti[];// = new String[5];
+    int talentoAttivo[];// = new int[]{0, 0, 0, 0, 0};
+
+    public ClasseGioco() {
+        this.talenti = new String[5];
+        this.talentoAttivo = new int[]{0, 0, 0, 0, 0};
+    }
 
     /*public ClasseGioco(int i, SchedaPersonaggio scheda) {
         if(i == 1)
@@ -38,7 +43,7 @@ public class ClasseGioco {
         this.talentoAttivo[talentoAttivo]++;
     }
     
-    public int usaTalento(int i, SchedaPersonaggio scheda) {
+    /*public int usaTalento(int i, SchedaPersonaggio scheda) {
 
         String frase = "Quale talento vuoi utilizzare?";
         //int z = 1;
@@ -69,8 +74,8 @@ public class ClasseGioco {
         if(scheda.getClasse() == 1){
             switch (i) {
             case 1:
-                int bonus = ;
-                return bonus;
+                //int bonus = ;
+                //return bonus;
 
             case 2:
 
@@ -83,5 +88,5 @@ public class ClasseGioco {
         }
         return 1;
         }
-    }
+    }*/
 }

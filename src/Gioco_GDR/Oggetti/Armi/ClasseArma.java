@@ -29,6 +29,13 @@ public class ClasseArma{
         this.potere = potere;       
     }
     
+    public ClasseArma manoVuota(){
+        
+       ClasseArma manovuota = new ClasseArma(0, 1, "mano", 1, "nessuno");
+       return manovuota;
+        
+    }
+    
     public int dannoArma(){//Arma.dannoArma(int dado);
         int danno = Utility_calcolo_valori.lanciaD(getDado()) + modificatore;
         return danno;

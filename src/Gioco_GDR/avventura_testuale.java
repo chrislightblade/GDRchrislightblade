@@ -5,6 +5,9 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.CreaPersonaggio;
+import Gioco_GDR.Personaggi.CreaNPG;
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseArmigero;
 import javax.swing.JOptionPane;
@@ -39,30 +42,29 @@ public class avventura_testuale {
         if (input.equals("1")) {
 
         } else {// crea una nuova partita*/
-        SchedaPersonaggio scheda = new SchedaPersonaggio();
-        System.out.println("Nome e Cognome personaggio:");
+        SchedaPersonaggio scheda = CreaNPG.creaChris_Armigero();
+        
 
-        CreaPersonaggio.inserisciNome_Cognome(scheda);
-        System.out.println(scheda.getNomeCognome());
+        //CreaPersonaggio.inserisciNome_Cognome(scheda);        
         //scheda.setRazza(0);
-        scheda.setAgilità(7);
-        scheda.setDifesa(7);
-        scheda.setIntelligenza(7);
-        scheda.setForza(7);
-        scheda.setCostituzione(7);
-        CreaPersonaggio.scegliRazza(scheda);
+        //scheda.setAgilità(7);
+        //scheda.setDifesa(7);
+        //scheda.setIntelligenza(7);
+        //scheda.setForza(7);
+        //scheda.setCostituzione(7);
+        //CreaPersonaggio.scegliRazza(scheda);
         //CreaPersonaggio.impostaStatistiche(scheda);
-        CreaPersonaggio.scegliClasse(scheda);
-        if(scheda.getClasse() == 0){
+        //CreaPersonaggio.scegliClasse(scheda);
+        /*if(scheda.getClasse() == 0){
             ClasseArmigero classe = new ClasseArmigero(scheda);
             CreaPersonaggio.scegliTalentiClasseArmigero(scheda, classe);
         }
         if(scheda.getClasse() == 1){
             ClasseMagicante classe = new ClasseMagicante(scheda);
             CreaPersonaggio.scegliTalentiClasseMagicante(scheda, classe);
-        }
+        }*/
         
-        
+        System.out.println("Nome e Cognome personaggio:/n" + scheda.getNomeCognome());
         String statistiche[] = new String[]{"Forza", "Difesa", "Intelligenza", "Agilità", "Costituzione"};
         System.out.println(statistiche[0] + ": " + scheda.getForza());
         System.out.println(statistiche[1] + ": " + scheda.getDifesa());
@@ -81,5 +83,5 @@ public class avventura_testuale {
             for (i = 0; i < 10; i++) {
                 System.out.println(statistiche[i] + " : " + statistiche_valore[i] + "\n");*/
         // }//fine else nuova partita
-    }
+    }    
 }

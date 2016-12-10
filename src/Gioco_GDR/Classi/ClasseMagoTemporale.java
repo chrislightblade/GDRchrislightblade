@@ -5,7 +5,7 @@
  */
 package Gioco_GDR.Classi;
 
-import Gioco_GDR.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import java.util.ArrayList;
 
 /**

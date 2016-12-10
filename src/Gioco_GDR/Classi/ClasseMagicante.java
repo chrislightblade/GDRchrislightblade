@@ -5,7 +5,7 @@
  */
 package Gioco_GDR.Classi;
 
-import Gioco_GDR.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -24,8 +24,8 @@ public class ClasseMagicante extends ClasseGioco{
         this.talenti[2] = "Doppio Lancio";
         this.talenti[3] = "Potenza Arcana";
         this.talenti[4] = "";
-        ClasseMagicante classe = new ClasseMagicante(scheda);
-        scheda.setClasse2(classe);        
+        //ClasseMagicante classe = new ClasseMagicante(scheda);
+        //scheda.setClasse2(classe);        
         scheda.setIntelligenza(1);
         scheda.setCaricheMagiche(4);
         scheda.setCariche_magiche_max(4);

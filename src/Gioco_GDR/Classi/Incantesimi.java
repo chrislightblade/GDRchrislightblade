@@ -5,8 +5,8 @@
  */
 package Gioco_GDR.Classi;
 
-import Gioco_GDR.SchedaMostro;
-import Gioco_GDR.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaMostro;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package Gioco_GDR.Classi;
 
-import Gioco_GDR.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 
 /**
  *
@@ -15,15 +15,14 @@ public class ClasseArmigero extends ClasseGioco{
 
     //private String talenti[] = new String[5];
     
-
     public ClasseArmigero(SchedaPersonaggio scheda) {
         this.talenti[0] = "Assalto";
         this.talenti[1] = "Colpo Vigoroso";
         this.talenti[2] = "Incalzare";//passiva
         this.talenti[3] = "Furia";
         this.talenti[4] = "";
-        ClasseArmigero classe = new ClasseArmigero(scheda);
-        scheda.setClasse1(classe);        
+        //ClasseArmigero classe = new ClasseArmigero(scheda);
+        //scheda.setClasse1(classe);        
         scheda.setForza(2);
         scheda.setCostituzione(1);
         scheda.setPunti_vita_max(20 + (scheda.getCostituzione() - 4));//punti vita a creazione presonaggio

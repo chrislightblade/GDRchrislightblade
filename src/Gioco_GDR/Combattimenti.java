@@ -5,6 +5,8 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
+import Gioco_GDR.Personaggi.SchedaMostro;
 import java.util.ArrayList;
 import java.util.Random;
 

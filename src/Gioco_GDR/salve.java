@@ -5,6 +5,7 @@
  */
 package Gioco_GDR;
 
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import java.util.Random;
 import javax.swing.JOptionPane;
 

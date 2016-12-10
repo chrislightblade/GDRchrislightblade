@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gioco_GDR;
+package Gioco_GDR.Personaggi;
 
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseArmigero;
+import Gioco_GDR.Classi.ClasseGioco;
+import Gioco_GDR.Utility_calcolo_valori;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,22 +18,20 @@ import javax.swing.JOptionPane;
 public class CreaPersonaggio {
 
     public static void inserisciNome_Cognome(SchedaPersonaggio scheda) {
-        //ClasseArmigero armigero = new ClasseArmigero(scheda);
-        //armigero.
-        
-
-        String nome = "Chris";
-        //nome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
-        String secondoNome = "si";//JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
+        //String nome = "Chris";
+        if(!scheda.getNome().equalsIgnoreCase("")){
+        String nome = JOptionPane.showInputDialog("Prego inserisci il nome del personaggio (solo il primo nome):");//inserimento nome pg
+        String secondoNome = JOptionPane.showInputDialog("Desideri inserire un secondo nome? Si o No");
         if (secondoNome.toLowerCase() == "si") {
-            secondoNome = "Legeth";//secondoNome = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
+            secondoNome = JOptionPane.showInputDialog("Prego inserisci il secondo nome del personaggio:");//inserimento secondo nome pg          
 
         } else {
             secondoNome = "";
         }
-        String cognome = "Lightblade";//JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio:\n");//inserimento cognome
+        String cognome = JOptionPane.showInputDialog("Prego inserisci il Cognome del personaggio:\n");//inserimento cognome
 
         scheda.setNomeCognome(nome, secondoNome, cognome);
+    }
 
     }//fine inserisciNome_Cognome
 
@@ -155,11 +155,11 @@ public class CreaPersonaggio {
 
             case 3://dracolide
                 scheda.setForza(1);
-                scheda.setTotaleArmatura(2);
+                scheda.setTotale_armatura_base(2);
                 break;
 
             case 4://vergheuden
-                scheda.setTotaleArmatura(3);
+                scheda.setTotale_armatura_base(3);
                 break;
 
             //case 5: //Faithy    
@@ -206,7 +206,8 @@ public class CreaPersonaggio {
 
         } while (scheda.getClasse() == -1);//while per visualizzare info sulle classi
 
-        //creaClasse(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
+        
+        creaClasse(scheda.getClasse(), scheda);//creo la variabile della classe relativa nella scheda per richiamare le techniche e altre cose;
         System.out.println("Classe Personaggio: " + scheda.getClassi() + "\n");
     }//fine scegliClasse()
 
@@ -266,31 +267,36 @@ public class CreaPersonaggio {
 
     }
 
-    /*public static void creaClasse(int classe, SchedaPersonaggio scheda) {
+    public static void creaClasse(int classe, SchedaPersonaggio scheda) {//crea la classe e la inserisce all'interno della scheda, nello spazio inizializzato apposta
 
+        ClasseGioco classi = new ClasseGioco();
         switch (classe) {
             case 0:
-                ClasseArmigero classepg = new ClasseArmigero(scheda);
-                scheda.setClasse_pg(classepg);
+                //ClasseArmigero classepg = new ClasseArmigero(scheda);
+                classi = new ClasseArmigero(scheda);                 
+                //scheda.setClasse1(classepg);
+                scheda.setClasse1((ClasseArmigero) classi);
                 break;
 
             case 1:
-                ClasseMagicante classepg2 = new ClasseMagicante(scheda);
-                scheda.setClasse_pg(classepg2);
+                //ClasseMagicante classepg2 = new ClasseMagicante(scheda);
+                classi = new ClasseMagicante(scheda);
+                scheda.setClasse2((ClasseMagicante) classi);
                 break;
 
         }
         
-    }*/
-    public static void scegliTalentiClasseArmigero(SchedaPersonaggio scheda, ClasseArmigero classe_pg) {
+    }
+    
+    public static void scegliTalentiClasseArmigero(SchedaPersonaggio scheda) {
         int j = 0;
         while (j < scheda.getTalentiAttivi()) {//1 giro normalmente, 2 se umano
             String frase;
             frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\n";
 
             for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
-                if (classe_pg.getTalentoAttivo(i) == 0) {
-                    frase += (i + 1) + "." + classe_pg.getTalenti(i) + "\n";
+                if (scheda.getClasse1().getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + scheda.getClasse1().getTalenti(i) + "\n";
                 }
             }
 
@@ -306,7 +312,7 @@ public class CreaPersonaggio {
 
                     int input2 = Integer.parseInt(report2);
                     if (input2 > 0 && input2 < 6) {
-                        classe_pg.setTalentoAttivo(input2 - 1);
+                        scheda.getClasse1().setTalentoAttivo(input2 - 1);
                         verifica = true;
                         j++;
                     } else {
@@ -375,15 +381,15 @@ public class CreaPersonaggio {
         }
     }
 
-    public static void scegliTalentiClasseMagicante(SchedaPersonaggio scheda, ClasseMagicante classe_pg) {
+    public static void scegliTalentiClasseMagicante(SchedaPersonaggio scheda) {
         int j = 0;
         while (j < scheda.getTalentiAttivi()) {//1 giro normalmente, 2 se umano
             String frase;
             frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\nIl talento 'Ricarica' è già attivo";
 
             for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
-                if (classe_pg.getTalentoAttivo(i) == 0) {
-                    frase += (i + 1) + "." + classe_pg.getTalenti(i) + "\n";
+                if (scheda.getClasse2().getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + scheda.getClasse2().getTalenti(i) + "\n";
                 }
             }
 
@@ -399,7 +405,7 @@ public class CreaPersonaggio {
 
                     int input2 = Integer.parseInt(report2);
                     if (input2 > 0 && input2 < 6) {
-                        classe_pg.setTalentoAttivo(input2 - 1);
+                        scheda.getClasse2().setTalentoAttivo(input2 - 1);
                         verifica = true;
                         j++;
                     } else {
