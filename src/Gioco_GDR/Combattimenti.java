@@ -9,91 +9,124 @@ import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import Gioco_GDR.Personaggi.SchedaMostro;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
+ *
+ * creare un metodo che tenga dell'attributo elementale dell'arma usata creare
+ * metodo che colpisce con incantesimo
  *
  * @author Administrator
  */
 public class Combattimenti {
 
-    private int valori[] = new int[]{-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    //private int valori[] = new int[]{-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     //-4-3-2-1 0 1 2 3 4 5  6  7  8  9 10 11
-    private SchedaPersonaggio schedaPg;
-    private ArrayList<SchedaMostro> schedaMob;
-    /*private int forzapg;
-    private int agilitàpg;
-    private int difesapg;
-    private int intelligenzapg;
-    private int costituzionepg;
-    private int punti_vitapg;
-    private int cariche_magichepg;
-    private int cariche_tecnichepg;
-    private int cariche_elementalipg;
-    //private int perforarepg = personaggio.perforare;
-    private int bonus_colpirepg;
-    private int danno_armapg;
-    private int totale_armaturapg;
-    private int cariche_magiche_maxpg;
-    private int cariche_tecniche_maxpg;
-    private int cariche_elementali_maxpg;*/
+    private ArrayList<SchedaPersonaggio> schedaPgs = new ArrayList<SchedaPersonaggio>();
+    private ArrayList<SchedaPersonaggio> schedaMobs = new ArrayList<SchedaPersonaggio>();
+    private ArrayList<SchedaPersonaggio> ordineBattaglia = new ArrayList<SchedaPersonaggio>();
 
-    /*private int forza_mostro[] = new int[10];
-    private int agilità_mostro[] = new int[10];
-    private int difesa_mostro[] = new int[10];
-    private int intelligenza_mostro[] = new int[10];
-    private int costituzione_mostro[] = new int[10];
-    private int punti_vita_mostro[] = new int[10];
-    private int cariche_magiche_mostro[] = new int[10];
-    private int cariche_tecniche_mostro[] = new int[10];
-    private int cariche_elementali_mostro[] = new int[10];
-    private int bonus_colpire_mostro[] = new int[10];
-    private int totale_armatura_mostro[] = new int[10];
-    private int danno_arma_mostro[] = new int[10];*/
+    public void setSchedaPgs(SchedaPersonaggio scheda) {
+        schedaPgs.add(scheda);
+    }
 
-    Random random = new Random();//uso un dado
+    public void setSchedaMobs(SchedaPersonaggio scheda) {
+        schedaMobs.add(scheda);
+    }
 
-    public Combattimenti(SchedaPersonaggio scheda) {
-        this.schedaPg = scheda;        
-        this.schedaMob = new ArrayList<SchedaMostro>();
-        int valore = (int) Math.floor(Math.random() * 5);
-        for(int i = 0; i < valore; i++){
-        Mostro mostro = new Mostro();    
-        this.schedaMob.add(mostro);
+    public void battaglia() {
+        ordineBattaglia();
+        boolean control = true;
+        int i = 0;
+        int dado = schedaMobs.size();
+        while (control == true) {
+            String report = "E' il turno di " + ordineBattaglia.get(i).getNome() + "\n";
+            //JOptionPane.showMessageDialog(null, report);
+            System.out.println(report);
+            if (ordineBattaglia.get(i).getNome().equalsIgnoreCase("chris")) {
+                int valore = Utility_calcolo_valori.lanciaD(dado) - 1;
+                colpireConArma(ordineBattaglia.get(i), schedaMobs.get(valore));
+                if (schedaMobs.get(valore).getPunti_vita() <= 0) {
+                    System.out.println(schedaMobs.get(valore).getNome() + " è esausto\n");
+                    int j = 0;
+                    for (j = 0; j < ordineBattaglia.size(); j++) {
+                        if (schedaMobs.get(valore).getNome().equalsIgnoreCase(ordineBattaglia.get(i).getNome())) {
+                            ordineBattaglia.remove(j);
+                            schedaMobs.remove(valore);
+                            dado--;
+                            if (dado == 0) {
+                                control = false;
+                            }
+                        }
+                    }
+
+                }
+            } else {
+                colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
+                if (schedaPgs.get(0).getPunti_vita() <= 0) {
+                    System.out.println(schedaPgs.get(0).getNome() + " è esausto\n");
+                    ordineBattaglia.remove(0);                    
+                    control = false;
+                }
+            }
+            i++;
+            if (i == ordineBattaglia.size()) {
+                i = 0;
+            }
         }
-        /*this.forzapg = scheda.getForza();
-        this.agilitàpg = scheda.getAgilità();
-        this.difesapg = scheda.getDifesa();
-        this.intelligenzapg = scheda.getIntelligenza();
-        this.costituzionepg = scheda.getCostituzione();
-        this.punti_vitapg = scheda.getPunti_vita();
-        this.cariche_magichepg = scheda.getCaricheMagiche();
-        this.cariche_tecnichepg = scheda.getCaricheTecniche();
-        this.cariche_elementalipg = scheda.getCaricheMagiche();
-        this.cariche_magiche_maxpg = scheda.getCariche_magiche_max();
-        this.cariche_tecniche_maxpg = scheda.getCariche_tecniche_max();
-        this.cariche_elementali_maxpg = scheda.getCariche_magiche_max();*/
-        
-    }
-
-    public int valoreTotaleArmaturapg(SchedaPersonaggio scheda) {
-        int armatura;
-        armatura = scheda.getTotale_armatura_base() + agilitàpg + difesapg;
-        return armatura;
-    }
-
-    public void colpireilNemico() {
-
-        int colpire = forzapg + agilitàpg + bonus_colpirepg + (random.nextInt(12) + 1);
-        int difendere = difesa_mostro[0] + agilità_mostro[0] + totale_armatura_mostro[0] + (random.nextInt(12) + 1);
-
-        if (colpire > difendere) {
-            int danno = danno_armapg + (forzapg - 4);
-            punti_vita_mostro -= danno;
+        if (schedaPgs.get(0).getPunti_vita() > 0) {
+            System.out.println("Hai vinto!");
+        } else {
+            System.out.println("Hai peros!");
         }
     }
 
-    private void colpiredelNemico(SchedaPersonaggio scheda) {
+    public void ordineBattaglia() {//metodo che definisce l'ordine dei turni in base all'agilità dei personaggi
+        ArrayList<SchedaPersonaggio> scheda_tmp = new ArrayList<SchedaPersonaggio>();
+        //ArrayList<SchedaPersonaggio> schedaMobs_tmp = new ArrayList<SchedaPersonaggio>();
+        for (int i = 0; i < schedaPgs.size(); i++) {
+            scheda_tmp.add(schedaPgs.get(i));
+        }
+        for (int i = 0; i < schedaMobs.size(); i++) {
+            scheda_tmp.add(schedaMobs.get(i));
+        }
+        int index;
+        int durata = scheda_tmp.size();
+        for (int i = 0; i < durata; i++) {
+            index = 0;
+            for (int j = 0; j < scheda_tmp.size(); j++) {
+                if (scheda_tmp.get(index).getAgilità() > scheda_tmp.get(j).getAgilità()) {//uso l'index per creare l'arraylist dell'ordine turno
+                    index = j;
+                }
+                ordineBattaglia.add(scheda_tmp.get(index));
+                scheda_tmp.remove(index);
+            }
+        }
+    }
+
+    public void colpireConArma(SchedaPersonaggio p1, SchedaPersonaggio p2) {//calcolo il danno del colpo inferto e ne sottraggo il valore alla vita del bersaglio
+
+        int colpire = p1.getForza() + p1.getIntelligenza() + Utility_calcolo_valori.lanciaD(12);
+        int difendere = p2.getTotaleArmatura() + Utility_calcolo_valori.lanciaD(12);
+
+        if (colpire >= difendere) {
+
+            int danno = p1.getManoDestra().dannoArma(p1.getForza());
+            //if (p1.getManoDestra().getAttributo() != 12) {
+            //}
+            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
+            p2.setPunti_vita(-danno);
+        } else {
+            System.out.println("\nMancato!");
+        }
+    }
+
+    public void colpireConIncantesimo(SchedaPersonaggio p1, SchedaPersonaggio p2) {
+
+    }
+
+    /*private void colpiredelNemico(SchedaPersonaggio scheda) {
 
         int difendere = valoreTotaleArmaturapg(scheda) + (random.nextInt(20) + 1);
         int colpire = forza_mostro[0] + intelligenza_mostro[0] + bonus_colpire_mostro[0] + (random.nextInt(20) + 1);
@@ -102,6 +135,5 @@ public class Combattimenti {
             int danno = danno_arma_mostro[0] + forza_mostro[0] - 4;
             punti_vitapg -= danno;
         }
-    }
-
+    }*/
 }

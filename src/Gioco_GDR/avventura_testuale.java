@@ -10,13 +10,13 @@ import Gioco_GDR.Personaggi.CreaPersonaggio;
 import Gioco_GDR.Personaggi.CreaNPG;
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseArmigero;
+import Gioco_GDR.Personaggi.SchedaMostro;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
- * cose da fare: implementare nella scelta stat la possibilità di ridistribuire
- * i parametri (gli stessi, salvare gli array in altri array) usare intelligenza
+ * usare intelligenza
  * nel colpire se si ha competenza nell'arma ( il bonus agilità è solo
  * "modificatore"
  *
@@ -42,16 +42,8 @@ public class avventura_testuale {
         if (input.equals("1")) {
 
         } else {// crea una nuova partita*/
-        SchedaPersonaggio scheda = CreaNPG.creaChris_Armigero();
         
-
-        //CreaPersonaggio.inserisciNome_Cognome(scheda);        
-        //scheda.setRazza(0);
-        //scheda.setAgilità(7);
-        //scheda.setDifesa(7);
-        //scheda.setIntelligenza(7);
-        //scheda.setForza(7);
-        //scheda.setCostituzione(7);
+        //CreaPersonaggio.inserisciNome_Cognome(scheda);       
         //CreaPersonaggio.scegliRazza(scheda);
         //CreaPersonaggio.impostaStatistiche(scheda);
         //CreaPersonaggio.scegliClasse(scheda);

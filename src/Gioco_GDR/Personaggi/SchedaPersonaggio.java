@@ -186,7 +186,7 @@ public class SchedaPersonaggio {
         this.exp += exp;
     }
 
-    public int getTotaleArmatura() {/////////*/*//*/**///*/*/*/*/*/***/*/*/*/*/*/*/*/*/*
+    public int getTotaleArmatura() {
         int classe_armatura;
         classe_armatura = totale_armatura_base + agilità + difesa;
         return classe_armatura;
@@ -306,14 +306,24 @@ public class SchedaPersonaggio {
     }
     
     private ArrayList<ClasseOggetto> zaino;    
-    private ClasseArma manoDestra = new ClasseArma(0, 1, "mano", 1, "nessuno");// = new ClasseArma[2];
-    private ClasseArma manoSinistra = new ClasseArma(0, 1, "mano", 1, "nessuno");
+    private ClasseArma manoDestra = new ClasseArma(0, 1, "mano", 1, "nessuno", 12);// = new ClasseArma[2];
+    private ClasseArma manoSinistra = new ClasseArma(0, 1, "mano", 1, "nessuno", 12);
     //private ClasseElmo ClasseElmo;// = new ClasseElmo();
     //private ClasseGuanti ClasseGuanti;// = new ClasseGuanti();
     //private ClasseScudo ClasseScudo;// = new ClasseScudo();
     //private ClasseArma ClasseArma;// = new ClasseArma();
     //private ClasseArma ClasseArma;// = new ClasseArma();    
     private int portafoglio;
+
+    public ClasseArma getManoDestra() {
+        return manoDestra;
+    }
+
+    public ClasseArma getManoSinistra() {
+        return manoSinistra;
+    }
+    
+    
 
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////

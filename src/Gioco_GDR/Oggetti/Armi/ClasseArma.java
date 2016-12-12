@@ -6,10 +6,14 @@
 package Gioco_GDR.Oggetti.Armi;
 
 import Gioco_GDR.Oggetti.ClasseOggetto;
+import Gioco_GDR.Personaggi.SchedaMostro;
+import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import Gioco_GDR.Utility_calcolo_valori;
 
 /**
  *
+ * il dannoArma nel bisogno si fa un @override per specificarlo a seconda dell'arma
+ * 
  * @author Administrator
  */
 public class ClasseArma{
@@ -20,27 +24,37 @@ public class ClasseArma{
     private String categoria;//spada, spadone, martello, martello pesante, ascia, ascia pesante, arco, arco lungo, coltello, daga / verga, bastone da mago
     private int maniOccupate;
     private String potere;
+    private int attributo;
     
-    public ClasseArma(int modificatore, int dado, String categoria, int maniOccupate, String potere){
+    public ClasseArma(int modificatore, int dado, String categoria, int maniOccupate, String potere, int attributo){
         this.modificatore = modificatore;
         this.dado = dado + (modificatore * 2);
         this.categoria = categoria;
         this.maniOccupate = maniOccupate;
         this.potere = potere;       
+        this.attributo = attributo;
     }
     
     public ClasseArma manoVuota(){
         
-       ClasseArma manovuota = new ClasseArma(0, 1, "mano", 1, "nessuno");
+       ClasseArma manovuota = new ClasseArma(0, 1, "mano", 1, "nessuno", );
        return manovuota;
         
     }
     
-    public int dannoArma(){//Arma.dannoArma(int dado);
-        int danno = Utility_calcolo_valori.lanciaD(getDado()) + modificatore;
+    public int dannoArma(int forza){//Arma.dannoArma(int dado);
+        int danno = Utility_calcolo_valori.lanciaD(getDado()) + modificatore  + (forza - 4);
         return danno;
     }
 
+    public int getAttributo() {
+        return attributo;
+    }
+
+    public void setAttributo(int attributo) {
+        this.attributo = attributo;
+    }    
+    
     public String getCategoria() {
         return categoria;
     }
