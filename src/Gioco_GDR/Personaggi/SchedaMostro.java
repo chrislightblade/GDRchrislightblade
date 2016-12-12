@@ -13,7 +13,7 @@ public class SchedaMostro /*extends SchedaPersonaggio*/ {
 
     public static SchedaPersonaggio creaGoblin(int livello, int numero){
         SchedaPersonaggio goblin = new SchedaPersonaggio();
-        goblin.setLivello(livello);
+        goblin.setLivello(livello-1);
         goblin.setForza(6 + (livello%2));
         goblin.setCostituzione(5 + livello);
         goblin.setIntelligenza(2);

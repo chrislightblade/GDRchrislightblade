@@ -36,13 +36,13 @@ public class Combattimenti {
     }
 
     public void battagliaCasuale() {
-        
+
         boolean control = true;
         int i = 0;//per estrarre in ordine i personaggi dall'arraylist dei turni
         int dado = schedaMobs.size();//dado che consente di sceglier eun nemico casuale per il simulatore casuale
         while (control == true) {
             ordineBattaglia();
-            String report = "E' il turno di " + ordineBattaglia.get(i).getNome() + "\n";
+            String report = "E' il turno di " + ordineBattaglia.get(i).getNome();
             //JOptionPane.showMessageDialog(null, report);
             System.out.println(report);
             if (ordineBattaglia.get(i).getNome().equalsIgnoreCase("chris")) {
@@ -50,14 +50,15 @@ public class Combattimenti {
                 colpireConArma(ordineBattaglia.get(i), schedaMobs.get(valore));
                 if (checkSopravvivenza(schedaMobs.get(valore))) {
                     dado--;
-                }
-                if (dado == 0) {
+                    if (dado == 0) {
                     control = false;
-                } else {
-                    colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
-                    if (checkSopravvivenza(schedaPgs.get(0))) {
-                        control = false;
-                    }
+                }
+                }
+                
+            } else {
+                colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
+                if (checkSopravvivenza(schedaPgs.get(0))) {
+                    control = false;
                 }
             }
             i++;
@@ -74,9 +75,10 @@ public class Combattimenti {
     }
 
     public void ordineBattaglia() {//metodo che definisce l'ordine dei turni in base all'agilità dei personaggi
+        ordineBattaglia.clear();
         ArrayList<SchedaPersonaggio> scheda_tmp = new ArrayList<SchedaPersonaggio>();
         //ArrayList<SchedaPersonaggio> schedaMobs_tmp = new ArrayList<SchedaPersonaggio>();
-        String report = "L'ordine di battaglia è: \n";
+        String report = "\nL'ordine di battaglia è: \n";
         for (int i = 0; i < schedaPgs.size(); i++) {
             scheda_tmp.add(schedaPgs.get(i));
         }
@@ -109,8 +111,9 @@ public class Combattimenti {
             int danno = p1.getManoDestra().dannoArma(p1.getForza());
             //if (p1.getManoDestra().getAttributo() != 12) {
             //}
-            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
             p2.setPunti_vita(-danno);
+            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
+            
         } else {
             System.out.println("\nMancato!");
         }
@@ -118,12 +121,13 @@ public class Combattimenti {
 
     public boolean checkSopravvivenza(SchedaPersonaggio p2) {
 
-        if (p2.getPunti_vita() <= 0) {
+        int pv = p2.getPunti_vita();
+        if (pv <= 0) {
             System.out.println(p2.getNome() + " è esausto\n");
             int j = 0;
             for (j = 0; j < ordineBattaglia.size(); j++) {
                 if (p2.getNome().equalsIgnoreCase(ordineBattaglia.get(j).getNome())) {
-                    ordineBattaglia.remove(j);
+                    //ordineBattaglia.remove(j);
                     for (int i = 0; i < schedaMobs.size(); i++) {
                         if (p2.getNome().equalsIgnoreCase(schedaMobs.get(i).getNome())) {
                             schedaMobs.remove(i);
