@@ -21,8 +21,8 @@ public class CreaNPG {
         chris.setClasse1(armigero);
         chris.getClasse1().setTalentoAttivo(1);
         chris.getClasse1().setTalentoAttivo(2);
-        chris.setPunti_vita(100);
-        chris.setPunti_vita_max(100);
+        //chris.setPunti_vita(100);
+        //chris.setPunti_vita_max(100);
         return chris;
     }
 

@@ -25,12 +25,12 @@ public class salve {
         SchedaPersonaggio scheda = CreaNPG.creaChris_Armigero();
         Combattimenti combat = new Combattimenti();
         combat.setSchedaPgs(scheda);
-        SchedaPersonaggio scheda1 = SchedaMostro.creaGoblin(1, 1);
-        SchedaPersonaggio scheda2 = SchedaMostro.creaGoblin(1, 2);
-        SchedaPersonaggio scheda3 = SchedaMostro.creaGoblin(1, 3);
+        SchedaPersonaggio scheda1 = SchedaMostro.creaGoblin(0, 1);
+        SchedaPersonaggio scheda2 = SchedaMostro.creaGoblin(0, 2);
+        SchedaPersonaggio scheda3 = SchedaMostro.creaGoblin(0, 3);        
         combat.setSchedaMobs(scheda1);
         combat.setSchedaMobs(scheda2);
         combat.setSchedaMobs(scheda3);
-        combat.battaglia();
+        combat.battagliaCasuale();
     }
 }
