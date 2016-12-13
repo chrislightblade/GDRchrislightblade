@@ -275,13 +275,13 @@ public class CreaPersonaggio {
                 //ClasseArmigero classepg = new ClasseArmigero(scheda);
                 classi = new ClasseArmigero(scheda);                 
                 //scheda.setClasse1(classepg);
-                scheda.setClasse1((ClasseArmigero) classi);
+                scheda.setClasses(classi);
                 break;
 
             case 1:
                 //ClasseMagicante classepg2 = new ClasseMagicante(scheda);
                 classi = new ClasseMagicante(scheda);
-                scheda.setClasse2((ClasseMagicante) classi);
+                scheda.setClasses(classi);
                 break;
 
         }
@@ -295,8 +295,8 @@ public class CreaPersonaggio {
             frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\n";
 
             for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
-                if (scheda.getClasse1().getTalentoAttivo(i) == 0) {
-                    frase += (i + 1) + "." + scheda.getClasse1().getTalenti(i) + "\n";
+                if (scheda.getClasses().getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + scheda.getClasses().getTalenti(i) + "\n";
                 }
             }
 
@@ -312,7 +312,7 @@ public class CreaPersonaggio {
 
                     int input2 = Integer.parseInt(report2);
                     if (input2 > 0 && input2 < 6) {
-                        scheda.getClasse1().setTalentoAttivo(input2 - 1);
+                        scheda.getClasses().setTalentoAttivo(input2 - 1);
                         verifica = true;
                         j++;
                     } else {
@@ -388,8 +388,8 @@ public class CreaPersonaggio {
             frase = "Puoi scegliere " + scheda.getTalentiAttivi() + " talento/i di classe.\nIl talento 'Ricarica' è già attivo";
 
             for (int i = 0; i < 4; i++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 0.
-                if (scheda.getClasse2().getTalentoAttivo(i) == 0) {
-                    frase += (i + 1) + "." + scheda.getClasse2().getTalenti(i) + "\n";
+                if (scheda.getClasses().getTalentoAttivo(i) == 0) {
+                    frase += (i + 1) + "." + scheda.getClasses().getTalenti(i) + "\n";
                 }
             }
 
@@ -405,7 +405,7 @@ public class CreaPersonaggio {
 
                     int input2 = Integer.parseInt(report2);
                     if (input2 > 0 && input2 < 6) {
-                        scheda.getClasse2().setTalentoAttivo(input2 - 1);
+                        scheda.getClasses().setTalentoAttivo(input2 - 1);
                         verifica = true;
                         j++;
                     } else {

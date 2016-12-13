@@ -20,9 +20,9 @@ public class CreaNPG {
         SchedaPersonaggio chris = new SchedaPersonaggio("Chris");
         valoriRazza(chris);
         ClasseArmigero armigero = new ClasseArmigero(chris);
-        chris.setClasse1(armigero);
-        chris.getClasse1().setTalentoAttivo(1);
-        chris.getClasse1().setTalentoAttivo(2);
+        chris.setClasses(/*(ClasseGioco) */armigero);
+        chris.getClasses().setTalentoAttivo(1);
+        chris.getClasses().setTalentoAttivo(2);
         chris.setManoDestra(ClasseSpada.creaSpadaSemplice(1));
         //chris.setPunti_vita(100);
         //chris.setPunti_vita_max(100);

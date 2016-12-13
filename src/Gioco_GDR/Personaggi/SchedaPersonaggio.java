@@ -6,6 +6,7 @@
 package Gioco_GDR.Personaggi;
 
 import Gioco_GDR.Classi.ClasseArmigero;
+import Gioco_GDR.Classi.ClasseGioco;
 
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseMagoTemporale;
@@ -337,12 +338,21 @@ public class SchedaPersonaggio {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     private int classe;
     String classi[] = new String[]{"Armigero", "Magicante", "Shadow", "Elementalista"};//4
-    private ClasseArmigero classe1;
+    private ClasseGioco classes;
+    /*private ClasseArmigero classe1;
     private ClasseMagicante classe2;
-    private ClasseMagoTemporale classe3;
+    private ClasseMagoTemporale classe3;*/
     
     //private ClasseGioco classe_pg;
-    
+
+    public ClasseGioco getClasses() {
+        return classes;
+    }
+
+    public void setClasses(ClasseGioco classes) {
+        this.classes = classes;
+    }
+        
     public int getClasse() {
         return classe;
     }
@@ -355,7 +365,7 @@ public class SchedaPersonaggio {
         return this.classi[this.classe];
     }
 
-    public ClasseArmigero getClasse1() {
+    /*public ClasseArmigero getClasse1() {
         return classe1;
     }
 
@@ -379,7 +389,7 @@ public class SchedaPersonaggio {
         this.classe2 = classe2;
     }
 
-    /*public void setClasse_pg(ClasseGioco classe_pg) {
+    public void setClasse_pg(ClasseGioco classe_pg) {
         this.classe_pg = (ClasseGioco)classe_pg;
     }
 

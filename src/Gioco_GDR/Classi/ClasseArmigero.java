@@ -51,9 +51,9 @@ public class ClasseArmigero extends ClasseGioco{
         return 1;
     }
     
-    public int colpoVigoroso (SchedaPersonaggio scheda, int dannoattacco){
-        int danno = 0;
-        danno = dannoattacco * (scheda.getForza() - 4);        
+    public int colpoVigoroso (SchedaPersonaggio scheda){
+        int danno = scheda.getManoDestra().dannoArma(scheda.getForza());
+        danno = danno * (scheda.getForza() - 4);        
         return danno;
     }
     
@@ -65,8 +65,6 @@ public class ClasseArmigero extends ClasseGioco{
         
     }
 
-    public String getTalenti(int i) {
-        return talenti[i];
-    }
+    
 
 }

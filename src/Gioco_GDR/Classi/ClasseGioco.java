@@ -6,6 +6,8 @@
 package Gioco_GDR.Classi;
 
 import Gioco_GDR.Personaggi.SchedaPersonaggio;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,14 +28,16 @@ public class ClasseGioco {
         if(i == 1)
           ClasseGioco.ClasseArmigero a = new ClasseGioco.ClasseArmigero(scheda);  
     }*/
-    
-    /*public ClasseGioco getClasse() {
+ /*public ClasseGioco getClasse() {
         return classe;
     }
 
     public void setClasse(ClasseGioco classe) {
         this.classe = classe;
     }*/
+    public String getTalenti(int i) {
+        return talenti[i];
+    }
     
     public int getTalentoAttivo(int i) {
         return talentoAttivo[i];
@@ -42,32 +46,79 @@ public class ClasseGioco {
     public void setTalentoAttivo(int talentoAttivo) {
         this.talentoAttivo[talentoAttivo]++;
     }
-    
-    public int usaTalento(int i, SchedaPersonaggio scheda) {
 
-        String frase = "Quale talento vuoi utilizzare?";
+    public void usaTalento(SchedaPersonaggio scheda1, ArrayList<SchedaPersonaggio> schedaMobs) {
+
+        ClasseArmigero classe = (ClasseArmigero) scheda1.getClasses();//casting iniziale per poter usare i talenti della classe
+        //ClasseMagicante classe1 = (ClasseMagicante) scheda1.getClasses();//casting iniziale per poter usare i talenti della classe
+        String report = "";
+        String frase = "Quale talento vuoi utilizzare?\n";
         //int z = 1;
         for (int k = 0; k < 5; k++) {// i talenti non ancora attivi e funzionanti hanno valore 0, mentre quelli attivi hanno valore 1. Stampo gli 1
             if (talentoAttivo[k] == 1) {
                 frase += (k + 1) + "." + talenti[k] + "\n";
             }
         }
-        if(scheda.getClasse() == 0){
 
-        switch (i) {
-            case 1:
-                //int bonus = scheda.getClasse1().usaAssalto(scheda);//ClasseArmigero.usaAssalto(scheda);
-                return scheda.getClasse1().colpoVigoroso (scheda, scheda.getManoDestra().dannoArma(scheda.getForza()));
+        
+        int scegli = 0;
 
-            case 2:
+        boolean verifica = false;
+        while (verifica == false) {
 
-            case 3:
+            report = JOptionPane.showInputDialog(frase);
 
-            case 4:
+            try {
+                scegli = Integer.parseInt(report);
+                if (scegli < 6 && scegli > 0) {
+                    verifica = true;
+                }
 
-            case 5:
+            } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+            }
+        }//fine while controllo inserimento
+
+        for (int j = 0; j < schedaMobs.size(); j++) {//stampa una String con i nomi dei nemici tra cui scegliere
+            report += (j + 1) + "." + schedaMobs.get(j).getNome() + "\n";
+        }
+        int inputI = 0;
+        verifica = false;
+        while (verifica == false) {
+
+            String input = JOptionPane.showInputDialog("\nChi desideri colpire?\n" + report);
+
+            try {
+                inputI = Integer.parseInt(input) - 1;
+                if (inputI < schedaMobs.size() && inputI >= 0) {
+                    verifica = true;
+                }
+            } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+            }
+        }//fine while controllo inserimento
+
+        if (scheda1.getClasse() == 0) {
+
+            switch (scegli) {
+                
+                case 1:
+                    
+                case 2:
+                    //int bonus = scheda.getClasse1().usaAssalto(scheda);//ClasseArmigero.usaAssalto(scheda);
+                    int danno = classe.colpoVigoroso(scheda1);
+                    schedaMobs.get(inputI).setPunti_vita(-danno);
+                    System.out.println("\nColpito! Danno inferto " + danno + " da " + scheda1.getNome() + " a " + schedaMobs.get(inputI).getNome() + "\nPunti vita residui " + schedaMobs.get(inputI).getPunti_vita() + "\n");
+                    break;
+                
+                case 3:
+
+                case 4:
+
+                case 5:
+
+            }
 
         }
-        
     }
 }

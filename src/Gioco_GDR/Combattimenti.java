@@ -51,10 +51,10 @@ public class Combattimenti {
                 if (checkSopravvivenza(schedaMobs.get(valore))) {
                     dado--;
                     if (dado == 0) {
-                    control = false;
+                        control = false;
+                    }
                 }
-                }
-                
+
             } else {
                 colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
                 if (checkSopravvivenza(schedaPgs.get(0))) {
@@ -73,10 +73,12 @@ public class Combattimenti {
         }
 
     }
-    
+
     public void battaglia() {
 
         boolean control = true;
+        int inputI2 = 0;
+        int inputI = 0;
         int i = 0;//per estrarre in ordine i personaggi dall'arraylist dei turni
         int dado = schedaMobs.size();//dado che consente di sceglier eun nemico casuale per il simulatore casuale
         while (control == true) {
@@ -84,30 +86,42 @@ public class Combattimenti {
             String report = "E' il turno di " + ordineBattaglia.get(i).getNome();
             //JOptionPane.showMessageDialog(null, report);
             System.out.println(report);
-            if (ordineBattaglia.get(i).getNome().equalsIgnoreCase(schedaPgs.get(0).getNome())) {
+            if (ordineBattaglia.get(i).getNome().equalsIgnoreCase(schedaPgs.get(0).getNome())) {//se tocca al giocatore attivo
                 //int valore = Utility_calcolo_valori.lanciaD(dado) - 1;
                 report = "";
-                for (int j = 0; j < schedaMobs.size(); j++) {
-                    report += (j+1) + "." + schedaMobs.get(j).getNome() + "\n";
+                for (int j = 0; j < schedaMobs.size(); j++) {//stampa una String con i nomi dei nemici tra cui scegliere
+                    report += (j + 1) + "." + schedaMobs.get(j).getNome() + "\n";
                 }
-                String input = JOptionPane.showInputDialog(report2 + "\nChi desideri colpire?\n" + report );
-                int inputI = Integer.parseInt(input) -1;
+
                 String input2 = JOptionPane.showInputDialog("\nCon cosa desideri colpire?\nCon 1 attacco semplice, con 2 usi un talento");
-                int inputI2 = Integer.parseInt(input) -1;
-                if(inputI2 == 0){
-                colpireConArma(ordineBattaglia.get(i), schedaMobs.get(inputI));
+                inputI2 = Integer.parseInt(input2) - 1;
+                if (inputI2 == 0) {
+                    
+                    boolean verifica = false;
+                    while (verifica == false) {
+
+                        String input = JOptionPane.showInputDialog("\nChi desideri colpire?\n" + report);
+
+                        try {
+                            inputI = Integer.parseInt(input) - 1;
+                            if (inputI < schedaMobs.size() && inputI >= 0) {
+                                verifica = true;
+                            }
+                        } catch (Exception error) {
+                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
+                        }
+                    }//fine while controllo inserimento
+                    colpireConArma(ordineBattaglia.get(i), schedaMobs.get(inputI));
                 } else {
-                schedaMobs.get(inputI).setPunti_vita(schedaPgs.get(0).getClasse1().usaTalento(inputI2, schedaPgs.get(0)));
-                System.out.println("Danno inferto: " + schedaPgs.get(0).getClasse1().usaTalento(inputI2, schedaPgs.get(0)));
+                    schedaPgs.get(0).getClasses().usaTalento(schedaPgs.get(0), schedaMobs);
                 }
                 if (checkSopravvivenza(schedaMobs.get(inputI))) {
                     dado--;
                     if (dado == 0) {
-                    control = false;
+                        control = false;
+                    }
                 }
-                }
-                
-                
+
             } else {
                 colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
                 if (checkSopravvivenza(schedaPgs.get(0))) {
@@ -166,7 +180,7 @@ public class Combattimenti {
             //}
             p2.setPunti_vita(-danno);
             System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
-            
+
         } else {
             System.out.println("\nMancato!");
         }
