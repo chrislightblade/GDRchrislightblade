@@ -31,6 +31,6 @@ public class salve {
         combat.setSchedaMobs(scheda1);
         combat.setSchedaMobs(scheda2);
         combat.setSchedaMobs(scheda3);
-        combat.battagliaCasuale();
+        combat.battaglia();
     }
 }

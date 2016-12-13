@@ -37,7 +37,7 @@ public class ClasseArma{
     
     public ClasseArma manoVuota(){
         
-       ClasseArma manovuota = new ClasseArma(0, 1, "mano", 1, "nessuno", );
+       ClasseArma manovuota = new ClasseArma(0, 1, "mano", 1, "nessuno", 12);
        return manovuota;
         
     }

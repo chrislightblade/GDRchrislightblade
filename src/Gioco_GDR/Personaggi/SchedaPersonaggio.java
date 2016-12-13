@@ -315,6 +315,14 @@ public class SchedaPersonaggio {
     //private ClasseArma ClasseArma;// = new ClasseArma();    
     private int portafoglio;
 
+    public void setManoDestra(ClasseArma manoDestra) {
+        this.manoDestra = manoDestra;
+    }
+
+    public void setManoSinistra(ClasseArma manoSinistra) {
+        this.manoSinistra = manoSinistra;
+    }    
+    
     public ClasseArma getManoDestra() {
         return manoDestra;
     }

@@ -47,7 +47,6 @@ public class ClasseArmigero extends ClasseGioco{
     public int usaAssalto(SchedaPersonaggio scheda) {
         int forza = scheda.getAgilità();
         int agilità = scheda.getForza();
-
         int danno = (forza + agilità) / 3;
         return 1;
     }

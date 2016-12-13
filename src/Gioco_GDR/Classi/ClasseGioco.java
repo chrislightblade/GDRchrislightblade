@@ -43,7 +43,7 @@ public class ClasseGioco {
         this.talentoAttivo[talentoAttivo]++;
     }
     
-    /*public int usaTalento(int i, SchedaPersonaggio scheda) {
+    public int usaTalento(int i, SchedaPersonaggio scheda) {
 
         String frase = "Quale talento vuoi utilizzare?";
         //int z = 1;
@@ -56,8 +56,8 @@ public class ClasseGioco {
 
         switch (i) {
             case 1:
-                int bonus = scheda.getClasse1().usaAssalto(scheda);//ClasseArmigero.usaAssalto(scheda);
-                return bonus;
+                //int bonus = scheda.getClasse1().usaAssalto(scheda);//ClasseArmigero.usaAssalto(scheda);
+                return scheda.getClasse1().colpoVigoroso (scheda, scheda.getManoDestra().dannoArma(scheda.getForza()));
 
             case 2:
 
@@ -67,26 +67,7 @@ public class ClasseGioco {
 
             case 5:
 
-        }
-        return 1;
         }
         
-        if(scheda.getClasse() == 1){
-            switch (i) {
-            case 1:
-                //int bonus = ;
-                //return bonus;
-
-            case 2:
-
-            case 3:
-
-            case 4:
-
-            case 5:
-
-        }
-        return 1;
-        }
-    }*/
+    }
 }

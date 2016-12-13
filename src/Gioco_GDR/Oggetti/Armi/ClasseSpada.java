@@ -12,10 +12,10 @@ package Gioco_GDR.Oggetti.Armi;
 public class ClasseSpada extends ClasseArma{
 
     public ClasseSpada(int modificatore, int dado, String categoria, int maniOccupate, String potere) {
-        super(modificatore, dado, categoria, maniOccupate, potere);
+        super(modificatore, dado, categoria, maniOccupate, potere, 12);
     }
        
-    public ClasseArma creaSpadaSemplice(int modificatore){
+    public static ClasseArma creaSpadaSemplice(int modificatore){
         ClasseArma spadaSemplice = new ClasseSpada(modificatore, 6 + modificatore, "Spada", 1, "Nessuno");
         return spadaSemplice;
     }

@@ -6,6 +6,8 @@
 package Gioco_GDR.Personaggi;
 
 import Gioco_GDR.Classi.ClasseArmigero;
+import Gioco_GDR.Oggetti.Armi.ClasseArma;
+import Gioco_GDR.Oggetti.Armi.ClasseSpada;
 import static Gioco_GDR.Personaggi.CreaPersonaggio.valoriRazza;
 
 /**
@@ -21,6 +23,7 @@ public class CreaNPG {
         chris.setClasse1(armigero);
         chris.getClasse1().setTalentoAttivo(1);
         chris.getClasse1().setTalentoAttivo(2);
+        chris.setManoDestra(ClasseSpada.creaSpadaSemplice(1));
         //chris.setPunti_vita(100);
         //chris.setPunti_vita_max(100);
         return chris;
