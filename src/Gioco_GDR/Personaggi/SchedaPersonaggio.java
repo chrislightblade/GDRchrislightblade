@@ -7,6 +7,7 @@ package Gioco_GDR.Personaggi;
 
 import Gioco_GDR.Classi.ClasseArmigero;
 import Gioco_GDR.Classi.ClasseGioco;
+import Gioco_GDR.Classi.ClasseGioco_old;
 
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseMagoTemporale;
@@ -253,6 +254,9 @@ public class SchedaPersonaggio {
 
     public void setPunti_vita(int punti_vita) {
         this.punti_vita += punti_vita;
+        if(this.punti_vita < 0){
+            this.punti_vita = 0;
+        }
     }
     
     public void fullPunti_vita(){
@@ -343,7 +347,7 @@ public class SchedaPersonaggio {
     private ClasseMagicante classe2;
     private ClasseMagoTemporale classe3;*/
     
-    //private ClasseGioco classe_pg;
+    //private ClasseGioco_old classe_pg;
 
     public ClasseGioco getClasses() {
         return classes;
@@ -389,11 +393,11 @@ public class SchedaPersonaggio {
         this.classe2 = classe2;
     }
 
-    public void setClasse_pg(ClasseGioco classe_pg) {
-        this.classe_pg = (ClasseGioco)classe_pg;
+    public void setClasse_pg(ClasseGioco_old classe_pg) {
+        this.classe_pg = (ClasseGioco_old)classe_pg;
     }
 
-    public ClasseGioco getClasse_pg() {
+    public ClasseGioco_old getClasse_pg() {
         return classe_pg;
     }*/
 

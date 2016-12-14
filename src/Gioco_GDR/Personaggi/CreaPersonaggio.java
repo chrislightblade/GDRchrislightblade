@@ -8,6 +8,7 @@ package Gioco_GDR.Personaggi;
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseArmigero;
 import Gioco_GDR.Classi.ClasseGioco;
+
 import Gioco_GDR.Utility_calcolo_valori;
 import javax.swing.JOptionPane;
 
@@ -269,7 +270,7 @@ public class CreaPersonaggio {
 
     public static void creaClasse(int classe, SchedaPersonaggio scheda) {//crea la classe e la inserisce all'interno della scheda, nello spazio inizializzato apposta
 
-        ClasseGioco classi = new ClasseGioco();
+        ClasseGioco classi;
         switch (classe) {
             case 0:
                 //ClasseArmigero classepg = new ClasseArmigero(scheda);

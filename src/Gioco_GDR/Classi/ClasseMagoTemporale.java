@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author tss
  */
-public class ClasseMagoTemporale extends ClasseGioco{
+public class ClasseMagoTemporale extends ClasseGioco_old{
     
     public ClasseMagoTemporale(SchedaPersonaggio scheda) {
         this.talentoAttivo[0] = 1;

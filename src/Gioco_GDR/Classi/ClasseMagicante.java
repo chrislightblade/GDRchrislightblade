@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author tss
  */
-public class ClasseMagicante extends ClasseGioco{
+public class ClasseMagicante implements ClasseGioco{
     
     ArrayList<Incantesimi> incantesimi;
 
