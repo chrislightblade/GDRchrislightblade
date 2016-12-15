@@ -6,6 +6,7 @@
 package Gioco_GDR.Classi;
 
 import Gioco_GDR.Personaggi.SchedaPersonaggio;
+import Gioco_GDR.Utility_calcolo_valori;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,8 @@ import javax.swing.JOptionPane;
 public class ClasseArmigero implements ClasseGioco{
 
     
-    /*//private String talenti[] = new String[5];
+    
+    /*private String talenti[] = new String[5];
     private int uso[] = new int[]{0, 0, 0, 0, 0};
     private int uso_Max[] = new int[]{0, 0, 0, 0, 0};*/
     
@@ -38,6 +40,7 @@ public class ClasseArmigero implements ClasseGioco{
         //int tabellaAssalto[][] = new int[][];
     }
 
+    
     
     /*public int getUso(int index) {
         return this.uso[index];
@@ -68,6 +71,25 @@ public class ClasseArmigero implements ClasseGioco{
         this.talentoAttivo[talentoAttivo]++;
     }*/
 
+    @Override
+    public void colpireConArma(SchedaPersonaggio p1, SchedaPersonaggio p2) {
+        int colpire = p1.getForza() + p1.getIntelligenza() + Utility_calcolo_valori.lanciaD(12);
+        int difendere = p2.getTotaleArmatura() + Utility_calcolo_valori.lanciaD(12);
+
+        if (colpire >= difendere) {
+
+            int danno = p1.getManoDestra().dannoArma(p1.getForza());
+            //if (p1.getManoDestra().getAttributo() != 12) {
+            //}
+            p2.setPunti_vita(-danno);
+            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
+
+        } else {
+            System.out.println("\nMancato!");
+        }
+    }
+
+    
     @Override
     public String getTalenti(int i) {
         return ClasseGioco.super.getTalenti(i); //To change body of generated methods, choose Tools | Templates.
@@ -159,12 +181,17 @@ public class ClasseArmigero implements ClasseGioco{
     /*void applicaBonus(SchedaPersonaggio scheda) {
         scheda.setForza(2);
     }*/
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     public int usaAssalto(SchedaPersonaggio scheda) {
         int forza = scheda.getAgilità();
         int agilità = scheda.getForza();
         int danno = (forza + agilità) / 3;
         return 1;
     }
+     //////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     
     public int colpoVigoroso (SchedaPersonaggio scheda){
         int danno = scheda.getManoDestra().dannoArma(scheda.getForza());

@@ -6,6 +6,7 @@
 package Gioco_GDR.Classi;
 
 import Gioco_GDR.Personaggi.SchedaPersonaggio;
+import Gioco_GDR.Utility_calcolo_valori;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -14,17 +15,17 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public interface ClasseGioco {
-    
+
     //private String talenti[] = new String[5];
     int uso[] = {0, 0, 0, 0, 0};
     int uso_Max[] = {0, 0, 0, 0, 0};
     String talenti[] = new String[5];
     int talentoAttivo[] = {0, 0, 0, 0, 0};
-    
+
     public default String getTalenti(int i) {
         return talenti[i];
     }
-    
+
     public default int getTalentoAttivo(int i) {
         return talentoAttivo[i];
     }
@@ -48,11 +49,11 @@ public interface ClasseGioco {
     public default void setUso_Max(int index) {
         this.uso_Max[index]++;
     }
-    
-    public default void fullUso(int index){
+
+    public default void fullUso(int index) {
         this.uso[index] = this.uso_Max[index];
     }
-    
+
     public default int usaTalento(SchedaPersonaggio scheda1, ArrayList<SchedaPersonaggio> schedaMobs) {
         String report = "";
         String frase = "Quale talento vuoi utilizzare?\n";
@@ -63,7 +64,6 @@ public interface ClasseGioco {
             }
         }
 
-        
         int scegli = 0;
 
         boolean verifica = false;
@@ -81,8 +81,9 @@ public interface ClasseGioco {
                 JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
             }
         }//fine while controllo inserimento
-       
+
         return scegli;
     }
-    
+
+    public void colpireConArma(SchedaPersonaggio p1, SchedaPersonaggio p2);
 }
