@@ -6,6 +6,7 @@
 package Gioco_GDR;
 
 import Gioco_GDR.Personaggi.CreaNPG;
+import Gioco_GDR.Personaggi.PanelStat;
 import Gioco_GDR.Personaggi.SchedaMostro;
 import Gioco_GDR.Personaggi.SchedaPersonaggio;
 import java.util.Random;
@@ -31,6 +32,12 @@ public class salve {
         combat.setSchedaMobs(scheda1);
         combat.setSchedaMobs(scheda2);
         combat.setSchedaMobs(scheda3);
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PanelStat(scheda).setVisible(true);
+            }
+        });
         combat.battaglia();
     }
 }

@@ -10,6 +10,7 @@ import Gioco_GDR.Personaggi.CreaPersonaggio;
 import Gioco_GDR.Personaggi.CreaNPG;
 import Gioco_GDR.Classi.ClasseMagicante;
 import Gioco_GDR.Classi.ClasseArmigero;
+import Gioco_GDR.Personaggi.PanelStat;
 import Gioco_GDR.Personaggi.SchedaMostro;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.objects.NativeString;
@@ -63,6 +64,12 @@ public class avventura_testuale {
         System.out.println(statistiche[2] + ": " + scheda.getIntelligenza());
         System.out.println(statistiche[3] + ": " + scheda.getAgilità());
         System.out.println(statistiche[4] + ": " + scheda.getCostituzione());
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PanelStat(scheda).setVisible(true);
+            }
+        });
         
 
 

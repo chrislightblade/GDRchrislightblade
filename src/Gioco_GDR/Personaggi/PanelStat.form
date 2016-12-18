@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jTitoloPanelStat" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="JNome" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="JStampaNome" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPanel3" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jTitoloPanelStat" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JStampaNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jPanel4" min="-2" pref="128" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jTitoloPanelStat">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Statistiche"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="JNome">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NOME"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="JStampaNome">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="JStampaNome"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jCaricheElementali" max="32767" attributes="0"/>
+                                  <Component id="jCaricheMagiche" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" pref="108" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jStampaCT" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jStampaCE" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jStampaCM" pref="72" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jStampaCTMax" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCMMax" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCEMax" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCaricheElementali" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCE" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCEMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCaricheMagiche" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCMMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCTMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jCaricheElementali">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CARICHE ELEMENTALI"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jCaricheMagiche">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CARICHE MAGICHE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CARICHE TECNICHE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCE">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCM">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCM"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCT">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCT"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCEMax">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCEMax"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCMMax">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCMMax"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCTMax">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCTMax"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jClasse" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLivello" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jPuntiVita" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jRazza" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jExp" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jStampaElemento" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jStampaRazza" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jStampaPuntiVita" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jStampaPuntiVitaMax" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jStampaLivello" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jStampaClasse" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jStampaExp" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jStampaExpMax" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jPuntiVita" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaPuntiVita" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaPuntiVitaMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLivello" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaLivello" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jExp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaExp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaExpMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaElemento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jClasse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaClasse" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRazza" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaRazza" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jPuntiVita">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PUNTI VITA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jClasse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CLASSE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jRazza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="RAZZA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLivello">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="LIVELLO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaLivello">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaLivello"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaPuntiVita">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaPuntiVita"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaPuntiVitaMax">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaPuntiVitaMax"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaClasse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaClasse"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaRazza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaRazza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jExp">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="EXP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaExp">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaExp"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaExpMax">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaExpMax"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ELEMENTO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaElemento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaElemento"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jDifesa" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="jAttacco" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jStampaDifesa" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="jStampaForza" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jAgilità" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jCostituzione" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jIntelligenza" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jStampaCostituzione" max="32767" attributes="0"/>
+                                  <Component id="jStampaIntelligenza" max="32767" attributes="0"/>
+                                  <Component id="jStampaAgilità" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jAttacco" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaForza" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDifesa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaDifesa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jAgilità" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaAgilità" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCostituzione" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaCostituzione" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jIntelligenza" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStampaIntelligenza" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jAttacco">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ATTACCO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jDifesa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DIFESA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jAgilit&#xe0;">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="AGILITA&apos;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jCostituzione">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="COSTITUZIONE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jIntelligenza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="INTELLIGENZA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaForza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaAttacco"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaDifesa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaDifesa"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaAgilit&#xe0;">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaAgilit&#xe0;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaCostituzione">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaCostituzione"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jStampaIntelligenza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jStampaIntelligenza"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

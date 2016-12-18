@@ -114,7 +114,9 @@ public class SchedaPersonaggio {
     private int intelligenza;
     private int agilità;
     private int costituzione;
+    private int modExp;
     private int exp;
+    private int expMax;
     private int punti_vita_max;
     private int punti_vita;//attuali
     private int cariche_magiche_max = 0;
@@ -188,6 +190,23 @@ public class SchedaPersonaggio {
         this.exp += exp;
     }
 
+    public int getExpMax() {
+        return expMax;
+    }
+
+    public void setExpMax() {
+        this.expMax = 1000*this.livello;
+    }    
+
+    public int getModExp() {
+        return modExp;
+    }
+
+    public void setModExp(int modExp) {
+        this.modExp = modExp;
+    }
+    
+
     public int getTotaleArmatura() {
         int classe_armatura;
         classe_armatura = totale_armatura_base + agilità + difesa;
@@ -257,6 +276,9 @@ public class SchedaPersonaggio {
         if(this.punti_vita < 0){
             this.punti_vita = 0;
         }
+        if(this.punti_vita > this.punti_vita_max){
+            this.punti_vita = this.punti_vita_max;
+        }
     }
     
     public void fullPunti_vita(){
@@ -281,6 +303,10 @@ public class SchedaPersonaggio {
     
     public int getElemento_personaggio() {
         return elemento_personaggio;
+    }
+    
+    public String getElementi_personaggio(){
+        return this.elementi_personaggio[this.elemento_personaggio];
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     //parametri per le razze

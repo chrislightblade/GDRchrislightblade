@@ -35,7 +35,7 @@ public class Combattimenti {
         schedaMobs.add(scheda);
     }
 
-    public void battagliaCasuale() {
+    /*public void battagliaCasuale() {   
 
         boolean control = true;
         int i = 0;//per estrarre in ordine i personaggi dall'arraylist dei turni
@@ -47,8 +47,8 @@ public class Combattimenti {
             System.out.println(report);
             if (ordineBattaglia.get(i).getNome().equalsIgnoreCase("chris")) {
                 int valore = Utility_calcolo_valori.lanciaD(dado) - 1;
-                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaMobs.get(valore));
-                if (checkSopravvivenza(schedaMobs.get(valore))) {
+                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaMobs);
+                if (Utility_calcolo_valori.checkSopravvivenzaMob(schedaMobs, ordineBattaglia)) {
                     dado--;
                     if (dado == 0) {
                         control = false;
@@ -56,8 +56,8 @@ public class Combattimenti {
                 }
 
             } else {
-                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
-                if (checkSopravvivenza(schedaPgs.get(0))) {
+                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaMobs);
+                if (Utility_calcolo_valori.checkSopravvivenzaPG(schedaPgs, ordineBattaglia)) {
                     control = false;
                 }
             }
@@ -71,14 +71,13 @@ public class Combattimenti {
         } else {
             System.out.println("Hai peros!");
         }
-
-    }
+    }*/
 
     public void battaglia() {
 
+        int pgAttivi = schedaPgs.size();
         boolean control = true;
-        int inputI2 = 0;
-        int inputI = 0;
+        int inputI = 0;        
         int i = 0;//per estrarre in ordine i personaggi dall'arraylist dei turni
         int dado = schedaMobs.size();//dado che consente di sceglier eun nemico casuale per il simulatore casuale
         while (control == true) {
@@ -86,7 +85,7 @@ public class Combattimenti {
             String report = "E' il turno di " + ordineBattaglia.get(i).getNome();
             //JOptionPane.showMessageDialog(null, report);
             System.out.println(report);
-            if (ordineBattaglia.get(i).getNome().equalsIgnoreCase(schedaPgs.get(0).getNome())) {//se tocca al giocatore attivo
+            if (Utility_calcolo_valori.toccaA_PG(schedaPgs, ordineBattaglia.get(i).getNome())) {//se tocca al giocatore attivo
                 //int valore = Utility_calcolo_valori.lanciaD(dado) - 1;
                 report = "";
                 for (int j = 0; j < schedaMobs.size(); j++) {//stampa una String con i nomi dei nemici tra cui scegliere
@@ -94,38 +93,28 @@ public class Combattimenti {
                 }
 
                 String input2 = JOptionPane.showInputDialog("\nCon cosa desideri colpire?\nCon 1 attacco semplice, con 2 usi un talento");
-                inputI2 = Integer.parseInt(input2) - 1;
-                if (inputI2 == 0) {
-                    
-                    boolean verifica = false;
-                    while (verifica == false) {
-
-                        String input = JOptionPane.showInputDialog("\nChi desideri colpire?\n" + report);
-
-                        try {
-                            inputI = Integer.parseInt(input) - 1;
-                            if (inputI < schedaMobs.size() && inputI >= 0) {
-                                verifica = true;
-                            }
-                        } catch (Exception error) {
-                            JOptionPane.showMessageDialog(null, "non hai inserito dei valori validi");
-                        }
-                    }//fine while controllo inserimento
-                    ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaMobs.get(inputI));
+                inputI = Integer.parseInt(input2) - 1;
+                int morti = 0;
+                if (inputI == 0) {//se hai scelto attacco base
+                    morti = ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaMobs, ordineBattaglia);
                 } else {
-                    schedaPgs.get(0).getClasses().usaTalento(schedaPgs.get(0), schedaMobs);
+                    ordineBattaglia.get(i).getClasses().usaTalento(ordineBattaglia.get(i), schedaMobs);
+                    morti = Utility_calcolo_valori.checkSopravvivenzaMob(schedaMobs, ordineBattaglia);
                 }
-                if (checkSopravvivenza(schedaMobs.get(inputI))) {
-                    dado--;
+                
+                if (morti >0) {
+                    dado -= morti;
                     if (dado == 0) {
                         control = false;
                     }
                 }
-
             } else {
-                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaPgs.get(0));
-                if (checkSopravvivenza(schedaPgs.get(0))) {
+                ordineBattaglia.get(i).getClasses().colpireConArma(ordineBattaglia.get(i), schedaPgs, ordineBattaglia);
+                if (Utility_calcolo_valori.checkSopravvivenzaPG(schedaPgs, ordineBattaglia)) {
+                    pgAttivi--;
+                    if(pgAttivi == 0){
                     control = false;
+                    }
                 }
             }
             i++;
@@ -141,24 +130,6 @@ public class Combattimenti {
 
     }
     
-    /*public void colpireConArma(SchedaPersonaggio p1, SchedaPersonaggio p2) {//calcolo il danno del colpo inferto e ne sottraggo il valore alla vita del bersaglio
-
-        int colpire = p1.getForza() + p1.getIntelligenza() + Utility_calcolo_valori.lanciaD(12);
-        int difendere = p2.getTotaleArmatura() + Utility_calcolo_valori.lanciaD(12);
-
-        if (colpire >= difendere) {
-
-            int danno = p1.getManoDestra().dannoArma(p1.getForza());
-            //if (p1.getManoDestra().getAttributo() != 12) {
-            //}
-            p2.setPunti_vita(-danno);
-            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + p2.getNome() + "\nPunti vita residui " + p2.getPunti_vita() + "\n");
-
-        } else {
-            System.out.println("\nMancato!");
-        }
-    }*/
-
     public String ordineBattaglia() {//metodo che definisce l'ordine dei turni in base all'agilità dei personaggi
         ordineBattaglia.clear();
         ArrayList<SchedaPersonaggio> scheda_tmp = new ArrayList<SchedaPersonaggio>();
@@ -184,36 +155,6 @@ public class Combattimenti {
             scheda_tmp.remove(index);
         }
         return report;
-    }
-
-    
-
-    public boolean checkSopravvivenza(SchedaPersonaggio p2) {
-
-        int pv = p2.getPunti_vita();
-        if (pv <= 0) {
-            System.out.println(p2.getNome() + " è esausto\n");
-            int j = 0;
-            for (j = 0; j < ordineBattaglia.size(); j++) {
-                if (p2.getNome().equalsIgnoreCase(ordineBattaglia.get(j).getNome())) {
-                    //ordineBattaglia.remove(j);
-                    for (int i = 0; i < schedaMobs.size(); i++) {
-                        if (p2.getNome().equalsIgnoreCase(schedaMobs.get(i).getNome())) {
-                            schedaMobs.remove(i);
-                            return true;
-                        }//if
-                    }//for
-                    for (int i = 0; i < schedaPgs.size(); i++) {
-                        if (p2.getNome().equalsIgnoreCase(schedaPgs.get(i).getNome())) {
-                            schedaPgs.remove(i);
-                            return true;
-                        }//if
-                    }//for
-
-                }//if grande
-            }
-        }
-        return false;
     }
 
     public void colpireConIncantesimo(SchedaPersonaggio p1, SchedaPersonaggio p2) {

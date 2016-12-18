@@ -17,10 +17,11 @@ import javax.swing.JOptionPane;
 public interface ClasseGioco {
 
     //private String talenti[] = new String[5];
-    int uso[] = {0, 0, 0, 0, 0};
-    int uso_Max[] = {0, 0, 0, 0, 0};
-    String talenti[] = new String[5];
-    int talentoAttivo[] = {0, 0, 0, 0, 0};
+    int uso[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int uso_Max[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    String talenti[] = new String[10];
+    int talentoAttivo[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    
 
     public default String getTalenti(int i) {
         return talenti[i];
@@ -54,7 +55,9 @@ public interface ClasseGioco {
         this.uso[index] = this.uso_Max[index];
     }
 
-    public default int usaTalento(SchedaPersonaggio scheda1, ArrayList<SchedaPersonaggio> schedaMobs) {
+    //perte comune a tutti i metodi per sceglier eun talento, cioè proprio la sua scelta
+    //la seconda parte è specifica per ogni classe e si occupa del lancio del talento
+    public default int usaTalento(SchedaPersonaggio scheda1, ArrayList<SchedaPersonaggio> schedaMobs, ArrayList<SchedaPersonaggio> ordineBattaglia) {
         String report = "";
         String frase = "Quale talento vuoi utilizzare?\n";
         //int z = 1;
@@ -85,5 +88,41 @@ public interface ClasseGioco {
         return scegli;
     }
 
-    public void colpireConArma(SchedaPersonaggio p1, SchedaPersonaggio p2);
+    public default int colpireConArma(SchedaPersonaggio p1, ArrayList<SchedaPersonaggio> schedaMobs, ArrayList<SchedaPersonaggio> ordineBattaglia) {
+
+        int inputI = 0;
+        int indexLowLife = 0;
+        int sceltaBersaglio = Utility_calcolo_valori.lanciaD(4);//decider ese attaccare il bersaglio con meno vita o un bersaglio casuale
+        if (sceltaBersaglio % 2 == 0) {
+            inputI = Utility_calcolo_valori.lanciaD(schedaMobs.size());
+        } else {
+            int lowLife = schedaMobs.get(0).getPunti_vita();
+            for (int i = 0; i < schedaMobs.size(); i++) {
+                if (lowLife > schedaMobs.get(i).getPunti_vita()) {
+                    lowLife = schedaMobs.get(i).getPunti_vita();
+                    indexLowLife = i;
+                }
+            }
+            inputI = indexLowLife;
+        }
+        int lancioDado = Utility_calcolo_valori.lanciaD(12);
+
+        int colpire = p1.getForza() + p1.getIntelligenza() + lancioDado;
+        int difendere = schedaMobs.get(inputI).getTotaleArmatura() + Utility_calcolo_valori.lanciaD(12);
+
+        if (colpire >= difendere) {
+            int danno = p1.getManoDestra().dannoArma(p1.getForza());
+            if (Utility_calcolo_valori.controlloCritico(0, lancioDado)) {
+                    danno += danno;
+                }
+            //if (p1.getManoDestra().getAttributo() != 12) {
+            //}
+            schedaMobs.get(inputI).setPunti_vita(-danno);
+            System.out.println("\nColpito! Danno inferto " + danno + " da " + p1.getNome() + " a " + schedaMobs.get(inputI).getNome() + "\nPunti vita residui " + schedaMobs.get(inputI).getPunti_vita() + "\n");
+
+        } else {
+            System.out.println("\nMancato!");
+        }
+        return 1;
+    }
 }

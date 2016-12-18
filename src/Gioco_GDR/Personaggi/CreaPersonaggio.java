@@ -140,7 +140,7 @@ public class CreaPersonaggio {
 
         switch (scheda.getRazza()) {// a seconda della razza scelta implementa dei parametri specifici
             case 0://umano               
-                scheda.setExp(10);
+                scheda.setModExp(10);
                 scheda.setTalentiAttivi(1);
                 break;
 
@@ -363,7 +363,7 @@ public class CreaPersonaggio {
                     break;
 
                 case 4://furia
-                    frase = ",\n.";
+                    frase = "Questo talento consente di sferrare un secondo attacco\nsuccessivo al primo attacco in mischia.";
                     frase += "\n.\n";
                     break;
 
