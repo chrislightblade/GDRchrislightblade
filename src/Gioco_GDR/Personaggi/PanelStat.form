@@ -255,7 +255,6 @@
                                       <Component id="jStampaPuntiVita" min="-2" pref="38" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jStampaPuntiVitaMax" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="47" pref="47" max="-2" attributes="0"/>

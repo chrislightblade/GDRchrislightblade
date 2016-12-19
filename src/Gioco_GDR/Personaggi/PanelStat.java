@@ -36,6 +36,7 @@ public class PanelStat extends javax.swing.JFrame {
         jStampaPuntiVita.setText(String.valueOf(scheda.getPunti_vita()));
         jStampaPuntiVitaMax.setText(String.valueOf(scheda.getPunti_vita_max()));
         jStampaRazza.setText(String.valueOf(scheda.getRazzaPersonaggio()));
+        salvesalvino
     }
 
     /**
